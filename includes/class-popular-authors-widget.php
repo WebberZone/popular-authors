@@ -67,6 +67,12 @@ class Popular_Authors_Widget extends WP_Widget {
 			</label>
 		</p>
 		<p>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'optioncount' ) ); ?>">
+				<input id="<?php echo esc_attr( $this->get_field_id( 'optioncount' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'optioncount' ) ); ?>" type="checkbox" <?php checked( true, $optioncount, true ); ?> /> <?php esc_html_e( 'Show count?', 'popular-authors' ); ?>
+			</label>
+		</p>
+		<p>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'daily' ) ); ?>"><?php esc_html_e( 'Time range', 'popular-authors' ); ?>:</label>
 			<select class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'daily' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'daily' ) ); ?>">
 				<option value="overall" <?php selected( 'overall', $daily, true ); ?>><?php esc_html_e( 'Overall', 'popular-authors' ); ?></option>
 				<option value="daily" <?php selected( 'daily', $daily, true ); ?>><?php esc_html_e( 'Custom time period (Enter below)', 'popular-authors' ); ?></option>
@@ -79,11 +85,6 @@ class Popular_Authors_Widget extends WP_Widget {
 			</label>
 			<label for="<?php echo esc_attr( $this->get_field_id( 'hour_range' ) ); ?>">
 				<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'hour_range' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'hour_range' ) ); ?>" type="text" value="<?php echo esc_attr( $hour_range ); ?>" /> <?php esc_html_e( 'hours', 'popular-authors' ); ?>
-			</label>
-		</p>
-		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'optioncount' ) ); ?>">
-				<input id="<?php echo esc_attr( $this->get_field_id( 'optioncount' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'optioncount' ) ); ?>" type="checkbox" <?php checked( true, $optioncount, true ); ?> /> <?php esc_html_e( 'Show count?', 'popular-authors' ); ?>
 			</label>
 		</p>
 
