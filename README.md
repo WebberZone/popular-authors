@@ -26,7 +26,7 @@ The most popular authors can be displayed using either the shortcode or via the 
 ## Screenshots
 
 ![Widget](https://raw.github.com/WebberZone/popular-authors/master/wporg-assets/screenshot-1.png)
-*Contextual Related Posts - General Options*
+*Popular Authors Widget*
 
 More screenshots are available on the [WordPress plugin page](https://wordpress.org/plugins/popular-authors/screenshots/)
 
