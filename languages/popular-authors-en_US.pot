@@ -1,0 +1,77 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Popular Authors\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-05-24 19:31+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Ajay D'Souza\n"
+"Language-Team: plugins@webberzone.com\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e;_c;__ngettext;esc_html__;esc_html_e;esc_attr__;"
+"esc_attr_e\n"
+"X-Poedit-Basepath: ..\n"
+"X-Generator: Poedit 2.3\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: includes/class-popular-authors-widget.php:28
+#: includes/class-popular-authors-widget.php:145
+msgid "Popular Authors"
+msgstr ""
+
+#: includes/class-popular-authors-widget.php:30
+msgid "Display popular authors"
+msgstr ""
+
+#: includes/class-popular-authors-widget.php:56
+msgid "Title"
+msgstr ""
+
+#: includes/class-popular-authors-widget.php:61
+msgid "No. of authors"
+msgstr ""
+
+#: includes/class-popular-authors-widget.php:66
+msgid "Offset"
+msgstr ""
+
+#: includes/class-popular-authors-widget.php:71
+msgid "Show count?"
+msgstr ""
+
+#: includes/class-popular-authors-widget.php:75
+msgid "Time range"
+msgstr ""
+
+#: includes/class-popular-authors-widget.php:77
+msgid "Overall"
+msgstr ""
+
+#: includes/class-popular-authors-widget.php:78
+msgid "Custom time period (Enter below)"
+msgstr ""
+
+#: includes/class-popular-authors-widget.php:82
+msgid "In days and hours (applies only to custom option above)"
+msgstr ""
+
+#: includes/class-popular-authors-widget.php:84
+msgid "days"
+msgstr ""
+
+#: includes/class-popular-authors-widget.php:87
+msgid "hours"
+msgstr ""
+
+#: includes/main.php:40
+msgid "Please install and activate Top 10 plugin to display popular authors."
+msgstr ""
+
+#: includes/main.php:97
+#, php-format
+msgid "Posts by %s"
+msgstr ""

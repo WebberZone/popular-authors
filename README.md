@@ -54,6 +54,6 @@ Popular Authors can be used in three ways:
 
 ## Frequently Asked Questions
 
-Check out the [FAQ on the plugin page](https://wordpress.org/plugins/popular-authors/faq/).
+Check out the [FAQ on the plugin page](https://wordpress.org/plugins/popular-authors/#faq).
 
 If your question isn't listed there, please create a new post at the [WordPress.org support forum](https://wordpress.org/support/plugin/popular-authors). It is the fastest way to get support as I monitor the forums regularly. I also provide [premium *paid* support via email](https://webberzone.com/support/).
