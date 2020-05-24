@@ -70,3 +70,4 @@ if ( ! defined( 'POP_AUTH_PLUGIN_FILE' ) ) {
 
 require_once POP_AUTH_PLUGIN_DIR . 'includes/main.php';
 require_once POP_AUTH_PLUGIN_DIR . 'includes/shortcode.php';
+require_once POP_AUTH_PLUGIN_DIR . 'includes/class-popular-authors-widget.php';
