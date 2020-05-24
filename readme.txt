@@ -14,7 +14,7 @@ Show a list of the popular authors using the widget or shortcode. A Top 10 WordP
 
 This is an addon for [Top 10](https://webberzone.com/plugins/top-10/) that allows you display the top authors on your blog by page views.
 
-The most popular authors can be displayed using either the shortcode or via the inbuilt widget. You can also use the function `pa_list_popular_authors()` to display popular posts programmatically.
+The most popular authors can be displayed using either the shortcode or via the inbuilt widget. You can also use the function `pa_list_popular_authors()` to display popular authors programmatically.
 
 = Features =
 
