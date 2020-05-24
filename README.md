@@ -6,13 +6,13 @@ __Tested up to:__ 5.4
 
 __License:__ [GPL-2.0+](http://www.gnu.org/licenses/gpl-2.0.html)
 
-__Plugin page:__ [Popular Authors home page](https://webberzone.com/plugins/popular-authors/) | [WordPress.org listing](https://wordpress.org/plugins/popular-authors/)
+__Plugin page:__ [Popular Authors home page](https://webberzone.com/downloads/popular-authors/) | [WordPress.org listing](https://wordpress.org/plugins/popular-authors/)
 
 Show a list of the popular authors using the widget or shortcode. A Top 10 WordPress plugin addon.
 
 ## Description
 
-This is an addon for [Top 10](https://webberzone.com/plugins/top-10/) that allows you display the top authors on your blog by page views.
+[Popular Authors WordPress plugin](https://webberzone.com/downloads/popular-authors/) is an addon for [Top 10](https://webberzone.com/plugins/top-10/) that allows you display the top authors on your blog by page views.
 
 The most popular authors can be displayed using either the shortcode or via the inbuilt widget. You can also use the function `pa_list_popular_authors()` to display popular authors programmatically.
 
@@ -35,18 +35,14 @@ More screenshots are available on the [WordPress plugin page](https://wordpress.
 ### WordPress install (the easy way)
 
 1. Navigate to Plugins within your WordPress Admin Area
-
 2. Click "Add new" and in the search box enter "Popular Authors"
-
 3. Find the plugin in the list (usually the first result) and click "Install Now"
 
 ### Manual install
 
 1. Download the plugin
-
-2. Extract the contents of popular-authors.zip to wp-content/plugins/ folder. You should get a folder called popular-authors.
-
-3. Activate the Plugin in WP-Admin.
+2. Extract the contents of popular-authors.zip to wp-content/plugins/ folder. You should get a folder called popular-authors
+3. Activate the Plugin in WP-Admin
 
 ### Usage
 
