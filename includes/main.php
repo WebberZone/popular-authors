@@ -5,6 +5,11 @@
  * @package Popular_Authors
  */
 
+// If this file is called directly, abort.
+if ( ! defined( 'WPINC' ) ) {
+	die;
+}
+
 /**
  * List all the authors of the site, with several options available.
  *
@@ -226,9 +231,9 @@ function pa_get_popular_author_ids( $args = array() ) {
 	// Create the base LIMITS clause.
 	if ( isset( $args['number'] ) && $args['number'] > 0 ) {
 		if ( $args['offset'] ) {
-			$this->query_limit = $wpdb->prepare( 'LIMIT %d, %d', $args['offset'], $args['number'] );
+			$limits = $wpdb->prepare( 'LIMIT %d, %d', $args['offset'], $args['number'] );
 		} else {
-			$this->query_limit = $wpdb->prepare( 'LIMIT %d, %d', $args['number'] * ( $args['paged'] - 1 ), $args['number'] );
+			$limits = $wpdb->prepare( 'LIMIT %d, %d', $args['number'] * ( $args['paged'] - 1 ), $args['number'] );
 		}
 	}
 

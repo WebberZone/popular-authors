@@ -5,6 +5,11 @@
  * @package Popular_Authors
  */
 
+// If this file is called directly, abort.
+if ( ! defined( 'WPINC' ) ) {
+	die;
+}
+
 /**
  * Creates a shortcode [pa_popular_authors number="5" daily="0"].
  *
