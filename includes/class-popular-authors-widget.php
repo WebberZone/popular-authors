@@ -24,12 +24,12 @@ class Popular_Authors_Widget extends WP_Widget {
 	 */
 	public function __construct() {
 		parent::__construct(
-			'widget_pa_popular_authors', // Base ID.
+			'widget_wzpa_popular_authors', // Base ID.
 			__( 'Popular Authors', 'popular-authors' ), // Name.
 			array(
 				'description'                 => __( 'Display popular authors', 'popular-authors' ),
 				'customize_selective_refresh' => true,
-				'classname'                   => 'pa_popular_authors_widget',
+				'classname'                   => 'wzpa_popular_authors_widget',
 			)
 		);
 	}
@@ -96,7 +96,7 @@ class Popular_Authors_Widget extends WP_Widget {
 			 *
 			 * @param   array   $instance   Widget options array
 			 */
-			do_action( 'pa_widget_options_after', $instance );
+			do_action( 'wzpa_widget_options_after', $instance );
 		?>
 
 		<?php
@@ -129,7 +129,7 @@ class Popular_Authors_Widget extends WP_Widget {
 		 *
 		 * @param   array   $instance   Widget options array
 		 */
-		return apply_filters( 'pa_widget_options_update', $instance );
+		return apply_filters( 'wzpa_widget_options_update', $instance );
 	}
 
 	/**
@@ -166,15 +166,15 @@ class Popular_Authors_Widget extends WP_Widget {
 		);
 
 		/**
-		 * Filters arguments passed to pa_pop_posts for the widget.
+		 * Filters arguments passed to wzpa_pop_posts for the widget.
 		 *
 		 * @since 1.0.0
 		 *
 		 * @param   array   $arguments  Widget options array
 		 */
-		$arguments = apply_filters( 'pa_widget_options', $arguments );
+		$arguments = apply_filters( 'wzpa_widget_options', $arguments );
 
-		$output .= pa_list_popular_authors( $arguments );
+		$output .= wzpa_list_popular_authors( $arguments );
 
 		$output .= $args['after_widget'];
 
@@ -190,8 +190,8 @@ class Popular_Authors_Widget extends WP_Widget {
  *
  * @since 1.0.0
  */
-function pa_popular_authors_register_widget() {
+function wzpa_popular_authors_register_widget() {
 	register_widget( 'Popular_authors_Widget' );
 }
-add_action( 'widgets_init', 'pa_popular_authors_register_widget' );
+add_action( 'widgets_init', 'wzpa_popular_authors_register_widget' );
 

@@ -17,10 +17,10 @@ if ( ! defined( 'WPINC' ) ) {
  *
  * @global wpdb $wpdb WordPress database abstraction object.
  *
- * @param array $args List of arguments. See pa_list_popular_authors_args() for full list.
+ * @param array $args List of arguments. See wzpa_list_popular_authors_args() for full list.
  * @return void|string Void if 'echo' argument is true, list of authors if 'echo' is false.
  */
-function pa_list_popular_authors( $args = array() ) {
+function wzpa_list_popular_authors( $args = array() ) {
 
 	global $wpdb;
 
@@ -30,7 +30,7 @@ function pa_list_popular_authors( $args = array() ) {
 		'instance_id'  => 1,
 	);
 
-	$defaults = array_merge( $defaults, pa_list_popular_authors_args() );
+	$defaults = array_merge( $defaults, wzpa_list_popular_authors_args() );
 
 	$args = wp_parse_args( $args, $defaults );
 
@@ -40,16 +40,16 @@ function pa_list_popular_authors( $args = array() ) {
 		return __( 'Please install and activate Top 10 plugin to display popular authors.', 'popular-authors' );
 	}
 
-	$authors = pa_get_popular_author_ids( $args );
+	$authors = wzpa_get_popular_author_ids( $args );
 
 	$author_post_count = array();
 	foreach ( (array) $wpdb->get_results( "SELECT DISTINCT post_author, COUNT(ID) AS count FROM $wpdb->posts WHERE " . get_private_posts_cap_sql( 'post' ) . ' GROUP BY post_author' ) as $row ) { // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared,WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching
 		$author_post_count[ $row->post_author ] = $row->count;
 	}
 
-	$daily_class     = $args['daily'] ? 'pa_authors_daily ' : 'pa_authors ';
-	$widget_class    = $args['is_widget'] ? ' pa_authors_widget pa_authors_widget' . $args['instance_id'] : '';
-	$shortcode_class = $args['is_shortcode'] ? ' pa_authors_shortcode' : '';
+	$daily_class     = $args['daily'] ? 'wzpa_authors_daily ' : 'wzpa_authors ';
+	$widget_class    = $args['is_widget'] ? ' wzpa_authors_widget wzpa_authors_widget' . $args['instance_id'] : '';
+	$shortcode_class = $args['is_shortcode'] ? ' wzpa_authors_shortcode' : '';
 
 	$post_classes = $daily_class . $widget_class . $shortcode_class;
 
@@ -60,7 +60,7 @@ function pa_list_popular_authors( $args = array() ) {
 	 *
 	 * @param string $post_classes Post classes string.
 	 */
-	$post_classes = apply_filters( 'pa_authors_class', $post_classes );
+	$post_classes = apply_filters( 'wzpa_authors_class', $post_classes );
 
 	$output .= '<div class="' . $post_classes . '">';
 
@@ -145,7 +145,7 @@ function pa_list_popular_authors( $args = array() ) {
  * }
  * @return object List of popular authors and corresponding view counts.
  */
-function pa_get_popular_author_ids( $args = array() ) {
+function wzpa_get_popular_author_ids( $args = array() ) {
 	global $wpdb;
 
 	// Initialise some variables.
@@ -257,7 +257,7 @@ function pa_get_popular_author_ids( $args = array() ) {
 	 * @param object $results List of popular authors and corresponding view counts.
 	 * @param array  $args    Arguments list.
 	 */
-	return apply_filters( 'pa_get_popular_author_ids', $results, $args );
+	return apply_filters( 'wzpa_get_popular_author_ids', $results, $args );
 }
 
 
@@ -289,7 +289,7 @@ function pa_get_popular_author_ids( $args = array() ) {
  * }
  * @return array Complete query variables with undefined ones filled in with defaults.
  */
-function pa_list_popular_authors_args( $args = array() ) {
+function wzpa_list_popular_authors_args( $args = array() ) {
 
 	$defaults = array(
 		'number'           => '',
