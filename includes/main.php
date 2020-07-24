@@ -230,10 +230,13 @@ function wzpa_get_popular_author_ids( $args = array() ) {
 
 	// Create the base LIMITS clause.
 	if ( isset( $args['number'] ) && $args['number'] > 0 ) {
+		// If exclude_admin is enabled, then we need to fetch an extra post.
+		$number = isset( $args['exclude_admin'] ) && $args['exclude_admin'] ? $args['number'] + 1 : $args['number'];
+
 		if ( $args['offset'] ) {
-			$limits = $wpdb->prepare( 'LIMIT %d, %d', $args['offset'], $args['number'] );
+			$limits = $wpdb->prepare( 'LIMIT %d, %d', $args['offset'], $number );
 		} else {
-			$limits = $wpdb->prepare( 'LIMIT %d, %d', $args['number'] * ( $args['paged'] - 1 ), $args['number'] );
+			$limits = $wpdb->prepare( 'LIMIT %d, %d', $number * ( $args['paged'] - 1 ), $number );
 		}
 	}
 
