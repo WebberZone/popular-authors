@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Popular Authors\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-24 19:31+0100\n"
+"POT-Creation-Date: 2020-07-24 21:09+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Ajay D'Souza\n"
 "Language-Team: plugins@webberzone.com\n"
@@ -19,7 +19,7 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 
 #: includes/class-popular-authors-widget.php:28
-#: includes/class-popular-authors-widget.php:145
+#: includes/class-popular-authors-widget.php:159
 msgid "Popular Authors"
 msgstr ""
 
@@ -27,43 +27,51 @@ msgstr ""
 msgid "Display popular authors"
 msgstr ""
 
-#: includes/class-popular-authors-widget.php:56
+#: includes/class-popular-authors-widget.php:58
 msgid "Title"
 msgstr ""
 
-#: includes/class-popular-authors-widget.php:61
+#: includes/class-popular-authors-widget.php:63
 msgid "No. of authors"
 msgstr ""
 
-#: includes/class-popular-authors-widget.php:66
+#: includes/class-popular-authors-widget.php:68
 msgid "Offset"
 msgstr ""
 
-#: includes/class-popular-authors-widget.php:71
-msgid "Show count?"
-msgstr ""
-
-#: includes/class-popular-authors-widget.php:75
-msgid "Time range"
-msgstr ""
-
-#: includes/class-popular-authors-widget.php:77
-msgid "Overall"
+#: includes/class-popular-authors-widget.php:73
+msgid "Show count"
 msgstr ""
 
 #: includes/class-popular-authors-widget.php:78
-msgid "Custom time period (Enter below)"
+msgid "Exclude admins"
 msgstr ""
 
-#: includes/class-popular-authors-widget.php:82
-msgid "In days and hours (applies only to custom option above)"
-msgstr ""
-
-#: includes/class-popular-authors-widget.php:84
-msgid "days"
+#: includes/class-popular-authors-widget.php:83
+msgid "Show full name of Author"
 msgstr ""
 
 #: includes/class-popular-authors-widget.php:87
+msgid "Time range"
+msgstr ""
+
+#: includes/class-popular-authors-widget.php:89
+msgid "Overall"
+msgstr ""
+
+#: includes/class-popular-authors-widget.php:90
+msgid "Custom time period (Enter below)"
+msgstr ""
+
+#: includes/class-popular-authors-widget.php:94
+msgid "In days and hours (applies only to custom option above)"
+msgstr ""
+
+#: includes/class-popular-authors-widget.php:96
+msgid "days"
+msgstr ""
+
+#: includes/class-popular-authors-widget.php:99
 msgid "hours"
 msgstr ""
 
