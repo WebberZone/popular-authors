@@ -5,7 +5,7 @@ Donate link: https://ajaydsouza.com/donate/
 Stable tag: 1.0.0
 Requires at least: 4.9
 Requires PHP: 5.6
-Tested up to: 5.4
+Tested up to: 5.5
 License: GPLv2 or later
 
 Show a list of the popular authors using the widget or shortcode. A Top 10 WordPress plugin addon.
@@ -79,6 +79,10 @@ Use `[wzpa_popular_authors]` to display the popular authors. Optional parameters
 
 == Changelog ==
 
+= 1.0.1 =
+
+* Widget now has two additonal settings: Exclude admins and Show full names to make it easier to use
+
 = 1.0.0 =
 
 * Initial release
@@ -88,6 +92,6 @@ For previous changelog entries please visit [Github Releases page](https://githu
 
 == Upgrade Notice ==
 
-= 1.0.0 =
+= 1.0.1 =
 New release
 

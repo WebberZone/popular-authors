@@ -42,13 +42,15 @@ class Popular_Authors_Widget extends WP_Widget {
 	 * @param array $instance Previously saved values from database.
 	 */
 	public function form( $instance ) {
-		$title       = isset( $instance['title'] ) ? esc_attr( $instance['title'] ) : '';
-		$number      = isset( $instance['number'] ) ? esc_attr( $instance['number'] ) : '';
-		$offset      = isset( $instance['offset'] ) ? esc_attr( $instance['offset'] ) : '';
-		$daily       = isset( $instance['daily'] ) ? esc_attr( $instance['daily'] ) : 'overall';
-		$daily_range = isset( $instance['daily_range'] ) ? esc_attr( $instance['daily_range'] ) : '';
-		$hour_range  = isset( $instance['hour_range'] ) ? esc_attr( $instance['hour_range'] ) : '';
-		$optioncount = isset( $instance['optioncount'] ) ? esc_attr( $instance['optioncount'] ) : '';
+		$title         = isset( $instance['title'] ) ? esc_attr( $instance['title'] ) : '';
+		$number        = isset( $instance['number'] ) ? esc_attr( $instance['number'] ) : '';
+		$offset        = isset( $instance['offset'] ) ? esc_attr( $instance['offset'] ) : '';
+		$daily         = isset( $instance['daily'] ) ? esc_attr( $instance['daily'] ) : 'overall';
+		$daily_range   = isset( $instance['daily_range'] ) ? esc_attr( $instance['daily_range'] ) : '';
+		$hour_range    = isset( $instance['hour_range'] ) ? esc_attr( $instance['hour_range'] ) : '';
+		$optioncount   = isset( $instance['optioncount'] ) ? esc_attr( $instance['optioncount'] ) : '';
+		$exclude_admin = isset( $instance['exclude_admin'] ) ? esc_attr( $instance['exclude_admin'] ) : '';
+		$show_fullname = isset( $instance['show_fullname'] ) ? esc_attr( $instance['show_fullname'] ) : '';
 
 		?>
 		<p>
@@ -68,7 +70,17 @@ class Popular_Authors_Widget extends WP_Widget {
 		</p>
 		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id( 'optioncount' ) ); ?>">
-				<input id="<?php echo esc_attr( $this->get_field_id( 'optioncount' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'optioncount' ) ); ?>" type="checkbox" <?php checked( true, $optioncount, true ); ?> /> <?php esc_html_e( 'Show count?', 'popular-authors' ); ?>
+				<input id="<?php echo esc_attr( $this->get_field_id( 'optioncount' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'optioncount' ) ); ?>" type="checkbox" <?php checked( true, $optioncount, true ); ?> /> <?php esc_html_e( 'Show count', 'popular-authors' ); ?>
+			</label>
+		</p>
+		<p>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'exclude_admin' ) ); ?>">
+				<input id="<?php echo esc_attr( $this->get_field_id( 'exclude_admin' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'exclude_admin' ) ); ?>" type="checkbox" <?php checked( true, $exclude_admin, true ); ?> /> <?php esc_html_e( 'Exclude admins', 'popular-authors' ); ?>
+			</label>
+		</p>
+		<p>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'show_fullname' ) ); ?>">
+				<input id="<?php echo esc_attr( $this->get_field_id( 'show_fullname' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'show_fullname' ) ); ?>" type="checkbox" <?php checked( true, $show_fullname, true ); ?> /> <?php esc_html_e( 'Show full name of Author', 'popular-authors' ); ?>
 			</label>
 		</p>
 		<p>
@@ -113,14 +125,16 @@ class Popular_Authors_Widget extends WP_Widget {
 	 * @return array Updated safe values to be saved.
 	 */
 	public function update( $new_instance, $old_instance ) {
-		$instance                = $old_instance;
-		$instance['title']       = wp_strip_all_tags( $new_instance['title'] );
-		$instance['number']      = $new_instance['number'];
-		$instance['offset']      = $new_instance['offset'];
-		$instance['daily']       = $new_instance['daily'];
-		$instance['daily_range'] = wp_strip_all_tags( $new_instance['daily_range'] );
-		$instance['hour_range']  = wp_strip_all_tags( $new_instance['hour_range'] );
-		$instance['optioncount'] = isset( $new_instance['optioncount'] ) ? true : false;
+		$instance                  = $old_instance;
+		$instance['title']         = wp_strip_all_tags( $new_instance['title'] );
+		$instance['number']        = $new_instance['number'];
+		$instance['offset']        = $new_instance['offset'];
+		$instance['daily']         = $new_instance['daily'];
+		$instance['daily_range']   = wp_strip_all_tags( $new_instance['daily_range'] );
+		$instance['hour_range']    = wp_strip_all_tags( $new_instance['hour_range'] );
+		$instance['optioncount']   = isset( $new_instance['optioncount'] ) ? true : false;
+		$instance['exclude_admin'] = isset( $new_instance['exclude_admin'] ) ? true : false;
+		$instance['show_fullname'] = isset( $new_instance['show_fullname'] ) ? true : false;
 
 		/**
 		 * Filters Update widget options array.
@@ -142,27 +156,31 @@ class Popular_Authors_Widget extends WP_Widget {
 	 */
 	public function widget( $args, $instance ) {
 
-		$title       = apply_filters( 'widget_title', empty( $instance['title'] ) ? __( 'Popular Authors', 'popular-authors' ) : $instance['title'] );
-		$number      = isset( $instance['number'] ) ? $instance['number'] : '';
-		$offset      = isset( $instance['offset'] ) ? $instance['offset'] : 0;
-		$daily       = ( isset( $instance['daily'] ) && ( 'daily' === $instance['daily'] ) ) ? true : false;
-		$daily_range = empty( $instance['daily_range'] ) ? null : $instance['daily_range'];
-		$hour_range  = empty( $instance['hour_range'] ) ? null : $instance['hour_range'];
-		$optioncount = isset( $instance['optioncount'] ) ? esc_attr( $instance['optioncount'] ) : '';
+		$title         = apply_filters( 'widget_title', empty( $instance['title'] ) ? __( 'Popular Authors', 'popular-authors' ) : $instance['title'] );
+		$number        = isset( $instance['number'] ) ? $instance['number'] : '';
+		$offset        = isset( $instance['offset'] ) ? $instance['offset'] : 0;
+		$daily         = ( isset( $instance['daily'] ) && ( 'daily' === $instance['daily'] ) ) ? true : false;
+		$daily_range   = empty( $instance['daily_range'] ) ? null : $instance['daily_range'];
+		$hour_range    = empty( $instance['hour_range'] ) ? null : $instance['hour_range'];
+		$optioncount   = isset( $instance['optioncount'] ) ? esc_attr( $instance['optioncount'] ) : '';
+		$exclude_admin = isset( $instance['exclude_admin'] ) ? esc_attr( $instance['exclude_admin'] ) : '';
+		$show_fullname = isset( $instance['show_fullname'] ) ? esc_attr( $instance['show_fullname'] ) : '';
 
 		$output  = $args['before_widget'];
 		$output .= $args['before_title'] . $title . $args['after_title'];
 
 		$arguments = array(
-			'is_widget'   => 1,
-			'instance_id' => $this->number,
-			'number'      => $number,
-			'offset'      => $offset,
-			'daily'       => $daily,
-			'daily_range' => $daily_range,
-			'hour_range'  => $hour_range,
-			'optioncount' => $optioncount,
-			'echo'        => false,
+			'is_widget'     => 1,
+			'instance_id'   => $this->number,
+			'number'        => $number,
+			'offset'        => $offset,
+			'daily'         => $daily,
+			'daily_range'   => $daily_range,
+			'hour_range'    => $hour_range,
+			'optioncount'   => $optioncount,
+			'exclude_admin' => $exclude_admin,
+			'show_fullname' => $show_fullname,
+			'echo'          => false,
 		);
 
 		/**
