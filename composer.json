@@ -1,0 +1,23 @@
+{
+    "name": "webberzone/popular-authors",
+    "description": "Show a list of the popular authors using the widget or shortcode. A Top 10 WordPress plugin addon",
+    "type": "wordpress-plugin",
+    "keywords": [
+        "popular authors",
+        "top authors",
+        "top 10",
+        "popular",
+        "authors"
+    ],
+    "license": "gpl-2.0-or-later",
+    "authors": [
+        {
+            "name": "WebberZone",
+            "email": "plugins@webberzone.com",
+            "role": "Developer"
+        }
+    ],
+    "requires": {
+        "php": ">=7"
+    }
+}
