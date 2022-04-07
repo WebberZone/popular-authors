@@ -16,7 +16,7 @@ if ( ! defined( 'WPINC' ) ) {
  * @since 1.0.0
  */
 function wzpa_lang_init() {
-	load_plugin_textdomain( 'popular-authors', false, dirname( plugin_basename( POP_AUTH_PLUGIN_FILE ) ) . '/languages/' );
+	load_plugin_textdomain( 'popular-authors', false, dirname( plugin_basename( POP_AUTHOR_PLUGIN_FILE ) ) . '/languages/' );
 }
 add_action( 'plugins_loaded', 'wzpa_lang_init' );
 
