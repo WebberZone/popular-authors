@@ -1,6 +1,6 @@
 # Popular Authors
 
-__Requires:__ 5.1
+__Requires:__ WordPress 5.6 and Top 10 v3.0.0
 
 __Tested up to:__ 5.9
 
@@ -8,7 +8,7 @@ __License:__ [GPL-2.0+](http://www.gnu.org/licenses/gpl-2.0.html)
 
 __Plugin page:__ [Popular Authors home page](https://webberzone.com/downloads/popular-authors/) | [WordPress.org listing](https://wordpress.org/plugins/popular-authors/)
 
-Show a list of the popular authors using the widget or shortcode. A Top 10 WordPress plugin addon.
+Display a list of the popular authors. A Top 10 WordPress plugin addon.
 
 ## Description
 

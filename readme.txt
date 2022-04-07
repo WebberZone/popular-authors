@@ -3,12 +3,12 @@ Tags: popular, popular authors, authors, top authors, views, top 10
 Contributors: webberzone, Ajay
 Donate link: https://ajaydsouza.com/donate/
 Stable tag: 1.0.1
-Requires at least: 5.1
+Requires at least: 5.6
 Requires PHP: 7.1
 Tested up to: 5.9
 License: GPLv2 or later
 
-Show a list of the popular authors using the widget or shortcode. A Top 10 WordPress plugin addon.
+Display a list of the popular authors. A Top 10 WordPress plugin addon.
 
 == Description ==
 
