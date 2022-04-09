@@ -28,8 +28,9 @@ class Popular_Authors_Widget extends WP_Widget {
 			__( 'Popular Authors', 'popular-authors' ), // Name.
 			array(
 				'description'                 => __( 'Display popular authors', 'popular-authors' ),
-				'customize_selective_refresh' => true,
 				'classname'                   => 'wzpa_popular_authors_widget',
+				'customize_selective_refresh' => true,
+				'show_instance_in_rest'       => true,
 			)
 		);
 	}
@@ -42,15 +43,15 @@ class Popular_Authors_Widget extends WP_Widget {
 	 * @param array $instance Previously saved values from database.
 	 */
 	public function form( $instance ) {
-		$title         = isset( $instance['title'] ) ? esc_attr( $instance['title'] ) : '';
-		$number        = isset( $instance['number'] ) ? esc_attr( $instance['number'] ) : '';
-		$offset        = isset( $instance['offset'] ) ? esc_attr( $instance['offset'] ) : '';
-		$daily         = isset( $instance['daily'] ) ? esc_attr( $instance['daily'] ) : 'overall';
-		$daily_range   = isset( $instance['daily_range'] ) ? esc_attr( $instance['daily_range'] ) : '';
-		$hour_range    = isset( $instance['hour_range'] ) ? esc_attr( $instance['hour_range'] ) : '';
-		$optioncount   = isset( $instance['optioncount'] ) ? esc_attr( $instance['optioncount'] ) : '';
-		$exclude_admin = isset( $instance['exclude_admin'] ) ? esc_attr( $instance['exclude_admin'] ) : '';
-		$show_fullname = isset( $instance['show_fullname'] ) ? esc_attr( $instance['show_fullname'] ) : '';
+		$title         = isset( $instance['title'] ) ? $instance['title'] : '';
+		$number        = isset( $instance['number'] ) ? $instance['number'] : '';
+		$offset        = isset( $instance['offset'] ) ? $instance['offset'] : '';
+		$daily         = isset( $instance['daily'] ) ? $instance['daily'] : 'overall';
+		$daily_range   = isset( $instance['daily_range'] ) ? $instance['daily_range'] : '';
+		$hour_range    = isset( $instance['hour_range'] ) ? $instance['hour_range'] : '';
+		$optioncount   = isset( $instance['optioncount'] ) ? $instance['optioncount'] : '';
+		$exclude_admin = isset( $instance['exclude_admin'] ) ? $instance['exclude_admin'] : '';
+		$show_fullname = isset( $instance['show_fullname'] ) ? $instance['show_fullname'] : '';
 
 		?>
 		<p>
@@ -102,7 +103,7 @@ class Popular_Authors_Widget extends WP_Widget {
 
 		<?php
 			/**
-			 * Fires after Top 10 widget options.
+			 * Fires after Popular Authors widget options.
 			 *
 			 * @since 1.0.0
 			 *
@@ -132,18 +133,20 @@ class Popular_Authors_Widget extends WP_Widget {
 		$instance['daily']         = $new_instance['daily'];
 		$instance['daily_range']   = wp_strip_all_tags( $new_instance['daily_range'] );
 		$instance['hour_range']    = wp_strip_all_tags( $new_instance['hour_range'] );
-		$instance['optioncount']   = isset( $new_instance['optioncount'] ) ? true : false;
-		$instance['exclude_admin'] = isset( $new_instance['exclude_admin'] ) ? true : false;
-		$instance['show_fullname'] = isset( $new_instance['show_fullname'] ) ? true : false;
+		$instance['optioncount']   = isset( $new_instance['optioncount'] ) ? (bool) $new_instance['optioncount'] : false;
+		$instance['exclude_admin'] = isset( $new_instance['exclude_admin'] ) ? (bool) $new_instance['exclude_admin'] : false;
+		$instance['show_fullname'] = isset( $new_instance['show_fullname'] ) ? (bool) $new_instance['show_fullname'] : false;
 
 		/**
 		 * Filters Update widget options array.
 		 *
 		 * @since 1.0.0
 		 *
-		 * @param   array   $instance   Widget options array
+		 * @param array $instance     Widget options array
+		 * @param array $new_instance Values just sent to be saved.
+		 * @param array $old_instance Previously saved values from database.
 		 */
-		return apply_filters( 'wzpa_widget_options_update', $instance );
+		return apply_filters( 'wzpa_widget_options_update', $instance, $new_instance, $old_instance );
 	}
 
 	/**
@@ -166,8 +169,8 @@ class Popular_Authors_Widget extends WP_Widget {
 		$exclude_admin = isset( $instance['exclude_admin'] ) ? esc_attr( $instance['exclude_admin'] ) : '';
 		$show_fullname = isset( $instance['show_fullname'] ) ? esc_attr( $instance['show_fullname'] ) : '';
 
-		$output  = $args['before_widget'];
-		$output .= $args['before_title'] . $title . $args['after_title'];
+		/** This filter is documented in wp-includes/widgets/class-wp-widget-pages.php */
+		$title = apply_filters( 'widget_title', $title, $instance, $this->id_base );
 
 		$arguments = array(
 			'is_widget'     => 1,
@@ -188,12 +191,16 @@ class Popular_Authors_Widget extends WP_Widget {
 		 *
 		 * @since 1.0.0
 		 *
-		 * @param   array   $arguments  Widget options array
+		 * @param array $arguments Widget options array
+		 * @param array $args      Widget arguments.
+		 * @param array $instance  Saved values from database.
+		 * @param mixed $id_base   The widget ID.
 		 */
-		$arguments = apply_filters( 'wzpa_widget_options', $arguments );
+		$arguments = apply_filters( 'wzpa_widget_options', $arguments, $args, $instance, $this->id_base );
 
+		$output  = $args['before_widget'];
+		$output .= $args['before_title'] . $title . $args['after_title'];
 		$output .= wzpa_list_popular_authors( $arguments );
-
 		$output .= $args['after_widget'];
 
 		echo $output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -209,7 +216,6 @@ class Popular_Authors_Widget extends WP_Widget {
  * @since 1.0.0
  */
 function wzpa_popular_authors_register_widget() {
-	register_widget( 'Popular_authors_Widget' );
+	register_widget( 'Popular_Authors_Widget' );
 }
 add_action( 'widgets_init', 'wzpa_popular_authors_register_widget' );
-
