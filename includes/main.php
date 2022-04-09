@@ -27,6 +27,7 @@ function wzpa_list_popular_authors( $args = array() ) {
 	$defaults = array(
 		'is_widget'    => false,
 		'is_shortcode' => false,
+		'is_block'     => false,
 		'instance_id'  => 1,
 	);
 
@@ -50,8 +51,9 @@ function wzpa_list_popular_authors( $args = array() ) {
 	$daily_class     = $args['daily'] ? 'wzpa_authors_daily ' : 'wzpa_authors ';
 	$widget_class    = $args['is_widget'] ? ' wzpa_authors_widget wzpa_authors_widget' . $args['instance_id'] : '';
 	$shortcode_class = $args['is_shortcode'] ? ' wzpa_authors_shortcode' : '';
+	$block_class     = $args['is_block'] ? ' wzpa_authors_block' : '';
 
-	$post_classes = $daily_class . $widget_class . $shortcode_class;
+	$post_classes = $daily_class . $widget_class . $shortcode_class . $block_class;
 
 	/**
 	 * Filter the classes added to the div wrapper of the Popular Authors.
@@ -158,7 +160,7 @@ function wzpa_get_popular_author_ids( $args = array() ) {
 
 	$defaults = array(
 		'blog_id'     => get_current_blog_id(),
-		'number'      => '',
+		'number'      => -1,
 		'daily'       => false,
 		'daily_range' => null,
 		'hour_range'  => null,
@@ -177,7 +179,7 @@ function wzpa_get_popular_author_ids( $args = array() ) {
 		$pop_posts_table = $wpdb->base_prefix . 'top_ten';
 	}
 
-	$offset = isset( $args['offset'] ) ? $args['offset'] : 0;
+	$offset = ! empty( $args['offset'] ) ? $args['offset'] : 0;
 
 	// Fields to return.
 	$fields[] = "{$wpdb->users}.ID as author_id";
@@ -233,8 +235,8 @@ function wzpa_get_popular_author_ids( $args = array() ) {
 		// If exclude_admin is enabled, then we need to fetch an extra post.
 		$number = isset( $args['exclude_admin'] ) && $args['exclude_admin'] ? $args['number'] + 1 : $args['number'];
 
-		if ( $args['offset'] ) {
-			$limits = $wpdb->prepare( 'LIMIT %d, %d', $args['offset'], $number );
+		if ( $offset ) {
+			$limits = $wpdb->prepare( 'LIMIT %d, %d', $offset, $number );
 		} else {
 			$limits = $wpdb->prepare( 'LIMIT %d, %d', $number * ( $args['paged'] - 1 ), $number );
 		}
@@ -315,4 +317,3 @@ function wzpa_list_popular_authors_args( $args = array() ) {
 
 	return wp_parse_args( $args, $defaults );
 }
-
