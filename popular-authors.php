@@ -84,3 +84,7 @@ require_once POP_AUTHOR_PLUGIN_DIR . 'includes/blocks/register-blocks.php';
 require_once POP_AUTHOR_PLUGIN_DIR . 'includes/shortcode.php';
 require_once POP_AUTHOR_PLUGIN_DIR . 'includes/class-popular-authors-widget.php';
 require_once POP_AUTHOR_PLUGIN_DIR . 'includes/i10n.php';
+
+if ( is_admin() || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
+	require_once POP_AUTHOR_PLUGIN_DIR . 'includes/admin/admin.php';
+}

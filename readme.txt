@@ -83,6 +83,9 @@ Use `[wzpa_popular_authors]` to display the popular authors. Optional parameters
 * Features:
 	* New Gutenberg block. Find it by searching for `popular authors` or `author`
 
+* Enhancements/Modifications:
+	* An admin notice will be displayed if Top 10 v3 and above is not installed
+
 = 1.0.1 =
 
 * Widget now has two additonal settings: Exclude admins and Show full names to make it easier to use
