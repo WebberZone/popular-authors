@@ -14,10 +14,11 @@ Display a list of the popular authors. A Top 10 WordPress plugin addon.
 
 [Popular Authors WordPress plugin](https://webberzone.com/downloads/popular-authors/) is an addon for [Top 10](https://webberzone.com/plugins/top-10/) that allows you display the top authors on your blog by page views.
 
-The most popular authors can be displayed using either the shortcode or via the inbuilt widget. You can also use the function `wzpa_list_popular_authors()` to display popular authors programmatically.
+The most popular authors can be displayed using either the block, shortcode or via the inbuilt widget. You can also use the function `wzpa_list_popular_authors()` to display popular authors programmatically.
 
 ### Features
 
+* Block: Add a Gutenberg block by searching for `popular authors` or `author`
 * Multi-widget capable: You can have several widgets of Popular Authors each with its own settings
 * Custom Time Range: List popular authors within a specific time range (eg. last 1 day, last 7 days, last 30 days, etc.)
 * Shortcode: Use the `[wzpa_popular_authors]` shortcode to display your most popular authors
@@ -46,11 +47,12 @@ More screenshots are available on the [WordPress plugin page](https://wordpress.
 
 ### Usage
 
-Popular Authors can be used in three ways:
+Popular Authors can be used in four ways:
 
-1. Widget: simply drag and drop "Popular Authors" widget into your theme’s sidebar and configure it
-2. Shortcode `[wzpa_popular_authors]`, so you can embed it inside a post or a page
-3. Template tag: Use `wzpa_list_popular_authors()` to display the popular authors anywhere on your theme
+1. Block: Add a Gutenberg block by searching for `popular authors` or `author`
+2. Widget: Simply drag and drop "Popular Authors" widget into your theme’s sidebar and configure it
+3. Shortcode `[wzpa_popular_authors]`, so you can embed it inside a post or a page
+4. Template tag: Use `wzpa_list_popular_authors()` to display the popular authors anywhere on your theme
 
 ## Frequently Asked Questions
 
