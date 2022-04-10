@@ -82,6 +82,7 @@ Use `[wzpa_popular_authors]` to display the popular authors. Optional parameters
 
 * Features:
 	* New Gutenberg block. Find it by searching for `popular authors` or `author`
+	* New settings tab added to Top 10 Settings page where global settings for this plugin can be configured
 
 * Enhancements/Modifications:
 	* An admin notice will be displayed if Top 10 v3 and above is not installed
