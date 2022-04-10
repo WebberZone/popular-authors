@@ -86,5 +86,5 @@ require_once POP_AUTHOR_PLUGIN_DIR . 'includes/class-popular-authors-widget.php'
 require_once POP_AUTHOR_PLUGIN_DIR . 'includes/i10n.php';
 
 if ( is_admin() || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
-	require_once POP_AUTHOR_PLUGIN_DIR . 'includes/admin/admin.php';
+	require_once POP_AUTHOR_PLUGIN_DIR . 'includes/admin/class-wzpa-admin.php';
 }

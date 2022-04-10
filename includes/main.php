@@ -315,5 +315,15 @@ function wzpa_list_popular_authors_args( $args = array() ) {
 		'after_list_item'  => '</li>',
 	);
 
+	if ( function_exists( 'tptn_get_settings' ) ) {
+		$tptn_settings = tptn_get_settings();
+
+		foreach ( $defaults as $option => $value ) {
+			if ( isset( $tptn_settings[ "wzpa_{$option}" ] ) ) {
+				$defaults[ $option ] = $tptn_settings[ "wzpa_{$option}" ];
+			}
+		}
+	}
+
 	return wp_parse_args( $args, $defaults );
 }
