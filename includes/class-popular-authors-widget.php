@@ -52,6 +52,7 @@ class Popular_Authors_Widget extends WP_Widget {
 		$optioncount   = isset( $instance['optioncount'] ) ? $instance['optioncount'] : '';
 		$exclude_admin = isset( $instance['exclude_admin'] ) ? $instance['exclude_admin'] : '';
 		$show_fullname = isset( $instance['show_fullname'] ) ? $instance['show_fullname'] : '';
+		$show_avatar   = isset( $instance['show_avatar'] ) ? $instance['show_avatar'] : '';
 
 		?>
 		<p>
@@ -82,6 +83,11 @@ class Popular_Authors_Widget extends WP_Widget {
 		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id( 'show_fullname' ) ); ?>">
 				<input id="<?php echo esc_attr( $this->get_field_id( 'show_fullname' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'show_fullname' ) ); ?>" type="checkbox" <?php checked( true, $show_fullname, true ); ?> /> <?php esc_html_e( 'Show full name of Author', 'popular-authors' ); ?>
+			</label>
+		</p>
+		<p>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'show_avatar' ) ); ?>">
+				<input id="<?php echo esc_attr( $this->get_field_id( 'show_avatar' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'show_avatar' ) ); ?>" type="checkbox" <?php checked( true, $show_avatar, true ); ?> /> <?php esc_html_e( 'Show Avatar', 'popular-authors' ); ?>
 			</label>
 		</p>
 		<p>
@@ -136,6 +142,7 @@ class Popular_Authors_Widget extends WP_Widget {
 		$instance['optioncount']   = isset( $new_instance['optioncount'] ) ? (bool) $new_instance['optioncount'] : false;
 		$instance['exclude_admin'] = isset( $new_instance['exclude_admin'] ) ? (bool) $new_instance['exclude_admin'] : false;
 		$instance['show_fullname'] = isset( $new_instance['show_fullname'] ) ? (bool) $new_instance['show_fullname'] : false;
+		$instance['show_avatar']   = isset( $new_instance['show_avatar'] ) ? (bool) $new_instance['show_avatar'] : false;
 
 		/**
 		 * Filters Update widget options array.
@@ -168,6 +175,7 @@ class Popular_Authors_Widget extends WP_Widget {
 		$optioncount   = isset( $instance['optioncount'] ) ? esc_attr( $instance['optioncount'] ) : '';
 		$exclude_admin = isset( $instance['exclude_admin'] ) ? esc_attr( $instance['exclude_admin'] ) : '';
 		$show_fullname = isset( $instance['show_fullname'] ) ? esc_attr( $instance['show_fullname'] ) : '';
+		$show_avatar   = isset( $instance['show_avatar'] ) ? esc_attr( $instance['show_avatar'] ) : '';
 
 		/** This filter is documented in wp-includes/widgets/class-wp-widget-pages.php */
 		$title = apply_filters( 'widget_title', $title, $instance, $this->id_base );
@@ -183,6 +191,7 @@ class Popular_Authors_Widget extends WP_Widget {
 			'optioncount'   => $optioncount,
 			'exclude_admin' => $exclude_admin,
 			'show_fullname' => $show_fullname,
+			'show_avatar'   => $show_avatar,
 			'echo'          => false,
 		);
 

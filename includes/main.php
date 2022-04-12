@@ -80,6 +80,10 @@ function wzpa_list_popular_authors( $args = array() ) {
 
 			$author = get_userdata( $author_id );
 
+			if ( ! $author ) {
+				continue;
+			}
+
 			if ( $args['exclude_admin'] && 'admin' === $author->display_name ) {
 				continue;
 			}
@@ -91,6 +95,10 @@ function wzpa_list_popular_authors( $args = array() ) {
 			}
 
 			$output .= $args['before_list_item'];
+
+			if ( $args['show_avatar'] ) {
+				$output .= wzpa_get_avatar( $author );
+			}
 
 			$link = sprintf(
 				'<a href="%1$s" title="%2$s">%3$s</a>',
@@ -265,7 +273,6 @@ function wzpa_get_popular_author_ids( $args = array() ) {
 	return apply_filters( 'wzpa_get_popular_author_ids', $results, $args );
 }
 
-
 /**
  * Fills in missing query variables with default values.
  *
@@ -283,6 +290,7 @@ function wzpa_get_popular_author_ids( $args = array() ) {
  *     @type bool         $optioncount      Show the count in parenthesis next to the author's name. Default true.
  *     @type bool         $exclude_admin    Whether to exclude the 'admin' account, if it exists. Default false.
  *     @type bool         $show_fullname    Whether to show the author's full name. Default false.
+ *     @type bool         $show_avatar      Whether to show the author's avatar. Default false.
  *     @type bool         $hide_empty       Whether to hide any authors with no posts. Default true.
  *     @type bool         $echo             Whether to output the result or instead return it. Default true.
  *     @type array|string $include          Array or comma/space-separated list of author IDs to include. Default empty.
@@ -305,6 +313,7 @@ function wzpa_list_popular_authors_args( $args = array() ) {
 		'optioncount'      => true,
 		'exclude_admin'    => false,
 		'show_fullname'    => false,
+		'show_avatar'      => false,
 		'hide_empty'       => true,
 		'echo'             => true,
 		'include'          => '',
@@ -326,4 +335,80 @@ function wzpa_list_popular_authors_args( $args = array() ) {
 	}
 
 	return wp_parse_args( $args, $defaults );
+}
+
+
+/**
+ * Retrieve the avatar `<img>` tag for a user, email address, MD5 hash, comment, or post.
+ *
+ * @since 1.1.0
+ * @see get_avatar()
+ *
+ * @param WP_User|int $author Author's WP_User object or user ID.
+ * @param array       $args {
+ *     Optional. Arguments to retrieve the avatar.
+ *
+ *     @type int          $size          Height and width of the avatar image file in pixels. Default 96.
+ *     @type string       $default       URL for the default image or a default type. Default is the value of the
+ *                                       'avatar_default' option, with a fallback of 'mystery'.
+ *     @type string       $alt           Alternative text to use in img tag. Default empty.
+ *     @type int          $height        Display height of the avatar in pixels. Defaults to $size.
+ *     @type int          $width         Display width of the avatar in pixels. Defaults to $size.
+ *     @type bool         $force_default Whether to always show the default image, never the Gravatar. Default false.
+ *     @type string       $rating        What rating to display avatars up to. Accepts 'G', 'PG', 'R', 'X', and are
+ *                                       judged in that order. Default is the value of the 'avatar_rating' option.
+ *     @type string       $scheme        URL scheme to use. See set_url_scheme() for accepted values.
+ *                                       Default null.
+ *     @type array|string $class         Array or string of additional classes to add to the img element.
+ *                                       Default null.
+ *     @type bool         $force_display Whether to always show the avatar - ignores the show_avatars option.
+ *                                       Default false.
+ *     @type string       $loading       Value for the `loading` attribute.
+ *                                       Default null.
+ *     @type string       $extra_attr    HTML attributes to insert in the IMG element. Is not sanitized. Default empty.
+ * }
+ * @return string|false `<img>` tag for the user's avatar. False on failure.
+ */
+function wzpa_get_avatar( $author, $args = array() ) {
+	$defaults = array(
+		'size'          => 96,
+		'height'        => null,
+		'width'         => null,
+		'default'       => get_option( 'avatar_default', 'mystery' ),
+		'force_default' => false,
+		'rating'        => get_option( 'avatar_rating' ),
+		'scheme'        => null,
+		'alt'           => '',
+		'class'         => null,
+		'force_display' => false,
+		'loading'       => null,
+		'extra_attr'    => '',
+	);
+
+	$args = wp_parse_args( $args, $defaults );
+
+	/**
+	 * Arguments for author's avatar. Passed to get_avatar().
+	 *
+	 * @since 1.1.0
+	 *
+	 * @param array       $avatar_args Avatar arguments.
+	 * @param WP_User|int $author      Author WP_User object.
+	 */
+	$avatar_args = apply_filters( 'wzpa_avatar_args', $args, $author );
+
+	$avatar = get_avatar( $author, $avatar_args['size'], $avatar_args['default'], $avatar_args['alt'], $avatar_args );
+
+	$avatar = $avatar ? $avatar : '';
+
+	/**
+	 * Filters the HTML for a user's avatar.
+	 *
+	 * @since 1.1.0
+	 *
+	 * @param string      $avatar      HTML for the user's avatar.
+	 * @param WP_User|int $author      Author's WP_User object or user ID.
+	 * @param array       $avatar_args Arguments passed to get_avatar(), after processing.
+	 */
+	return apply_filters( 'wzpa_get_avatar', $avatar, $author, $avatar_args );
 }
