@@ -33,7 +33,7 @@ So, if you've got some cool feature that you'd like to implement into the plugin
 == Screenshots ==
 
 1. Popular Authors Widget settings
-
+2. Popular Authors tab under Top 10 Settings
 
 == Installation ==
 
