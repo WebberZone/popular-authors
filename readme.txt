@@ -84,6 +84,7 @@ Use `[wzpa_popular_authors]` to display the popular authors. Optional parameters
 	* New Gutenberg block. Find it by searching for `popular authors` or `author`
 	* New settings tab added to Top 10 Settings page where global settings for this plugin can be configured
 	* New setting to display the author avatar
+	* New setting to cache the output. This option respects the cache settings of Top 10 and uses the similar transient names
 
 * Enhancements/Modifications:
 	* An admin notice will be displayed if Top 10 v3 and above is not installed
