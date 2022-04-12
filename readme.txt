@@ -74,11 +74,13 @@ The main CSS class is:
 
 = Shortcodes =
 
-Use `[wzpa_popular_authors]` to display the popular authors. Optional parameters include `number` to limit the number of authors returned.
+Use `[wzpa_popular_authors]` to display the popular authors. Check [this knowledge base article for shortcode parameters](https://webberzone.com/support/knowledgebase/popular-authors-shortcode/)
 
 == Changelog ==
 
 = 1.1.0 =
+
+Release post: [https://webberzone.com/blog/popular-authors-1-1-0](https://webberzone.com/blog/popular-authors-1-1-0)
 
 * Features:
 	* New Gutenberg block. Find it by searching for `popular authors` or `author`
@@ -102,6 +104,5 @@ For previous changelog entries please visit [Github Releases page](https://githu
 
 == Upgrade Notice ==
 
-= 1.0.1 =
-New release
-
+= 1.1.0 =
+Major update. Gutenberg block, configurable settings; Check the release post on WebberZone.com
