@@ -44,6 +44,7 @@ function render_wzpa_block( $attributes ) {
 	$attributes['extra_class']   = $attributes['className'];
 	$attributes['optioncount']   = $attributes['showOptionCount'];
 	$attributes['show_fullname'] = $attributes['showFullName'];
+	$attributes['show_avatar']   = $attributes['showAvatar'];
 	$attributes['exclude_admin'] = $attributes['excludeAdmin'];
 	$attributes['hide_empty']    = $attributes['hideEmptyAuthors'];
 

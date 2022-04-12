@@ -135,6 +135,13 @@ class WZPA_Admin {
 					'type'    => 'checkbox',
 					'options' => false,
 				),
+				'wzpa_show_avatar'         => array(
+					'id'      => 'wzpa_show_avatar',
+					'name'    => esc_html__( 'Show Avatar', 'top-10' ),
+					'desc'    => esc_html__( "Whether to show the author's avatar", 'top-10' ),
+					'type'    => 'checkbox',
+					'options' => false,
+				),
 				'wzpa_html_wrapper_header' => array(
 					'id'   => 'wzpa_html_wrapper_header',
 					'name' => '<h3>' . esc_html__( 'HTML to display', 'top-10' ) . '</h3>',
