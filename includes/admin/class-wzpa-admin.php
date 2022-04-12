@@ -80,10 +80,17 @@ class WZPA_Admin {
 
 		$new_settings = array(
 			'popular-authors' => array(
+				'wzpa_cache'               => array(
+					'id'      => 'wzpa_cache',
+					'name'    => esc_html__( 'Cache output', 'top-10' ),
+					'desc'    => esc_html__( 'Turn this ON to cache the HTML output. This option uses the same settings as Top 10 and creates similar cache keys.', 'top-10' ),
+					'type'    => 'checkbox',
+					'options' => false,
+				),
 				'wzpa_number'              => array(
 					'id'      => 'wzpa_number',
 					'name'    => esc_html__( 'Number of authors to display', 'popular-authors' ),
-					'desc'    => esc_html__( 'Maximum number of authors that will be displayed in the list. This option is used if you do not specify the number of posts in the block, widget or shortcode', 'popular-authors' ),
+					'desc'    => esc_html__( 'Maximum number of authors that will be displayed in the list. This option is used if you do not specify the number of posts in the block, widget or shortcode.', 'popular-authors' ),
 					'type'    => 'number',
 					'options' => -1,
 					'size'    => 'small',

@@ -41,6 +41,26 @@ function wzpa_list_popular_authors( $args = array() ) {
 		return __( 'Please install and activate Top 10 plugin to display popular authors.', 'popular-authors' );
 	}
 
+	// Check if the cache is enabled and if the output exists. If so, return the output.
+	if ( $args['cache'] ) {
+		$cache_name = tptn_cache_get_key( $args );
+
+		$output = get_transient( $cache_name );
+
+		if ( false !== $output ) {
+
+			/**
+			 * Filter the output
+			 *
+			 * @since 1.1.0
+			 *
+			 * @param string $output Formatted list of top authors.
+			 * @param array  $args   Array of arguments
+			 */
+			return apply_filters( 'wzpa_list_popular_authors', $output, $args );
+		}
+	}
+
 	$authors = wzpa_get_popular_author_ids( $args );
 
 	$author_post_count = array();
@@ -121,6 +141,23 @@ function wzpa_list_popular_authors( $args = array() ) {
 	}
 
 	$output .= '</div>';
+
+	// Check if the cache is enabled and if the output exists. If so, return the output.
+	if ( $args['cache'] ) {
+		/**
+		 * Filter already documented in /top-10/includes/public/display-posts.php
+		 */
+		$cache_time = apply_filters( 'tptn_cache_time', tptn_get_option( 'cache_time' ), $args );
+
+		$output .= "<br /><!-- Cached output. Cached time is {$cache_time} seconds -->";
+
+		set_transient( $cache_name, $output, $cache_time );
+	}
+
+	/**
+	 * Filter already documented in includes/main.php
+	 */
+	$output = apply_filters( 'wzpa_list_popular_authors', $output, $args );
 
 	if ( $args['echo'] ) {
 		echo $output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -292,6 +329,7 @@ function wzpa_get_popular_author_ids( $args = array() ) {
  *     @type bool         $show_fullname    Whether to show the author's full name. Default false.
  *     @type bool         $show_avatar      Whether to show the author's avatar. Default false.
  *     @type bool         $hide_empty       Whether to hide any authors with no posts. Default true.
+ *     @type bool         $cache            Whether to cache output. Default false.
  *     @type bool         $echo             Whether to output the result or instead return it. Default true.
  *     @type array|string $include          Array or comma/space-separated list of author IDs to include. Default empty.
  *     @type array|string $exclude          Array or comma/space-separated list of author IDs to exclude. Default empty.
@@ -315,6 +353,7 @@ function wzpa_list_popular_authors_args( $args = array() ) {
 		'show_fullname'    => false,
 		'show_avatar'      => false,
 		'hide_empty'       => true,
+		'cache'            => true,
 		'echo'             => true,
 		'include'          => '',
 		'exclude'          => '',
