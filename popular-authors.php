@@ -8,13 +8,13 @@
  * @author    Ajay D'Souza
  * @license   GPL-2.0+
  * @link      https://webberzone.com
- * @copyright 2020-2022 WebberZone
+ * @copyright 2020-2023 WebberZone
  *
  * @wordpress-plugin
  * Plugin Name: Popular Authors
  * Plugin URI:  https://webberzone.com/downlods/popular-authors/
  * Description: Display a list of the popular authors. A Top 10 WordPress plugin addon.
- * Version:     1.1.0
+ * Version:     1.1.1
  * Author:      WebberZone
  * Author URI:  https://webberzone.com
  * License:     GPL-2.0+
@@ -36,7 +36,7 @@ if ( ! defined( 'WPINC' ) ) {
  * @var string Plugin folder path
  */
 if ( ! defined( 'POP_AUTHOR_VERSION' ) ) {
-	define( 'POP_AUTHOR_VERSION', '1.1.0' );
+	define( 'POP_AUTHOR_VERSION', '1.1.1' );
 }
 
 /**
