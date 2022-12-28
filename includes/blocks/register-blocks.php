@@ -41,7 +41,7 @@ add_action( 'init', 'wzpa_register_blocks' );
 function render_wzpa_block( $attributes ) {
 
 	// Map block attributes to PHP attributes.
-	$attributes['extra_class']   = $attributes['className'];
+	$attributes['extra_class']   = esc_attr( $attributes['className'] );
 	$attributes['optioncount']   = $attributes['showOptionCount'];
 	$attributes['show_fullname'] = $attributes['showFullName'];
 	$attributes['show_avatar']   = $attributes['showAvatar'];

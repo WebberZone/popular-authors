@@ -2,10 +2,10 @@
 Tags: popular, popular authors, authors, top authors, views, top 10
 Contributors: webberzone, Ajay
 Donate link: https://ajaydsouza.com/donate/
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 Requires at least: 5.6
 Requires PHP: 7.1
-Tested up to: 5.9
+Tested up to: 6.1
 License: GPLv2 or later
 
 Display a list of the popular authors. A Top 10 WordPress plugin addon.
@@ -78,6 +78,10 @@ Use `[wzpa_popular_authors]` to display the popular authors. Check [this knowled
 
 == Changelog ==
 
+= 1.1.1 =
+
+* Security fix in block
+
 = 1.1.0 =
 
 Release post: [https://webberzone.com/blog/popular-authors-1-1-0](https://webberzone.com/blog/popular-authors-1-1-0)
@@ -104,5 +108,5 @@ For previous changelog entries please visit [Github Releases page](https://githu
 
 == Upgrade Notice ==
 
-= 1.1.0 =
-Major update. Gutenberg block, configurable settings; Check the release post on WebberZone.com
+= 1.1.1 =
+Security fic
