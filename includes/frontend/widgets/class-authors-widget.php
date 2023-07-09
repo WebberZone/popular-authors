@@ -5,7 +5,10 @@
  * @package Popular_Authors
  */
 
-// If this file is called directly, abort.
+namespace WebberZone\Popular_Authors\Frontend\Widgets;
+
+use WebberZone\Popular_Authors\Frontend\Display;
+
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
@@ -14,10 +17,8 @@ if ( ! defined( 'WPINC' ) ) {
  * Popular Authors Widget.
  *
  * @since 1.0.0
- *
- * @extends WP_Widget
  */
-class Popular_Authors_Widget extends WP_Widget {
+class Authors_Widget extends \WP_Widget {
 
 	/**
 	 * Register widget with WordPress.
@@ -209,22 +210,9 @@ class Popular_Authors_Widget extends WP_Widget {
 
 		$output  = $args['before_widget'];
 		$output .= $args['before_title'] . $title . $args['after_title'];
-		$output .= wzpa_list_popular_authors( $arguments );
+		$output .= Display::list_popular_authors( $arguments );
 		$output .= $args['after_widget'];
 
 		echo $output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-
 	}
-
 }
-
-
-/**
- * Initialise the widget.
- *
- * @since 1.0.0
- */
-function wzpa_popular_authors_register_widget() {
-	register_widget( 'Popular_Authors_Widget' );
-}
-add_action( 'widgets_init', 'wzpa_popular_authors_register_widget' );
