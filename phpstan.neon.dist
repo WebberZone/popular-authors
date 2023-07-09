@@ -1,0 +1,11 @@
+includes:
+	- phpstan-baseline.neon
+parameters:
+    level: 5
+    scanFiles:
+        - popular-authors.php
+    scanDirectories:
+        - includes
+    paths:
+        - popular-authors.php
+        - includes/

@@ -14,7 +14,7 @@
  * Plugin Name: Popular Authors
  * Plugin URI:  https://webberzone.com/downlods/popular-authors/
  * Description: Display a list of the popular authors. A Top 10 WordPress plugin addon.
- * Version:     1.1.1
+ * Version:     1.2.0-beta1
  * Author:      WebberZone
  * Author URI:  https://webberzone.com
  * License:     GPL-2.0+
@@ -23,7 +23,8 @@
  * Domain Path: /languages
  */
 
-// If this file is called directly, abort.
+namespace WebberZone\Popular_Authors;
+
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
@@ -32,8 +33,6 @@ if ( ! defined( 'WPINC' ) ) {
  * Popular Authors Plugin Version
  *
  * @since 1.1.0
- *
- * @var string Plugin folder path
  */
 if ( ! defined( 'POP_AUTHOR_VERSION' ) ) {
 	define( 'POP_AUTHOR_VERSION', '1.1.1' );
@@ -43,8 +42,6 @@ if ( ! defined( 'POP_AUTHOR_VERSION' ) ) {
  * Holds the filesystem directory path (with trailing slash) for Popular Authors
  *
  * @since 1.1.0
- *
- * @var string Plugin folder path
  */
 if ( ! defined( 'POP_AUTHOR_PLUGIN_DIR' ) ) {
 	define( 'POP_AUTHOR_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
@@ -54,8 +51,6 @@ if ( ! defined( 'POP_AUTHOR_PLUGIN_DIR' ) ) {
  * Holds the filesystem directory path (with trailing slash) for Popular Authors
  *
  * @since 1.1.0
- *
- * @var string Plugin folder URL
  */
 if ( ! defined( 'POP_AUTHOR_PLUGIN_URL' ) ) {
 	define( 'POP_AUTHOR_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
@@ -65,26 +60,18 @@ if ( ! defined( 'POP_AUTHOR_PLUGIN_URL' ) ) {
  * Holds the filesystem directory path (with trailing slash) for Popular Authors
  *
  * @since 1.1.0
- *
- * @var string Plugin Root File
  */
 if ( ! defined( 'POP_AUTHOR_PLUGIN_FILE' ) ) {
 	define( 'POP_AUTHOR_PLUGIN_FILE', __FILE__ );
 }
 
+// Load the autoloader.
+require_once POP_AUTHOR_PLUGIN_DIR . 'includes/autoloader.php';
 
-/*
- *---------------------------------------------------------------------------*
- * Modules
- *---------------------------------------------------------------------------*
+/**
+ * The main function responsible for returning the one true WebberZone Snippetz instance to functions everywhere.
  */
-
-require_once POP_AUTHOR_PLUGIN_DIR . 'includes/main.php';
-require_once POP_AUTHOR_PLUGIN_DIR . 'includes/blocks/register-blocks.php';
-require_once POP_AUTHOR_PLUGIN_DIR . 'includes/shortcode.php';
-require_once POP_AUTHOR_PLUGIN_DIR . 'includes/class-popular-authors-widget.php';
-require_once POP_AUTHOR_PLUGIN_DIR . 'includes/i10n.php';
-
-if ( is_admin() || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
-	require_once POP_AUTHOR_PLUGIN_DIR . 'includes/admin/class-wzpa-admin.php';
+function load_wzpa() {
+	\WebberZone\Popular_Authors\Main::get_instance();
 }
+add_action( 'plugins_loaded', __NAMESPACE__ . '\load_wzpa' );
