@@ -5,7 +5,8 @@
  * @package Popular_Authors\Admin
  */
 
-// If this file is called directly, abort.
+namespace WebberZone\Popular_Authors\Admin;
+
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
@@ -15,7 +16,7 @@ if ( ! defined( 'WPINC' ) ) {
  *
  * @since 1.1.0
  */
-class WZPA_Admin {
+class Admin {
 
 	/**
 	 * Constructor class.
@@ -24,8 +25,8 @@ class WZPA_Admin {
 	 */
 	public function __construct() {
 		add_filter( 'admin_notices', array( $this, 'admin_notices' ) );
-		add_filter( 'tptn_settings_sections', array( $this, 'add_settings_section' ) );
-		add_filter( 'tptn_registered_settings', array( $this, 'settings_popular_authors' ) );
+		add_filter( 'tptn_settings_sections', array( $this, 'add_settings_section' ), 11 );
+		add_filter( 'tptn_registered_settings', array( $this, 'settings_popular_authors' ), 11 );
 	}
 
 	/**
@@ -80,8 +81,8 @@ class WZPA_Admin {
 
 		$new_settings = array(
 			'popular-authors' => array(
-				'wzpa_cache'               => array(
-					'id'      => 'wzpa_cache',
+				'cache'                    => array(
+					'id'      => 'cache',
 					'name'    => esc_html__( 'Cache output', 'top-10' ),
 					'desc'    => esc_html__( 'Turn this ON to cache the HTML output. This option uses the same settings as Top 10 and creates similar cache keys.', 'top-10' ),
 					'type'    => 'checkbox',
@@ -188,7 +189,4 @@ class WZPA_Admin {
 
 		return array_merge( $settings, $new_settings );
 	}
-
 }
-
-new WZPA_Admin();
