@@ -309,6 +309,66 @@ class Display {
 		$groupby = " GROUP BY {$groupby} ";
 		$orderby = " ORDER BY {$orderby} ";
 
+		/**
+		 * Filters the SELECT clause of the query.
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param string $fields The SELECT clause of the query.
+		 * @param array  $args   Arguments array.
+		 */
+		$fields = apply_filters_ref_array( 'wzpa_query_fields', array( $fields, $args ) );
+
+		/**
+		 * Filters the JOIN clause of the query.
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param string $join  The JOIN clause of the query.
+		 * @param array  $args  Arguments array.
+		 */
+		$join = apply_filters_ref_array( 'wzpa_query_join', array( $join, $args ) );
+
+		/**
+		 * Filters the WHERE clause of the query.
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param string $where The WHERE clause of the query.
+		 * @param array  $args  Arguments array.
+		 */
+		$where = apply_filters_ref_array( 'wzpa_query_where', array( $where, $args ) );
+
+		/**
+		 * Filters the GROUP BY clause of the query.
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param string $groupby The GROUP BY clause of the query.
+		 * @param array  $args    Arguments array.
+		 */
+		$groupby = apply_filters_ref_array( 'wzpa_query_groupby', array( $groupby, $args ) );
+
+		/**
+		 * Filters the ORDER BY clause of the query.
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param string $orderby The ORDER BY clause of the query.
+		 * @param array  $args    Arguments array.
+		 */
+		$orderby = apply_filters_ref_array( 'wzpa_query_orderby', array( $orderby, $args ) );
+
+		/**
+		 * Filters the LIMIT clause of the query.
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param string $limits The LIMIT clause of the query.
+		 * @param array  $args   Arguments array.
+		 */
+		$limits = apply_filters_ref_array( 'wzpa_query_limits', array( $limits, $args ) );
+
 		// Create the mySQL statement.
 		$sql = "SELECT $fields FROM {$wpdb->users} $join WHERE 1=1 $where $groupby $orderby $limits";
 
