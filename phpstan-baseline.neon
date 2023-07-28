@@ -11,12 +11,12 @@ parameters:
 			path: includes/frontend/blocks/class-blocks.php
 
 		-
-			message: "#^Function tptn_cache_get_key not found\\.$#"
+			message: "#^Call to static method cache_get_key\\(\\) on an unknown class WebberZone\\\\Top_Ten\\\\Frontend\\\\Display\\.$#"
 			count: 1
 			path: includes/frontend/class-display.php
 
 		-
-			message: "#^Function tptn_get_from_date not found\\.$#"
+			message: "#^Call to static method get_from_date\\(\\) on an unknown class WebberZone\\\\Top_Ten\\\\Util\\\\Helpers\\.$#"
 			count: 1
 			path: includes/frontend/class-display.php
 
