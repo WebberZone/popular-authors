@@ -59,7 +59,7 @@ class Display {
 
 		// Check if the cache is enabled and if the output exists. If so, return the output.
 		if ( $args['cache'] ) {
-			$cache_name = \tptn_cache_get_key( $args );
+			$cache_name = \WebberZone\Top_Ten\Frontend\Display::cache_get_key( $args );
 
 			$output = get_transient( $cache_name );
 
@@ -283,7 +283,7 @@ class Display {
 		}
 
 		if ( $args['daily'] ) {
-			$from_date = \tptn_get_from_date( null, $args['daily_range'], $args['hour_range'] );
+			$from_date = \WebberZone\Top_Ten\Util\Helpers::get_from_date( null, $args['daily_range'], $args['hour_range'] );
 
 			$where .= $wpdb->prepare( " AND {$pop_posts_table}.dp_date >= %s ", $from_date ); // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 		}

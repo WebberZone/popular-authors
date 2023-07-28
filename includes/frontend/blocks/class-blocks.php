@@ -16,7 +16,7 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * Widget to display the overall count.
  *
- * @since 3.3.0
+ * @since 1.2.0
  */
 class Blocks {
 
@@ -48,7 +48,7 @@ class Blocks {
 	/**
 	 * Renders the `popular-authors/popular-authors` block on server.
 	 *
-	 * @since 1.1.0
+	 * @since 1.2.0
 	 * @param array $attributes The block attributes.
 	 *
 	 * @return string Returns the post content with popular posts added.
@@ -84,5 +84,13 @@ class Blocks {
 		$arguments = apply_filters( 'wzpa_block_options', $arguments, $attributes );
 
 		return Display::list_popular_authors( $arguments );
+	}
+
+	/**
+	 * Enqueue scripts and styles for the block editor.
+	 *
+	 * @since 1.2.0
+	 */
+	public static function enqueue_block_editor_assets() {
 	}
 }
