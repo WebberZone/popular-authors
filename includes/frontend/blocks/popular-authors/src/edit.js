@@ -40,14 +40,6 @@ import './editor.scss';
  * @return {WPElement} Element to render.
  */
 export default function Edit({ attributes, setAttributes }) {
-	function processNumber(input) {
-		const output =
-			undefined === input || 0 === input || '' === input || isNaN(input)
-				? ''
-				: parseInt(input);
-		return output;
-	}
-
 	const {
 		number,
 		daily,
@@ -63,7 +55,7 @@ export default function Edit({ attributes, setAttributes }) {
 		exclude,
 		other_attributes,
 	} = attributes;
-	console.log(attributes);
+
 	const blockProps = useBlockProps();
 	const onChangeNumber = (newNumber) => {
 		setAttributes({
@@ -74,13 +66,19 @@ export default function Edit({ attributes, setAttributes }) {
 		setAttributes({ daily: !daily });
 	};
 	const onChangeDailyRange = (newDailyRange) => {
-		setAttributes({ daily_range: processNumber(newDailyRange) });
+		setAttributes({
+			daily_range: undefined === newDailyRange ? '' : newDailyRange,
+		});
 	};
 	const onChangeHourRange = (newHourRange) => {
-		setAttributes({ hour_range: processNumber(newHourRange) });
+		setAttributes({
+			hour_range: undefined === newHourRange ? '' : newHourRange,
+		});
 	};
 	const onChangeOffset = (newOffset) => {
-		setAttributes({ offset: processNumber(newOffset) });
+		setAttributes({
+			offset: undefined === newOffset ? '' : newOffset,
+		});
 	};
 	const toggleShowOptionCount = () => {
 		setAttributes({ showOptionCount: !showOptionCount });
@@ -124,7 +122,10 @@ export default function Edit({ attributes, setAttributes }) {
 					<PanelRow>
 						<fieldset>
 							<TextControl
-								label={__('Max authors to display', 'popular-authors')}
+								label={__(
+									'Max authors to display',
+									'popular-authors'
+								)}
 								value={number}
 								onChange={onChangeNumber}
 								help={__(
@@ -141,7 +142,10 @@ export default function Edit({ attributes, setAttributes }) {
 								help={
 									daily
 										? __('Set range below', 'top-10')
-										: __('Overall popular posts will be shown', 'top-10')
+										: __(
+											'Overall popular posts will be shown',
+											'top-10'
+										)
 								}
 								checked={daily}
 								onChange={toggleDaily}
@@ -175,7 +179,7 @@ export default function Edit({ attributes, setAttributes }) {
 								value={offset}
 								onChange={onChangeOffset}
 								help={__(
-									'Number of authors to offset in retrieved results. Only applies if number of author is >0',
+									'Number of authors to offset in retrieved results. Only applies if number of authors set above is >0',
 									'popular-authors'
 								)}
 							/>
@@ -187,8 +191,14 @@ export default function Edit({ attributes, setAttributes }) {
 								label={__('Show count', 'popular-authors')}
 								help={
 									showOptionCount
-										? __('Count displayed', 'popular-authors')
-										: __('No count displayed', 'popular-authors')
+										? __(
+											'Count displayed',
+											'popular-authors'
+										)
+										: __(
+											'No count displayed',
+											'popular-authors'
+										)
 								}
 								checked={showOptionCount}
 								onChange={toggleShowOptionCount}
@@ -201,8 +211,14 @@ export default function Edit({ attributes, setAttributes }) {
 								label={__('Show Full Name', 'popular-authors')}
 								help={
 									showFullName
-										? __('Full Name is displayed', 'popular-authors')
-										: __('Display Name is displayed', 'popular-authors')
+										? __(
+											'Full Name is displayed',
+											'popular-authors'
+										)
+										: __(
+											'Display Name is displayed',
+											'popular-authors'
+										)
 								}
 								checked={showFullName}
 								onChange={toggleShowFullName}
@@ -215,8 +231,14 @@ export default function Edit({ attributes, setAttributes }) {
 								label={__('Show Avatar', 'popular-authors')}
 								help={
 									showAvatar
-										? __('Avatar displayed', 'popular-authors')
-										: __('No avatar displayed', 'popular-authors')
+										? __(
+											'Avatar displayed',
+											'popular-authors'
+										)
+										: __(
+											'No avatar displayed',
+											'popular-authors'
+										)
 								}
 								checked={showAvatar}
 								onChange={toggleShowAvatar}
@@ -229,8 +251,14 @@ export default function Edit({ attributes, setAttributes }) {
 								label={__('Exclude admin', 'popular-authors')}
 								help={
 									excludeAdmin
-										? __("'admin' account is excluded", 'popular-authors')
-										: __("'admin' account is included", 'popular-authors')
+										? __(
+											"'admin' account is excluded",
+											'popular-authors'
+										)
+										: __(
+											"'admin' account is included",
+											'popular-authors'
+										)
 								}
 								checked={excludeAdmin}
 								onChange={toggleExcludeAdmin}
@@ -240,17 +268,20 @@ export default function Edit({ attributes, setAttributes }) {
 					<PanelRow>
 						<fieldset>
 							<ToggleControl
-								label={__('Hide authors with no posts', 'popular-authors')}
+								label={__(
+									'Hide authors with no posts',
+									'popular-authors'
+								)}
 								help={
 									hideEmptyAuthors
 										? __(
-												'Authors with no posts are excluded',
-												'popular-authors'
-										  )
+											'Authors with no posts are excluded',
+											'popular-authors'
+										)
 										: __(
-												'Authors with no posts are included',
-												'popular-authors'
-										  )
+											'Authors with no posts are included',
+											'popular-authors'
+										)
 								}
 								checked={hideEmptyAuthors}
 								onChange={togglehideEmptyAuthors}
@@ -260,7 +291,10 @@ export default function Edit({ attributes, setAttributes }) {
 					<PanelRow>
 						<fieldset>
 							<TextControl
-								label={__('Author IDs to include', 'popular-authors')}
+								label={__(
+									'Author IDs to include',
+									'popular-authors'
+								)}
 								value={include}
 								onChange={onChangeInclude}
 								help={__(
@@ -273,7 +307,10 @@ export default function Edit({ attributes, setAttributes }) {
 					<PanelRow>
 						<fieldset>
 							<TextControl
-								label={__('Author IDs to exclude', 'popular-authors')}
+								label={__(
+									'Author IDs to exclude',
+									'popular-authors'
+								)}
 								value={exclude}
 								onChange={onChangeExclude}
 								help={__(
@@ -286,7 +323,10 @@ export default function Edit({ attributes, setAttributes }) {
 					<PanelRow>
 						<fieldset>
 							<TextareaControl
-								label={__('Other attributes', 'popular-authors')}
+								label={__(
+									'Other attributes',
+									'popular-authors'
+								)}
 								value={other_attributes}
 								onChange={onChangeOtherAttributes}
 								help={__(

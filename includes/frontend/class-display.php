@@ -283,7 +283,7 @@ class Display {
 		}
 
 		if ( $args['daily'] ) {
-			$from_date = \WebberZone\Top_Ten\Util\Helpers::get_from_date( null, $args['daily_range'], $args['hour_range'] );
+			$from_date = \WebberZone\Top_Ten\Util\Helpers::get_from_date( null, (int) $args['daily_range'], (int) $args['hour_range'] );
 
 			$where .= $wpdb->prepare( " AND {$pop_posts_table}.dp_date >= %s ", $from_date ); // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 		}

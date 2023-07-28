@@ -25,11 +25,11 @@
 			"default": false
 		},
 		"daily_range": {
-			"type": "number",
+			"type": "string",
 			"default": 1
 		},
 		"hour_range": {
-			"type": "number",
+			"type": "string",
 			"default": 0
 		},
 		"offset": {

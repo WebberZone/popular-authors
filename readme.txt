@@ -89,6 +89,9 @@ Popular Authors has been rewritten to use classes and autoloading.
 * Features:
 	* New filters: `wzpa_query_fields`, `wzpa_query_join`, `wzpa_query_where`, `wzpa_query_groupby`, `wzpa_query_orderby` and `wzpa_query_limits` to modify the Popular Authors mySQL query
 
+* Bug fixes:
+	* Block gave validation errors for the Daily range and Hour range fields when blank
+
 = 1.1.1 =
 
 * Security fix in block
