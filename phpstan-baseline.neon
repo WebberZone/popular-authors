@@ -1,0 +1,41 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Constant POP_AUTHOR_PLUGIN_DIR not found\\.$#"
+			count: 1
+			path: includes/autoloader.php
+
+		-
+			message: "#^Constant POP_AUTHOR_PLUGIN_DIR not found\\.$#"
+			count: 1
+			path: includes/frontend/blocks/class-blocks.php
+
+		-
+			message: "#^Call to static method cache_get_key\\(\\) on an unknown class WebberZone\\\\Top_Ten\\\\Frontend\\\\Display\\.$#"
+			count: 1
+			path: includes/frontend/class-display.php
+
+		-
+			message: "#^Call to static method get_from_date\\(\\) on an unknown class WebberZone\\\\Top_Ten\\\\Util\\\\Helpers\\.$#"
+			count: 1
+			path: includes/frontend/class-display.php
+
+		-
+			message: "#^Function tptn_get_option not found\\.$#"
+			count: 1
+			path: includes/frontend/class-display.php
+
+		-
+			message: "#^If condition is always true\\.$#"
+			count: 1
+			path: includes/frontend/class-display.php
+
+		-
+			message: "#^Variable \\$cache_name might not be defined\\.$#"
+			count: 1
+			path: includes/frontend/class-display.php
+
+		-
+			message: "#^Method WebberZone\\\\Popular_Authors\\\\Frontend\\\\Widgets\\\\Authors_Widget\\:\\:form\\(\\) should return string but return statement is missing\\.$#"
+			count: 1
+			path: includes/frontend/widgets/class-authors-widget.php
