@@ -21,6 +21,11 @@ parameters:
 			path: includes/frontend/class-display.php
 
 		-
+			message: "#^Function tptn_get_default_option not found\\.$#"
+			count: 1
+			path: includes/frontend/class-display.php
+
+		-
 			message: "#^Function tptn_get_option not found\\.$#"
 			count: 1
 			path: includes/frontend/class-display.php
@@ -34,6 +39,11 @@ parameters:
 			message: "#^Variable \\$cache_name might not be defined\\.$#"
 			count: 1
 			path: includes/frontend/class-display.php
+
+		-
+			message: "#^Function tptn_get_option not found\\.$#"
+			count: 1
+			path: includes/frontend/class-styles-handler.php
 
 		-
 			message: "#^Method WebberZone\\\\Popular_Authors\\\\Frontend\\\\Widgets\\\\Authors_Widget\\:\\:form\\(\\) should return string but return statement is missing\\.$#"

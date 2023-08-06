@@ -184,9 +184,58 @@ class Admin {
 					'type'    => 'text',
 					'options' => '</li>',
 				),
+				'wzpa_styles_desc'         => array(
+					'id'   => 'wzpa_styles_desc',
+					'name' => '<h3>' . esc_html__( 'Styles', 'popular-authors' ) . '</h3>',
+					'desc' => '',
+					'type' => 'descriptive_text',
+				),
+				'wzpa_styles'              => array(
+					'id'      => 'wzpa_styles',
+					'name'    => esc_html__( 'Popular Authors style', 'top-10' ),
+					'desc'    => '',
+					'type'    => 'radiodesc',
+					'default' => 'no_style',
+					'options' => self::get_styles(),
+				),
 			),
 		);
 
 		return array_merge( $settings, $new_settings );
+	}
+
+	/**
+	 * Get the various styles.
+	 *
+	 * @since 1.2.0
+	 * @return array Style options.
+	 */
+	public static function get_styles() {
+		$styles = array(
+			array(
+				'id'          => 'no_style',
+				'name'        => esc_html__( 'No styles', 'top-10' ),
+				'description' => esc_html__( 'Select this option if you plan to add your own styles', 'top-10' ),
+			),
+			array(
+				'id'          => 'card',
+				'name'        => esc_html__( 'Card Layout', 'top-10' ),
+				'description' => esc_html__( 'Display the popular authors in a card layout using CSS grid', 'top-10' ),
+			),
+			array(
+				'id'          => 'left_thumbs',
+				'name'        => esc_html__( 'Left Thumbs', 'top-10' ),
+				'description' => esc_html__( 'Display the popular authors in a grid with the image to the left of the text', 'top-10' ),
+			),
+		);
+
+		/**
+		 * Filter the array containing the types of styles to add your own.
+		 *
+		 * @since 2.5.0
+		 *
+		 * @param array $styles Different styles.
+		 */
+		return apply_filters( 'wzpa_get_styles', $styles );
 	}
 }

@@ -21,7 +21,7 @@ class Display {
 	/**
 	 * Constructor class.
 	 *
-	 * @since 3.3.0
+	 * @since 1.2.0
 	 */
 	public function __construct() {
 	}
@@ -45,6 +45,7 @@ class Display {
 			'is_shortcode' => false,
 			'is_block'     => false,
 			'instance_id'  => 1,
+			'extra_class'  => '',
 		);
 
 		$defaults = array_merge( $defaults, self::list_popular_authors_args() );
@@ -86,11 +87,17 @@ class Display {
 			$post_counts[ $row->post_author ] = $row->count;
 		}
 
-		$post_classes[] = $args['daily'] ? 'wzpa_authors_daily ' : 'wzpa_authors ';
-		$post_classes[] = $args['is_widget'] ? ' wzpa_authors_widget wzpa_authors_widget' . $args['instance_id'] : '';
-		$post_classes[] = $args['is_shortcode'] ? ' wzpa_authors_shortcode' : '';
-		$post_classes[] = $args['is_block'] ? ' wzpa_authors_block' : '';
+		$style_array = Styles_Handler::get_style( $args['styles'] );
 
+		$post_classes = array(
+			'main'        => 'wzpa_authors',
+			'daily'       => $args['daily'] ? 'wzpa_authors ' : '',
+			'widget'      => $args['is_widget'] ? 'wzpa_authors_widget wzpa_authors_widget' . $args['instance_id'] : '',
+			'shortcode'   => $args['is_shortcode'] ? 'wzpa_authors_shortcode' : '',
+			'block'       => $args['is_block'] ? 'wzpa_authors_block' : '',
+			'extra_class' => $args['extra_class'],
+			'style'       => ! empty( $style_array['name'] ) ? 'wzpa-' . $style_array['name'] : '',
+		);
 		$post_classes = join( ' ', $post_classes );
 
 		/**
@@ -140,7 +147,8 @@ class Display {
 					$output .= self::get_avatar( $author );
 				}
 
-				$link = sprintf(
+				$link  = '<span class="wzpa_authorname">';
+				$link .= sprintf(
 					'<a href="%1$s" title="%2$s">%3$s</a>',
 					get_author_posts_url( $author->ID, $author->user_nicename ),
 					/* translators: %s: Author's display name. */
@@ -149,8 +157,12 @@ class Display {
 				);
 
 				if ( $args['optioncount'] ) {
-					$link .= ' (' . number_format_i18n( $views ) . ')';
+					$link .= sprintf(
+						' <span class="wzpa_optioncount">(%1$s)</span>',
+						number_format_i18n( $views )
+					);
 				}
+				$link .= '</span>';
 
 				$output .= $link;
 				$output .= $args['after_list_item'];
@@ -436,6 +448,7 @@ class Display {
 			'after_list'       => '</ul>',
 			'before_list_item' => '<li>',
 			'after_list_item'  => '</li>',
+			'styles'           => '',
 		);
 
 		if ( function_exists( 'tptn_get_settings' ) ) {
@@ -444,6 +457,8 @@ class Display {
 			foreach ( $defaults as $option => $value ) {
 				if ( isset( $tptn_settings[ "wzpa_{$option}" ] ) ) {
 					$defaults[ $option ] = $tptn_settings[ "wzpa_{$option}" ];
+				} else {
+					$defaults[ $option ] = \tptn_get_default_option( "wzpa_{$option}" );
 				}
 			}
 		}

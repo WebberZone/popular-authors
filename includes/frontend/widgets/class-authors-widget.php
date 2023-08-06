@@ -183,7 +183,7 @@ class Authors_Widget extends \WP_Widget {
 
 		$arguments = array(
 			'is_widget'     => 1,
-			'instance_id'   => $this->number,
+			'instance_id'   => $args['widget_id'],
 			'number'        => $number,
 			'offset'        => $offset,
 			'daily'         => $daily,
