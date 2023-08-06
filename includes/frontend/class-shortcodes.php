@@ -14,14 +14,14 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * Admin Columns Class.
  *
- * @since 3.3.0
+ * @since 1.2.0
  */
 class Shortcodes {
 
 	/**
 	 * Constructor class.
 	 *
-	 * @since 3.3.0
+	 * @since 1.2.0
 	 */
 	public function __construct() {
 		add_shortcode( 'wzpa_popular_authors', array( __CLASS__, 'wzpa_popular_authors' ) );
