@@ -52,6 +52,15 @@ final class Main {
 	public $blocks;
 
 	/**
+	 * Styles.
+	 *
+	 * @since 1.2.0
+	 *
+	 * @var object Styles.
+	 */
+	public $styles;
+
+	/**
 	 * Gets the instance of the class.
 	 *
 	 * @since 1.2.0
@@ -84,6 +93,7 @@ final class Main {
 	private function init() {
 		$this->shortcodes = new Frontend\Shortcodes();
 		$this->blocks     = new Frontend\Blocks\Blocks();
+		$this->styles     = new Frontend\Styles_Handler();
 
 		$this->hooks();
 
