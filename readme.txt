@@ -87,6 +87,8 @@ Use `[wzpa_popular_authors]` to display the popular authors. Check [this knowled
 Popular Authors has been rewritten to use classes and autoloading.
 
 * Features:
+	* New style options: Choose between a Card Layout or Left Thumbs
+	* New filter: `wzpa_custom_template` which can be used to override the Popular Authors HTML output
 	* New filters: `wzpa_query_fields`, `wzpa_query_join`, `wzpa_query_where`, `wzpa_query_groupby`, `wzpa_query_orderby` and `wzpa_query_limits` to modify the Popular Authors mySQL query
 
 * Bug fixes:

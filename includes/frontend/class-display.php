@@ -7,6 +7,8 @@
 
 namespace WebberZone\Popular_Authors\Frontend;
 
+use WebberZone\Popular_Authors\Frontend\Styles_Handler;
+
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
@@ -80,11 +82,39 @@ class Display {
 
 		$authors = self::get_popular_author_ids( $args );
 
+		// Set the post counts for each author.
 		$post_counts       = array();
 		$post_counts_query = $wpdb->get_results( "SELECT DISTINCT post_author, COUNT(ID) AS count FROM $wpdb->posts WHERE " . get_private_posts_cap_sql( 'post' ) . ' GROUP BY post_author' ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared,WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching
 
 		foreach ( (array) $post_counts_query as $row ) {
 			$post_counts[ $row->post_author ] = $row->count;
+		}
+
+		/**
+		 * Filter to create a custom HTML output for a set of Popular Authors.
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param   mixed   $custom_template    Custom template. Default value null.
+		 * @param   object  $authors            Array of popular author IDs.
+		 * @param   array   $args               Array of settings.
+		 * @param   array   $post_counts        Array of post counts for each author.
+		 * @return  string                      Custom HTML formatted list of popular authors.
+		 */
+		$custom_template = apply_filters( 'wzpa_custom_template', null, $authors, $args, $post_counts );
+		if ( ! empty( $custom_template ) ) {
+			if ( $args['cache'] ) {
+				/**
+				 * Filter already documented in /top-10/includes/public/display-posts.php
+				 */
+				$cache_time = apply_filters( 'tptn_cache_time', \tptn_get_option( 'cache_time' ), $args );
+
+				$output .= "<br /><!-- Cached output. Cached time is {$cache_time} seconds -->";
+
+				set_transient( $cache_name, $output, $cache_time );
+			}
+
+			return $custom_template;
 		}
 
 		$style_array = Styles_Handler::get_style( $args['styles'] );
