@@ -35,7 +35,7 @@ if ( ! defined( 'WPINC' ) ) {
  * @since 1.1.0
  */
 if ( ! defined( 'POP_AUTHOR_VERSION' ) ) {
-	define( 'POP_AUTHOR_VERSION', '1.1.1' );
+	define( 'POP_AUTHOR_VERSION', '1.2.0' );
 }
 
 /**
