@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Popular Authors\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-09 21:51+0100\n"
+"POT-Creation-Date: 2023-08-13 15:07+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Ajay D'Souza\n"
 "Language-Team: WebberZone\n"
@@ -95,7 +95,7 @@ msgid "Whether to show the author's full name instead of the display name"
 msgstr ""
 
 #: includes/admin/class-admin.php:148
-#: includes/frontend/blocks/popular-authors/src/edit.js:215
+#: includes/frontend/blocks/popular-authors/src/edit.js:231
 #: includes/frontend/widgets/class-authors-widget.php:91
 msgid "Show Avatar"
 msgstr ""
@@ -124,145 +124,179 @@ msgstr ""
 msgid "After each list item"
 msgstr ""
 
-#: includes/frontend/blocks/popular-authors/src/edit.js:121
+#: includes/admin/class-admin.php:189
+msgid "Styles"
+msgstr ""
+
+#: includes/admin/class-admin.php:195
+msgid "Popular Authors style"
+msgstr ""
+
+#: includes/admin/class-admin.php:217
+msgid "No styles"
+msgstr ""
+
+#: includes/admin/class-admin.php:218
+msgid "Select this option if you plan to add your own styles"
+msgstr ""
+
+#: includes/admin/class-admin.php:222
+msgid "Card Layout"
+msgstr ""
+
+#: includes/admin/class-admin.php:223
+msgid "Display the popular authors in a card layout using CSS grid"
+msgstr ""
+
+#: includes/admin/class-admin.php:227
+msgid "Left Thumbs"
+msgstr ""
+
+#: includes/admin/class-admin.php:228
+msgid ""
+"Display the popular authors in a grid with the image to the left of the "
+"text"
+msgstr ""
+
+#: includes/frontend/blocks/popular-authors/src/edit.js:119
 msgid "Popular Authors Settings"
 msgstr ""
 
-#: includes/frontend/blocks/popular-authors/src/edit.js:127
+#: includes/frontend/blocks/popular-authors/src/edit.js:126
 msgid "Max authors to display"
 msgstr ""
 
-#: includes/frontend/blocks/popular-authors/src/edit.js:131
+#: includes/frontend/blocks/popular-authors/src/edit.js:132
 msgid ""
 "Value -1 (all authors) is supported, but should be used with caution on "
 "larger sites."
 msgstr ""
 
-#: includes/frontend/blocks/popular-authors/src/edit.js:140
+#: includes/frontend/blocks/popular-authors/src/edit.js:141
 msgid "Custom period?"
 msgstr ""
 
-#: includes/frontend/blocks/popular-authors/src/edit.js:143
+#: includes/frontend/blocks/popular-authors/src/edit.js:144
 msgid "Set range below"
 msgstr ""
 
-#: includes/frontend/blocks/popular-authors/src/edit.js:144
+#: includes/frontend/blocks/popular-authors/src/edit.js:146
 msgid "Overall popular posts will be shown"
 msgstr ""
 
-#: includes/frontend/blocks/popular-authors/src/edit.js:154
+#: includes/frontend/blocks/popular-authors/src/edit.js:158
 msgid "Daily range"
 msgstr ""
 
-#: includes/frontend/blocks/popular-authors/src/edit.js:157
+#: includes/frontend/blocks/popular-authors/src/edit.js:161
 msgid "Number of days"
 msgstr ""
 
-#: includes/frontend/blocks/popular-authors/src/edit.js:164
+#: includes/frontend/blocks/popular-authors/src/edit.js:168
 msgid "Hour range"
 msgstr ""
 
-#: includes/frontend/blocks/popular-authors/src/edit.js:167
+#: includes/frontend/blocks/popular-authors/src/edit.js:171
 msgid "Number of hours"
 msgstr ""
 
-#: includes/frontend/blocks/popular-authors/src/edit.js:174
+#: includes/frontend/blocks/popular-authors/src/edit.js:178
 #: includes/frontend/widgets/class-authors-widget.php:71
 msgid "Offset"
 msgstr ""
 
-#: includes/frontend/blocks/popular-authors/src/edit.js:178
+#: includes/frontend/blocks/popular-authors/src/edit.js:182
 msgid ""
 "Number of authors to offset in retrieved results. Only applies if number "
-"of author is >0"
+"of authors set above is >0"
 msgstr ""
 
-#: includes/frontend/blocks/popular-authors/src/edit.js:187
+#: includes/frontend/blocks/popular-authors/src/edit.js:191
 #: includes/frontend/widgets/class-authors-widget.php:76
 msgid "Show count"
 msgstr ""
 
-#: includes/frontend/blocks/popular-authors/src/edit.js:190
+#: includes/frontend/blocks/popular-authors/src/edit.js:195
 msgid "Count displayed"
 msgstr ""
 
-#: includes/frontend/blocks/popular-authors/src/edit.js:191
+#: includes/frontend/blocks/popular-authors/src/edit.js:199
 msgid "No count displayed"
 msgstr ""
 
-#: includes/frontend/blocks/popular-authors/src/edit.js:201
+#: includes/frontend/blocks/popular-authors/src/edit.js:211
 msgid "Show Full Name"
 msgstr ""
 
-#: includes/frontend/blocks/popular-authors/src/edit.js:204
+#: includes/frontend/blocks/popular-authors/src/edit.js:215
 msgid "Full Name is displayed"
 msgstr ""
 
-#: includes/frontend/blocks/popular-authors/src/edit.js:205
+#: includes/frontend/blocks/popular-authors/src/edit.js:219
 msgid "Display Name is displayed"
 msgstr ""
 
-#: includes/frontend/blocks/popular-authors/src/edit.js:218
+#: includes/frontend/blocks/popular-authors/src/edit.js:235
 msgid "Avatar displayed"
 msgstr ""
 
-#: includes/frontend/blocks/popular-authors/src/edit.js:219
+#: includes/frontend/blocks/popular-authors/src/edit.js:239
 msgid "No avatar displayed"
 msgstr ""
 
-#: includes/frontend/blocks/popular-authors/src/edit.js:229
+#: includes/frontend/blocks/popular-authors/src/edit.js:251
 msgid "Exclude admin"
 msgstr ""
 
-#: includes/frontend/blocks/popular-authors/src/edit.js:232
+#: includes/frontend/blocks/popular-authors/src/edit.js:255
 msgid "'admin' account is excluded"
 msgstr ""
 
-#: includes/frontend/blocks/popular-authors/src/edit.js:233
+#: includes/frontend/blocks/popular-authors/src/edit.js:259
 msgid "'admin' account is included"
 msgstr ""
 
-#: includes/frontend/blocks/popular-authors/src/edit.js:243
+#: includes/frontend/blocks/popular-authors/src/edit.js:272
 msgid "Hide authors with no posts"
 msgstr ""
 
-#: includes/frontend/blocks/popular-authors/src/edit.js:247
+#: includes/frontend/blocks/popular-authors/src/edit.js:278
 msgid "Authors with no posts are excluded"
 msgstr ""
 
-#: includes/frontend/blocks/popular-authors/src/edit.js:251
+#: includes/frontend/blocks/popular-authors/src/edit.js:282
 msgid "Authors with no posts are included"
 msgstr ""
 
-#: includes/frontend/blocks/popular-authors/src/edit.js:263
+#: includes/frontend/blocks/popular-authors/src/edit.js:295
 msgid "Author IDs to include"
 msgstr ""
 
-#: includes/frontend/blocks/popular-authors/src/edit.js:267
+#: includes/frontend/blocks/popular-authors/src/edit.js:301
 msgid "Comma-separated list of author IDs to include"
 msgstr ""
 
-#: includes/frontend/blocks/popular-authors/src/edit.js:276
+#: includes/frontend/blocks/popular-authors/src/edit.js:311
 msgid "Author IDs to exclude"
 msgstr ""
 
-#: includes/frontend/blocks/popular-authors/src/edit.js:280
+#: includes/frontend/blocks/popular-authors/src/edit.js:317
 msgid "Comma-separated list of author IDs to exclude"
 msgstr ""
 
-#: includes/frontend/blocks/popular-authors/src/edit.js:289
+#: includes/frontend/blocks/popular-authors/src/edit.js:327
 msgid "Other attributes"
 msgstr ""
 
-#: includes/frontend/blocks/popular-authors/src/edit.js:293
+#: includes/frontend/blocks/popular-authors/src/edit.js:333
 msgid "Enter other attributes in a URL-style string-query."
 msgstr ""
 
-#: includes/frontend/class-display.php:57
+#: includes/frontend/class-display.php:60
 msgid "Please install and activate Top 10 plugin to display popular authors."
 msgstr ""
 
-#: includes/frontend/class-display.php:147
+#: includes/frontend/class-display.php:185
 #, php-format
 msgid "Posts by %s"
 msgstr ""
