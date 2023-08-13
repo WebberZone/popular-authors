@@ -8,7 +8,7 @@ __License:__ [GPL-2.0+](http://www.gnu.org/licenses/gpl-2.0.html)
 
 __Plugin page:__ [Popular Authors home page](https://webberzone.com/downloads/popular-authors/) | [WordPress.org listing](https://wordpress.org/plugins/popular-authors/)
 
-Display a list of the popular authors. A Top 10 WordPress plugin addon.
+Discover and appreciate your blog’s most popular authors, a simple and powerful addon for Top 10 - Popular Posts for WordPress.
 
 ## Description
 
@@ -27,6 +27,7 @@ Popular Authors is a must-have addon for Top 10 if you want to boost your blog's
 * Custom Time Range: List popular authors within a specific time range (eg. last 1 day, last 7 days, last 30 days, etc.) or show the all-time favorites
 * Shortcode: Use the `[wzpa_popular_authors]` shortcode to display your most popular authors anywhere in your posts or pages
 * Template tags: Use `wzpa_list_popular_authors()` to display the popular authors programmatically in your theme files or plugins
+* Inbuilt Styles: You can select between two inbuilt styles or create your own using CSS
 
 ## Screenshots
 
@@ -62,4 +63,8 @@ Popular Authors can be used in four ways:
 
 Check out the [FAQ on the plugin page](https://wordpress.org/plugins/popular-authors/#faq).
 
-If your question isn't listed there, please create a new post at the [WordPress.org support forum](https://wordpress.org/support/plugin/popular-authors). It is the fastest way to get support as I monitor the forums regularly. I also provide [premium *paid* support via email](https://webberzone.com/support/).
+If your question isn't listed there, please create a new post at the [WordPress.org support forum](https://wordpress.org/support/plugin/popular-authors). It is the fastest way to get support as I monitor the forums regularly.
+
+## About this repository
+
+This GitHub repository always holds the latest development version of the plugin. If you're looking for an official WordPress release, you can find this on the [WordPress.org repository](http://wordpress.org/plugins/popular-authors). In addition to stable releases, latest beta versions are made available under [releases](https://github.com/WebberZone/top-10/popular-authors).
