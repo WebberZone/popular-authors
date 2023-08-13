@@ -1,14 +1,14 @@
 === Popular Authors ===
-Tags: popular, popular authors, authors, top authors, views, top 10
+Tags: popular, popular authors, author, top authors, views, top 10
 Contributors: webberzone, Ajay
 Donate link: https://ajaydsouza.com/donate/
-Stable tag: 1.1.1
+Stable tag: 1.2.0
 Requires at least: 5.6
 Requires PHP: 7.1
 Tested up to: 6.3
 License: GPLv2 or later
 
-Display a list of the popular authors. A Top 10 WordPress plugin addon.
+Discover and appreciate your blog’s most popular authors, a simple and powerful addon for Top 10 - Popular Posts for WordPress.
 
 == Description ==
 
@@ -27,11 +27,11 @@ Popular Authors is a must-have addon for Top 10 if you want to boost your blog's
 * Custom Time Range: List popular authors within a specific time range (eg. last 1 day, last 7 days, last 30 days, etc.) or show the all-time favorites
 * Shortcode: Use the `[wzpa_popular_authors]` shortcode to display your most popular authors anywhere in your posts or pages
 * Template tags: Use `wzpa_list_popular_authors()` to display the popular authors programmatically in your theme files or plugins
+* Inbuilt Styles: You can select between two inbuilt styles or create your own using CSS
 
 = Contribute =
 
-Popular Authors is also available on [Github](https://github.com/webberzone/popular-authors)
-So, if you've got some cool feature that you'd like to implement into the plugin or a bug you've been able to fix, consider forking the project and sending me a pull request. Please don't use that for support requests.
+Popular Authors is also available on [Github](https://github.com/webberzone/popular-authors). If you've got some cool feature that you'd like to implement into the plugin or a bug you've been able to fix, consider forking the project and sending me a pull request. Please don't use that for support requests.
 
 
 == Screenshots ==
@@ -84,6 +84,8 @@ Use `[wzpa_popular_authors]` to display the popular authors. Check [this knowled
 
 = 1.2.0 =
 
+Release post: [https://webberzone.com/announcements/popular-authors-1-2-0](https://webberzone.com/announcements/popular-authors-1-2-0)
+
 Popular Authors has been rewritten to use classes and autoloading.
 
 * Features:
@@ -124,5 +126,5 @@ For previous changelog entries please visit [Github Releases page](https://githu
 
 == Upgrade Notice ==
 
-= 1.1.1 =
-Security fic
+= 1.2.0 =
+New features and bug fixes. Check the release post on WebberZone.com
