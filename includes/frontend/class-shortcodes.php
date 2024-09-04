@@ -25,7 +25,6 @@ class Shortcodes {
 	 */
 	public function __construct() {
 		add_shortcode( 'wzpa_popular_authors', array( __CLASS__, 'wzpa_popular_authors' ) );
-		add_shortcode( 'tptn_views', array( __CLASS__, 'tptn_views' ) );
 	}
 
 	/**
