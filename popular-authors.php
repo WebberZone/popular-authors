@@ -14,7 +14,7 @@
  * Plugin Name: Popular Authors
  * Plugin URI:  https://webberzone.com/downlods/popular-authors/
  * Description: Display a list of the popular authors. A Top 10 WordPress plugin addon.
- * Version:     1.2.0
+ * Version:     1.2.1-beta1
  * Author:      WebberZone
  * Author URI:  https://webberzone.com
  * License:     GPL-2.0+
