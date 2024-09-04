@@ -94,6 +94,6 @@ class Styles_Handler {
 		 * @param array  $style_array  Style array containing name and extra_css.
 		 * @param string $wzpa_style    Style name.
 		 */
-		return apply_filters( 'tptn_get_style', $style_array, $wzpa_style );
+		return apply_filters( 'wzpa_get_style', $style_array, $wzpa_style );
 	}
 }
