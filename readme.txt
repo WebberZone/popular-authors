@@ -84,7 +84,7 @@ Use `[wzpa_popular_authors]` to display the popular authors. Check [this knowled
 
 = 1.2.1 =
 
-* Bug fix:
+* Bug fixes:
 	* Removed incorrect shortcode `tptn_views`.
 	* Styles Handler used the wrong filter.
 	* Renamed cache setting to avoid conflict with Top 10.
