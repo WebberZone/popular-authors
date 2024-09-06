@@ -2,10 +2,10 @@
 Tags: popular, popular authors, author, top authors, views, top 10
 Contributors: webberzone, Ajay
 Donate link: https://ajaydsouza.com/donate/
-Stable tag: 1.2.0
-Requires at least: 5.6
-Requires PHP: 7.1
-Tested up to: 6.3
+Stable tag: 1.2.1
+Requires at least: 6.3
+Requires PHP: 7.4
+Tested up to: 6.6
 License: GPLv2 or later
 
 Discover and appreciate your blog’s most popular authors, a simple and powerful addon for Top 10 - Popular Posts for WordPress.
@@ -82,6 +82,13 @@ Use `[wzpa_popular_authors]` to display the popular authors. Check [this knowled
 
 == Changelog ==
 
+= 1.2.1 =
+
+* Bug fix:
+	* Removed incorrect shortcode `tptn_views`.
+	* Styles Handler used the wrong filter.
+	* Renamed cache setting to avoid conflict with Top 10.
+
 = 1.2.0 =
 
 Release post: [https://webberzone.com/announcements/popular-authors-1-2-0](https://webberzone.com/announcements/popular-authors-1-2-0)
@@ -126,5 +133,5 @@ For previous changelog entries please visit [Github Releases page](https://githu
 
 == Upgrade Notice ==
 
-= 1.2.0 =
-New features and bug fixes. Check the release post on WebberZone.com
+= 1.2.1 =
+Fixes severa bugs. Check the release post on WebberZone.com
