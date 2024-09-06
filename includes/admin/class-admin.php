@@ -86,7 +86,7 @@ class Admin {
 					'name'    => esc_html__( 'Cache output', 'top-10' ),
 					'desc'    => esc_html__( 'Turn this ON to cache the HTML output. This option uses the same settings as Top 10 and creates similar cache keys.', 'top-10' ),
 					'type'    => 'checkbox',
-					'options' => false,
+					'options' => true,
 				),
 				'wzpa_number'              => array(
 					'id'      => 'wzpa_number',
