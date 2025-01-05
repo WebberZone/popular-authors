@@ -102,6 +102,7 @@ class Display {
 		 * @return  string                      Custom HTML formatted list of popular authors.
 		 */
 		$custom_template = apply_filters( 'wzpa_custom_template', null, $authors, $args, $post_counts );
+
 		if ( ! empty( $custom_template ) ) {
 			if ( $args['cache'] ) {
 				/**
@@ -125,7 +126,7 @@ class Display {
 			'widget'      => $args['is_widget'] ? 'wzpa_authors_widget wzpa_authors_widget' . $args['instance_id'] : '',
 			'shortcode'   => $args['is_shortcode'] ? 'wzpa_authors_shortcode' : '',
 			'block'       => $args['is_block'] ? 'wzpa_authors_block' : '',
-			'extra_class' => $args['extra_class'],
+			'extra_class' => sanitize_html_class( $args['extra_class'] ),
 			'style'       => ! empty( $style_array['name'] ) ? 'wzpa-' . $style_array['name'] : '',
 		);
 		$post_classes = join( ' ', $post_classes );
@@ -290,7 +291,7 @@ class Display {
 
 		// Fields to return.
 		$fields[] = "{$wpdb->users}.ID as author_id";
-		$fields[] = "SUM({$pop_posts_table}.cntaccess) as visits";
+		$fields[] = "COALESCE(SUM({$pop_posts_table}.cntaccess), 0) as visits";
 
 		$fields = implode( ', ', $fields );
 
@@ -299,15 +300,19 @@ class Display {
 			$blog_id = absint( $args['blog_id'] );
 		}
 
-		$posts_table = $wpdb->get_blog_prefix( $blog_id ) . 'posts';
+		$blog_prefix     = $wpdb->get_blog_prefix( $blog_id );
+		$posts_table     = $blog_prefix . 'posts';
+		$users_table     = $wpdb->users;
+		$user_meta_table = $wpdb->usermeta;
 
 		// Create the JOIN clause.
-		$join  = " INNER JOIN {$posts_table} ON {$posts_table}.post_author={$wpdb->users}.ID ";
-		$join .= " INNER JOIN {$pop_posts_table} ON {$pop_posts_table}.postnumber={$posts_table}.ID ";
+		$join_type = isset( $args['hide_empty'] ) && $args['hide_empty'] ? 'INNER' : 'LEFT';
+
+		$join .= "INNER JOIN {$user_meta_table} ON {$users_table}.ID = {$user_meta_table}.user_id AND {$user_meta_table}.meta_key = '{$blog_prefix}capabilities' ";
+		$join .= " {$join_type} JOIN {$posts_table} ON {$posts_table}.post_author={$users_table}.ID AND {$posts_table}.post_status = 'publish' ";
+		$join .= " {$join_type} JOIN {$pop_posts_table} ON {$pop_posts_table}.postnumber={$posts_table}.ID AND {$pop_posts_table}.blog_id={$blog_id} ";
 
 		// Create the WHERE clause.
-		$where .= $wpdb->prepare( " AND {$pop_posts_table}.blog_id = %d ", $blog_id ); // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
-
 		// Parse and sanitize 'include'.
 		if ( ! empty( $args['include'] ) ) {
 			$include = wp_parse_id_list( $args['include'] );
