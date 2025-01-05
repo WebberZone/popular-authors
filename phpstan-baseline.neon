@@ -6,11 +6,6 @@ parameters:
 			path: includes/autoloader.php
 
 		-
-			message: "#^Constant POP_AUTHOR_PLUGIN_DIR not found\\.$#"
-			count: 1
-			path: includes/frontend/blocks/class-blocks.php
-
-		-
 			message: "#^Call to static method cache_get_key\\(\\) on an unknown class WebberZone\\\\Top_Ten\\\\Frontend\\\\Display\\.$#"
 			count: 1
 			path: includes/frontend/class-display.php

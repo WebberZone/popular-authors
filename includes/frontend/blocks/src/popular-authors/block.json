@@ -1,6 +1,6 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
-	"apiVersion": 2,
+	"apiVersion": 3,
 	"name": "popular-authors/popular-authors",
 	"version": "1.0.0",
 	"title": "Popular Authors",
@@ -11,30 +11,31 @@
 	"supports": {
 		"html": false
 	},
+	"example": {},
 	"attributes": {
 		"className": {
 			"type": "string",
 			"default": ""
 		},
 		"number": {
-			"type": "string",
-			"default": ""
+			"type": "number",
+			"default": 0
 		},
 		"daily": {
 			"type": "boolean",
 			"default": false
 		},
 		"daily_range": {
-			"type": "string",
+			"type": "number",
 			"default": 1
 		},
 		"hour_range": {
-			"type": "string",
+			"type": "number",
 			"default": 0
 		},
 		"offset": {
-			"type": "string",
-			"default": ""
+			"type": "number",
+			"default": 0
 		},
 		"showOptionCount": {
 			"type": "boolean",
@@ -70,6 +71,5 @@
 		}
 	},
 	"textdomain": "popular-authors",
-	"editorScript": "file:./build/index.js",
-	"editorStyle": "file:./build/index.css"
+	"editorScript": "file:./index.js"
 }
