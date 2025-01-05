@@ -287,7 +287,7 @@ class Display {
 			$pop_posts_table = $wpdb->base_prefix . 'top_ten';
 		}
 
-		$offset = ! empty( $args['offset'] ) ? $args['offset'] : 0;
+		$offset = ! empty( $args['offset'] ) ? (int) $args['offset'] : 0;
 
 		// Fields to return.
 		$fields[] = "{$wpdb->users}.ID as author_id";

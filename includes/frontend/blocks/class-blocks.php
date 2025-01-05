@@ -36,27 +36,48 @@ class Blocks {
 	 * @since 1.2.0
 	 */
 	public function register_blocks() {
-		// Register Popular Authors block.
-		register_block_type_from_metadata(
-			POP_AUTHOR_PLUGIN_DIR . 'includes/frontend/blocks/popular-authors/',
-			array(
-				'render_callback' => array( __CLASS__, 'render_block' ),
-			)
+		// Define an array of blocks with their paths and optional render callbacks.
+		$blocks = array(
+			'popular-authors' => array(
+				'path'            => __DIR__ . '/build/popular-authors/',
+				'render_callback' => array( $this, 'render_block_popular_authors' ),
+			),
 		);
+
+		/**
+		 * Filters the blocks registered by the plugin.
+		 *
+		 * @since 1.3.0
+		 *
+		 * @param array $blocks Array of blocks registered by the plugin.
+		 */
+		$blocks = apply_filters( 'wzpa_register_blocks', $blocks );
+
+		// Loop through each block and register it.
+		foreach ( $blocks as $block_name => $block_data ) {
+			$args = array();
+
+			// If a render callback is provided, add it to the args.
+			if ( isset( $block_data['render_callback'] ) ) {
+				$args['render_callback'] = $block_data['render_callback'];
+			}
+
+			register_block_type_from_metadata( $block_data['path'], $args );
+		}
 	}
 
 	/**
 	 * Renders the `popular-authors/popular-authors` block on server.
 	 *
-	 * @since 1.2.0
+	 * @since 1.3.0
 	 * @param array $attributes The block attributes.
 	 *
 	 * @return string Returns the post content with popular posts added.
 	 */
-	public static function render_block( $attributes ) {
+	public static function render_block_popular_authors( $attributes ) {
 
 		// Map block attributes to PHP attributes.
-		$attributes['extra_class']   = esc_attr( $attributes['className'] );
+		$attributes['extra_class']   = isset( $attributes['className'] ) ? $attributes['className'] : '';
 		$attributes['optioncount']   = $attributes['showOptionCount'];
 		$attributes['show_fullname'] = $attributes['showFullName'];
 		$attributes['show_avatar']   = $attributes['showAvatar'];
@@ -71,7 +92,9 @@ class Blocks {
 			)
 		);
 
-		$arguments = wp_parse_args( $attributes['other_attributes'], $arguments );
+		if ( isset( $attributes['other_attributes'] ) ) {
+			$arguments = wp_parse_args( $attributes['other_attributes'], $arguments );
+		}
 
 		/**
 		 * Filters arguments passed to `wzpa_list_popular_authors` for the block.
