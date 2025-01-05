@@ -1,0 +1,35 @@
+{
+    "name": "@webberzone/popular-authors",
+    "version": "1.3.0",
+    "description": "Display a list of the popular authors. A Top 10 WordPress plugin addon.",
+    "author": "WebberZone",
+    "license": "GPL-2.0-or-later",
+    "main": "index.js",
+    "scripts": {
+        "build": "wp-scripts build --webpack-src-dir=includes/frontend/blocks/src/ --output-path=includes/frontend/blocks/build/",
+        "format": "wp-scripts format ./includes/frontend/blocks/src/",
+        "lint:css": "wp-scripts lint-style ./includes/frontend/blocks/src/",
+        "lint:js": "wp-scripts lint-js ./includes/frontend/blocks/src/",
+        "packages-update": "wp-scripts packages-update",
+        "start": "wp-scripts start --webpack-src-dir=includes/frontend/blocks/src/ --output-path=includes/frontend/blocks/build/",
+        "zip": "wp-scripts plugin-zip"
+    },
+    "files": [
+        "includes",
+        "languages",
+        "README.md",
+        "add-to-all.php",
+        "index.php",
+        "uninstall.php",
+        "changelog.txt",
+        "readme.txt"
+    ],
+    "devDependencies": {
+        "@wordpress/prettier-config": "^4.15.0",
+        "@wordpress/scripts": "^27"
+    },
+    "dependencies": {
+        "@wordpress/icons": "^10.15.1",
+        "uuid": "^11.0.3"
+    }
+}
