@@ -74,7 +74,9 @@ jobs:
           tools: composer, phpunit
 
       - name: Install dependencies
-        run: composer install --prefer-dist --no-progress
+        run: |
+          composer update --no-interaction --prefer-dist
+          composer install --prefer-dist --no-progress
 
       - name: Install WordPress Test Suite
         env:
