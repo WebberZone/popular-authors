@@ -53,14 +53,6 @@
       "type": "number",
       "default": 0
     },
-    "number": {
-      "type": "number",
-      "default": 0
-    },
-    "offset": {
-      "type": "number",
-      "default": 0
-    },
     "showOptionCount": {
       "type": "boolean",
       "default": false

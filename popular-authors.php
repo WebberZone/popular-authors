@@ -76,3 +76,6 @@ function load_wzpa() {
 	\WebberZone\Popular_Authors\Main::get_instance();
 }
 add_action( 'plugins_loaded', __NAMESPACE__ . '\load_wzpa' );
+
+// Load internal files.
+require_once POP_AUTHOR_PLUGIN_DIR . 'includes/functions.php';
