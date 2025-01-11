@@ -67,11 +67,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Install Subversion
+        run: sudo apt-get install subversion
+
       - name: Install PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
-          extensions: mysql, mysqli
+          extensions: mysqli, mysql
           coverage: none
 
       - name: Set up WordPress
