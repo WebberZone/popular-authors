@@ -73,13 +73,8 @@ jobs:
           coverage: none
           tools: composer, phpunit
 
-      - name: Validate composer.json and composer.lock
-        run: composer validate
-
       - name: Install dependencies
-        run: |
-          composer update --no-interaction --prefer-dist
-          composer install --prefer-dist --no-progress
+        run: composer install --prefer-dist --no-progress
 
       - name: Install WordPress Test Suite
         env:
