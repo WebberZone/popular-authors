@@ -25,8 +25,8 @@ class Admin {
 	 */
 	public function __construct() {
 		add_filter( 'admin_notices', array( $this, 'admin_notices' ) );
-		add_filter( 'tptn_settings_sections', array( $this, 'add_settings_section' ), 11 );
-		add_filter( 'tptn_registered_settings', array( $this, 'settings_popular_authors' ), 11 );
+		add_filter( 'tptn_settings_sections', array( $this, 'add_settings_section' ) );
+		add_filter( 'tptn_registered_settings', array( $this, 'settings_popular_authors' ) );
 	}
 
 	/**
@@ -83,8 +83,8 @@ class Admin {
 			'popular-authors' => array(
 				'wzpa_cache'               => array(
 					'id'      => 'wzpa_cache',
-					'name'    => esc_html__( 'Cache output', 'top-10' ),
-					'desc'    => esc_html__( 'Turn this ON to cache the HTML output. This option uses the same settings as Top 10 and creates similar cache keys.', 'top-10' ),
+					'name'    => esc_html__( 'Cache output', 'popular-authors' ),
+					'desc'    => esc_html__( 'Turn this ON to cache the HTML output. This option uses the same settings as Top 10 and creates similar cache keys.', 'popular-authors' ),
 					'type'    => 'checkbox',
 					'options' => true,
 				),
@@ -124,62 +124,70 @@ class Admin {
 				),
 				'wzpa_optioncount'         => array(
 					'id'      => 'wzpa_optioncount',
-					'name'    => esc_html__( 'Show views', 'top-10' ),
-					'desc'    => esc_html__( "Show the total number of views in parenthesis next to the author's name", 'top-10' ),
+					'name'    => esc_html__( 'Show views', 'popular-authors' ),
+					'desc'    => esc_html__( "Show the total number of views in parenthesis next to the author's name", 'popular-authors' ),
 					'type'    => 'checkbox',
 					'options' => false,
 				),
 				'wzpa_exclude_admin'       => array(
 					'id'      => 'wzpa_exclude_admin',
-					'name'    => esc_html__( "Exclude 'admin' account", 'top-10' ),
+					'name'    => esc_html__( "Exclude 'admin' account", 'popular-authors' ),
 					'desc'    => '',
 					'type'    => 'checkbox',
 					'options' => false,
 				),
 				'wzpa_show_fullname'       => array(
 					'id'      => 'wzpa_show_fullname',
-					'name'    => esc_html__( 'Show full name', 'top-10' ),
-					'desc'    => esc_html__( "Whether to show the author's full name instead of the display name", 'top-10' ),
+					'name'    => esc_html__( 'Show full name', 'popular-authors' ),
+					'desc'    => esc_html__( "Whether to show the author's full name instead of the display name", 'popular-authors' ),
 					'type'    => 'checkbox',
 					'options' => false,
 				),
 				'wzpa_show_avatar'         => array(
 					'id'      => 'wzpa_show_avatar',
-					'name'    => esc_html__( 'Show Avatar', 'top-10' ),
-					'desc'    => esc_html__( "Whether to show the author's avatar", 'top-10' ),
+					'name'    => esc_html__( 'Show Avatar', 'popular-authors' ),
+					'desc'    => esc_html__( "Whether to show the author's avatar", 'popular-authors' ),
 					'type'    => 'checkbox',
 					'options' => false,
 				),
+				'wzpa_post_type'           => array(
+					'id'      => 'wzpa_post_type',
+					'name'    => esc_html__( 'Post types to include', 'popular-authors' ),
+					'desc'    => esc_html__( 'At least one option should be selected above. Select which post types you want to include in the list of posts. This field can be overridden using a comma separated list of post types when using the manual display.', 'popular-authors' ),
+					'type'    => 'posttypes',
+					'options' => 'post',
+					'pro'     => true,
+				),
 				'wzpa_html_wrapper_header' => array(
 					'id'   => 'wzpa_html_wrapper_header',
-					'name' => '<h3>' . esc_html__( 'HTML to display', 'top-10' ) . '</h3>',
+					'name' => '<h3>' . esc_html__( 'HTML to display', 'popular-authors' ) . '</h3>',
 					'desc' => '',
 					'type' => 'header',
 				),
 				'wzpa_before_list'         => array(
 					'id'      => 'wzpa_before_list',
-					'name'    => esc_html__( 'Before the list of posts', 'top-10' ),
+					'name'    => esc_html__( 'Before the list of posts', 'popular-authors' ),
 					'desc'    => '',
 					'type'    => 'text',
 					'options' => '<ul>',
 				),
 				'wzpa_after_list'          => array(
 					'id'      => 'wzpa_after_list',
-					'name'    => esc_html__( 'After the list of posts', 'top-10' ),
+					'name'    => esc_html__( 'After the list of posts', 'popular-authors' ),
 					'desc'    => '',
 					'type'    => 'text',
 					'options' => '</ul>',
 				),
 				'wzpa_before_list_item'    => array(
 					'id'      => 'wzpa_before_list_item',
-					'name'    => esc_html__( 'Before each list item', 'top-10' ),
+					'name'    => esc_html__( 'Before each list item', 'popular-authors' ),
 					'desc'    => '',
 					'type'    => 'text',
 					'options' => '<li>',
 				),
 				'wzpa_after_list_item'     => array(
 					'id'      => 'wzpa_after_list_item',
-					'name'    => esc_html__( 'After each list item', 'top-10' ),
+					'name'    => esc_html__( 'After each list item', 'popular-authors' ),
 					'desc'    => '',
 					'type'    => 'text',
 					'options' => '</li>',
@@ -192,7 +200,7 @@ class Admin {
 				),
 				'wzpa_styles'              => array(
 					'id'      => 'wzpa_styles',
-					'name'    => esc_html__( 'Popular Authors style', 'top-10' ),
+					'name'    => esc_html__( 'Popular Authors style', 'popular-authors' ),
 					'desc'    => '',
 					'type'    => 'radiodesc',
 					'default' => 'no_style',
@@ -214,18 +222,18 @@ class Admin {
 		$styles = array(
 			array(
 				'id'          => 'no_style',
-				'name'        => esc_html__( 'No styles', 'top-10' ),
-				'description' => esc_html__( 'Select this option if you plan to add your own styles', 'top-10' ),
+				'name'        => esc_html__( 'No styles', 'popular-authors' ),
+				'description' => esc_html__( 'Select this option if you plan to add your own styles', 'popular-authors' ),
 			),
 			array(
 				'id'          => 'card',
-				'name'        => esc_html__( 'Card Layout', 'top-10' ),
-				'description' => esc_html__( 'Display the popular authors in a card layout using CSS grid', 'top-10' ),
+				'name'        => esc_html__( 'Card Layout', 'popular-authors' ),
+				'description' => esc_html__( 'Display the popular authors in a card layout using CSS grid', 'popular-authors' ),
 			),
 			array(
 				'id'          => 'left_thumbs',
-				'name'        => esc_html__( 'Left Thumbs', 'top-10' ),
-				'description' => esc_html__( 'Display the popular authors in a grid with the image to the left of the text', 'top-10' ),
+				'name'        => esc_html__( 'Left Thumbs', 'popular-authors' ),
+				'description' => esc_html__( 'Display the popular authors in a grid with the image to the left of the text', 'popular-authors' ),
 			),
 		);
 

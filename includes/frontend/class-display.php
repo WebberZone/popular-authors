@@ -281,6 +281,7 @@ class Display {
 		// Parse incomming $args into an array and merge it with $defaults.
 		$args = wp_parse_args( $args, $defaults );
 
+		// Get the table name.
 		if ( $args['daily'] ) {
 			$pop_posts_table = $wpdb->base_prefix . 'top_ten_daily';
 		} else {
@@ -333,6 +334,11 @@ class Display {
 			$from_date = \WebberZone\Top_Ten\Util\Helpers::get_from_date( null, (int) $args['daily_range'], (int) $args['hour_range'] );
 
 			$where .= $wpdb->prepare( " AND {$pop_posts_table}.dp_date >= %s ", $from_date ); // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+		}
+
+		if ( $args['post_type'] ) {
+			$post_type = wp_parse_list( $args['post_type'] );
+			$where    .= " AND {$posts_table}.post_type IN ('" . implode( "', '", esc_sql( $post_type ) ) . "')";
 		}
 
 		// Create the base GROUP BY clause.
@@ -472,6 +478,7 @@ class Display {
 			'offset'           => '',
 			'optioncount'      => true,
 			'exclude_admin'    => false,
+			'post_type'        => 'post',
 			'show_fullname'    => false,
 			'show_avatar'      => false,
 			'hide_empty'       => true,
