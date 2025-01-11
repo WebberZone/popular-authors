@@ -82,7 +82,7 @@ class Admin {
 		$new_settings = array(
 			'popular-authors' => array(
 				'wzpa_cache'               => array(
-					'id'      => 'cache',
+					'id'      => 'wzpa_cache',
 					'name'    => esc_html__( 'Cache output', 'top-10' ),
 					'desc'    => esc_html__( 'Turn this ON to cache the HTML output. This option uses the same settings as Top 10 and creates similar cache keys.', 'top-10' ),
 					'type'    => 'checkbox',
