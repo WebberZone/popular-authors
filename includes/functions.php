@@ -6,6 +6,7 @@
  */
 
 use WebberZone\Popular_Authors\Frontend\Display;
+use WebberZone\Popular_Authors\Frontend\Popular_Authors_Display;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -90,4 +91,25 @@ function wzpa_get_popular_author_ids( $args = array() ) {
  */
 function wzpa_list_popular_authors_args( $args = array() ) {
 	return Display::list_popular_authors_args( $args );
+}
+
+/**
+ * Display top posts for a specific author.
+ *
+ * @since 1.3.0
+ *
+ * @param int|string $author     Author value for $field. A user ID, slug, email address, or login name.
+ * @param string     $field      Field to query by: 'id', 'ID', 'slug', 'email', or 'login'.
+ * @param array      $args       Optional. Arguments. Default empty array.
+ * @param bool       $echo_value Optional. Whether to echo or return the output. Default true.
+ * @return string|void HTML output if $echo is false, void otherwise.
+ */
+function wzpa_display_top_posts_by_author( $author, $field = 'id', $args = array(), $echo_value = true ) {
+	$output = Popular_Authors_Display::display_author_top_posts( $author, $field, $args );
+
+	if ( ! $echo_value ) {
+		return $output;
+	}
+
+	echo wp_kses_post( $output );
 }
