@@ -50,37 +50,35 @@ jobs:
 
     services:
       mysql:
-        # WP 5.4 is the first WP version which largely supports MySQL 8.0.
-        # See: https://core.trac.wordpress.org/ticket/49344
-        # During the setting up of these tests, it became clear that MySQL 8.0
-        # in combination with PHP < 7.4 is not properly/sufficiently supported
-        # within WP Core.
-        # See: https://core.trac.wordpress.org/ticket/52496
-        image: mysql:${{ ( matrix.wp == 5.3 && '5.6' ) || ( (matrix.wp < 5.4 || matrix.php < 7.4) && '5.7' ) || '8.0' }}
+        image: mysql:5.7
         env:
-          MYSQL_ALLOW_EMPTY_PASSWORD: false
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: wordpress_test
         ports:
           - 3306:3306
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=10s --health-retries=10
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Install PHP
+      - name: Install Subversion
+        run: sudo apt-get update && sudo apt-get install -y subversion
+
+      - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
-          tools: phpunit-polyfills
+          extensions: mysql, mysqli
           coverage: none
-          # The PHP 5.6 and 7.0 images don't include mysql[i] by default.
-          extensions: mysqli
+          tools: composer, phpunit
 
-      - name: Set up WordPress
-        run: phpunit/install.sh wordpress_test root '' 127.0.0.1:3306 ${{ matrix.wp }}
+      - name: Install WordPress Test Suite
+        env:
+          WP_VERSION: ${{ matrix.wp }}
+        run: |
+          bash phpunit/install.sh wordpress_test root root localhost ${{ matrix.wp }}
 
-      # On WP 5.2, PHPUnit 5.x, 6.x and 7.x are supported.
-      # On PHP >= 8.0, PHPUnit 7.5+ is needed, no matter what.
       - name: Determine supported PHPUnit version
         id: set_phpunit
         run: |
@@ -119,7 +117,9 @@ jobs:
           phpunit --version
           which phpunit
 
-      - name: Run the unit tests - single site
+      - name: Run PHPUnit
+        env:
+          WP_TESTS_DIR: /tmp/wordpress-tests-lib
         run: vendor/bin/phpunit
 
       - name: Run the unit tests - multisite
