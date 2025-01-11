@@ -127,6 +127,7 @@ class Blocks {
 		}
 
 		$arguments = array(
+			'extra_class'     => isset( $attributes['extra_class'] ) ? $attributes['extra_class'] : '',
 			'posts_per_page'  => $attributes['postsPerPage'],
 			'post_type'       => $attributes['postType'],
 			'orderby'         => $attributes['orderby'],
