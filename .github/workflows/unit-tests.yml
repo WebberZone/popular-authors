@@ -73,6 +73,9 @@ jobs:
           coverage: none
           tools: composer, phpunit
 
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress
+
       - name: Install WordPress Test Suite
         env:
           WP_VERSION: ${{ matrix.wp }}

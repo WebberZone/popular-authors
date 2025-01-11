@@ -4,7 +4,7 @@
  *
  * @package Better_Search_Plugin
  */
-require_once dirname( dirname( dirname( dirname( dirname( __FILE__ ) ) ) ) ) . '/.composer/vendor/yoast/phpunit-polyfills/phpunitpolyfills-autoload.php';
+require_once dirname( __DIR__ ) . '/vendor/yoast/phpunit-polyfills/phpunitpolyfills-autoload.php';
 
 $_tests_dir = getenv( 'WP_TESTS_DIR' );
 
@@ -27,7 +27,7 @@ if ( ! file_exists( $_tests_dir . '/includes/functions.php' ) ) {
 require_once $_tests_dir . '/includes/functions.php';
 
 function _manually_load_plugin() {
-	require dirname( dirname( __FILE__ ) ) . '/popular-authors.php';
+	require dirname( __DIR__ ) . '/popular-authors.php';
 }
 tests_add_filter( 'muplugins_loaded', '_manually_load_plugin' );
 
@@ -37,4 +37,3 @@ require $_tests_dir . '/includes/bootstrap.php';
 activate_plugin( 'popular-authors/popular-authors.php' );
 
 echo "Installing Popular Authors...\n";
-
