@@ -73,10 +73,23 @@ jobs:
           coverage: none
           tools: composer, phpunit
 
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-composer-
+
+      - name: Remove composer.lock
+        run: rm -f composer.lock
+
       - name: Install dependencies
         run: |
-          composer update --no-interaction --prefer-dist
-          composer install --prefer-dist --no-progress
+          composer install --no-interaction --prefer-dist --no-progress
 
       - name: Install WordPress Test Suite
         env:
