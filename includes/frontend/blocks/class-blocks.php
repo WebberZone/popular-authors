@@ -42,6 +42,10 @@ class Blocks {
 				'path'            => __DIR__ . '/build/popular-authors/',
 				'render_callback' => array( $this, 'render_block_popular_authors' ),
 			),
+			'popular-posts'   => array(
+				'path'            => __DIR__ . '/build/popular-posts/',
+				'render_callback' => array( $this, 'render_block_popular_posts' ),
+			),
 		);
 
 		/**
@@ -101,12 +105,54 @@ class Blocks {
 		 *
 		 * @since 1.1.0
 		 *
-		 * @param array $arguments  Top 10 block options array.
-		 * @param array $attributes Block attributes array.
+		 * @param array $arguments Array of arguments.
+		 * @param array $attributes Block attributes.
 		 */
-		$arguments = apply_filters( 'wzpa_block_options', $arguments, $attributes );
+		$arguments = apply_filters( 'wzpa_block_popular_authors_arguments', $arguments, $attributes );
 
 		return Display::list_popular_authors( $arguments );
+	}
+
+	/**
+	 * Renders the `popular-authors/popular-posts` block on server.
+	 *
+	 * @since 1.3.0
+	 * @param array $attributes The block attributes.
+	 *
+	 * @return string Returns the post content with popular posts by author added.
+	 */
+	public static function render_block_popular_posts( $attributes ) {
+		if ( empty( $attributes['author'] ) ) {
+			return __( 'Select an author from the sidebar panel.', 'popular-authors' );
+		}
+
+		$arguments = array(
+			'posts_per_page'  => $attributes['postsPerPage'],
+			'post_type'       => $attributes['postType'],
+			'orderby'         => $attributes['orderby'],
+			'order'           => $attributes['order'],
+			'daily'           => $attributes['daily'],
+			'daily_range'     => $attributes['dailyRange'],
+			'hour_range'      => $attributes['hourRange'],
+			'disp_list_count' => $attributes['showOptionCount'],
+		);
+
+		/**
+		 * Filters arguments passed to `wzpa_display_top_posts_by_author` for the block.
+		 *
+		 * @since 1.3.0
+		 *
+		 * @param array $arguments Array of arguments.
+		 * @param array $attributes Block attributes.
+		 */
+		$arguments = apply_filters( 'wzpa_block_popular_posts_arguments', $arguments, $attributes );
+
+		return \wzpa_display_top_posts_by_author(
+			$attributes['author'],
+			isset( $attributes['field'] ) ? $attributes['field'] : 'id',
+			$arguments,
+			false
+		);
 	}
 
 	/**
