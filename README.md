@@ -1,8 +1,8 @@
 # Popular Authors
 
-__Requires:__ WordPress 5.6 and Top 10 v3.0.0
+__Requires:__ WordPress 6.3 and Top 10 v3.0.0
 
-__Tested up to:__ 6.6
+__Tested up to:__ 6.7
 
 __License:__ [GPL-2.0+](http://www.gnu.org/licenses/gpl-2.0.html)
 
@@ -22,12 +22,12 @@ Popular Authors is a must-have addon for Top 10 if you want to boost your blog's
 
 ### Features
 
-* Block: Add a Gutenberg block by searching for `popular authors` or `author` and customize its settings and style
-* Multi-widget capable: You can have multiple widgets of Popular Authors on your sidebar or footer, each with its own title, number of authors, time range, and more
-* Custom Time Range: List popular authors within a specific time range (eg. last 1 day, last 7 days, last 30 days, etc.) or show the all-time favorites
-* Shortcode: Use the `[wzpa_popular_authors]` shortcode to display your most popular authors anywhere in your posts or pages
-* Template tags: Use `wzpa_list_popular_authors()` to display the popular authors programmatically in your theme files or plugins
-* Inbuilt Styles: You can select between two inbuilt styles or create your own using CSS
+* Blocks: Add the Gutenberg blocks by searching for `popular authors` or `author` and customize its settings and style.
+* Multi-widget capable: You can have multiple widgets of Popular Authors on your sidebar or footer, each with its own title, number of authors, time range, and more.
+* Custom Time Range: List popular authors within a specific time range (eg. last 1 day, last 7 days, last 30 days, etc.) or show the all-time favorites.
+* Shortcodes: Use the `[wzpa_popular_authors]` shortcode to display your most popular authors anywhere in your posts or pages and `[wzpa_display_top_posts_by_author]` to display popular posts by author.
+* Template tags: Use `wzpa_list_popular_authors()` to display the popular authors programmatically in your theme files or plugins and `wzpa_display_top_posts_by_author()` to display popular posts by author.
+* Inbuilt Styles: You can select between two inbuilt styles or create your own using CSS.
 
 ## Screenshots
 
