@@ -1,6 +1,6 @@
 .wzpa-card {
     --wzpa-font-family: inherit;
-    --wzpa-margin: 0;
+    --wzpa-margin: auto;
     --wzpa-min-column-width: 96px;
     --wzpa-max-column-width: max-content;
     --wzpa-grid-gap: 10px;
@@ -17,7 +17,8 @@
 
 .wzpa_authors.wzpa-card {
     font-family: var(--wzpa-font-family);
-    margin: var(--wzpa-margin);
+    margin-left: var(--wzpa-margin);
+    margin-right: var(--wzpa-margin);
 }
 
 .wzpa_authors.wzpa-card ul {

@@ -8,6 +8,7 @@
 namespace WebberZone\Popular_Authors\Frontend\Blocks;
 
 use WebberZone\Popular_Authors\Frontend\Display;
+use WebberZone\Popular_Authors\Frontend\Styles_Handler;
 
 if ( ! defined( 'WPINC' ) ) {
 	die;
@@ -109,6 +110,27 @@ class Blocks {
 		 * @param array $attributes Block attributes.
 		 */
 		$arguments = apply_filters( 'wzpa_block_popular_authors_arguments', $arguments, $attributes );
+
+		// Enqueue the stylesheet for the selected style for this block.
+		if ( isset( $arguments['styles'] ) ) {
+			$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
+
+			$style_array = Styles_Handler::get_style( $arguments['styles'] );
+
+			if ( ! empty( $style_array['name'] ) ) {
+				$style     = $style_array['name'];
+				$extra_css = $style_array['extra_css'];
+
+				wp_register_style(
+					"wzpa-style-{$style}",
+					plugins_url( "includes/css/{$style}{$suffix}.css", POP_AUTHOR_PLUGIN_FILE ),
+					array(),
+					POP_AUTHOR_VERSION
+				);
+				wp_enqueue_style( "wzpa-style-{$style}" );
+				wp_add_inline_style( "wzpa-style-{$style}", $extra_css );
+			}
+		}
 
 		return Display::list_popular_authors( $arguments );
 	}
