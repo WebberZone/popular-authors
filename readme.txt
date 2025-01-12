@@ -1,11 +1,11 @@
 === Popular Authors ===
-Tags: popular, popular authors, author, top authors, top 10
+Tags: popular, popular authors, author, top authors, views, top 10
 Contributors: webberzone, Ajay
 Donate link: https://ajaydsouza.com/donate/
-Stable tag: 1.2.1
+Stable tag: 1.3.0
 Requires at least: 6.3
 Requires PHP: 7.4
-Tested up to: 6.6
+Tested up to: 6.7
 License: GPLv2 or later
 
 Discover and appreciate your blog’s most popular authors, a simple and powerful addon for Top 10 - Popular Posts for WordPress.
@@ -78,60 +78,36 @@ The main CSS class is:
 
 = Shortcodes =
 
-Use `[wzpa_popular_authors]` to display the popular authors. Check [this knowledge base article for shortcode parameters](https://webberzone.com/support/knowledgebase/popular-authors-shortcode/)
+Use `[wzpa_popular_authors]` to display the popular authors. Check [this knowledge base article for shortcode parameters](https://webberzone.com/support/knowledgebase/popular-authors-shortcode/).
+
+= Template tags =
+
+Use `wzpa_list_popular_authors()` to display the popular authors anywhere on your theme. Check [this knowledge base article for template tag parameters](https://webberzone.com/support/knowledgebase/popular-authors-template-tags/).
+
+= Gutenberg blocks =
+
+Add a Gutenberg block by searching for `popular authors` or `author`. Check [this knowledge base article for block parameters](https://webberzone.com/support/knowledgebase/popular-authors-blocks/).
 
 == Changelog ==
 
-= 1.2.1 =
-
-* Bug fixes:
-	* Removed incorrect shortcode `tptn_views`.
-	* Styles Handler used the wrong filter.
-	* Renamed cache setting to avoid conflict with Top 10.
-
-= 1.2.0 =
-
-Release post: [https://webberzone.com/announcements/popular-authors-1-2-0](https://webberzone.com/announcements/popular-authors-1-2-0)
-
-Popular Authors has been rewritten to use classes and autoloading.
+= 1.3.0 =
 
 * Features:
-	* New style options: Choose between a Card Layout or Left Thumbs
-	* New filter: `wzpa_custom_template` which can be used to override the Popular Authors HTML output
-	* New filters: `wzpa_query_fields`, `wzpa_query_join`, `wzpa_query_where`, `wzpa_query_groupby`, `wzpa_query_orderby` and `wzpa_query_limits` to modify the Popular Authors mySQL query
+	* Introducing a new feature to display popular posts by author, available as a Gutenberg block, shortcode, and template tag. This allows you to fetch and showcase popular posts for a specific author.
+		* Use the `wzpa_display_top_posts_by_author` template tag to easily display the popular posts associated with a selected author.
+		* The shortcode parameters are documented [here](https://webberzone.com/support/knowledgebase/popular-authors-shortcode/).
+		* The block is documented [here](https://webberzone.com/support/knowledgebase/popular-authors-blocks/).
+	* Introducing a new `post_type` parameter that enables you to display popular authors for specific post types. This feature is accessible via the shortcode and block, and can also be configured in the Settings panel if you have Top 10 Pro installed.
+
+* Modifications:
+	* Rewritten Popular Authors block for apiVersion 3 and better modular code.
 
 * Bug fixes:
-	* Block gave validation errors for the Daily range and Hour range fields when blank
-
-= 1.1.1 =
-
-* Security fix in block
-
-= 1.1.0 =
-
-Release post: [https://webberzone.com/announcements/popular-authors-1-1-0](https://webberzone.com/announcements/popular-authors-1-1-0)
-
-* Features:
-	* New Gutenberg block. Find it by searching for `popular authors` or `author`
-	* New settings tab added to Top 10 Settings page where global settings for this plugin can be configured
-	* New setting to display the author avatar
-	* New setting to cache the output. This option respects the cache settings of Top 10 and uses the similar transient names
-
-* Enhancements/Modifications:
-	* An admin notice will be displayed if Top 10 v3 and above is not installed
-
-= 1.0.1 =
-
-* Widget now has two additonal settings: Exclude admins and Show full names to make it easier to use
-
-= 1.0.0 =
-
-* Initial release
+	* Cache setting clashed with Top 10.
 
 For previous changelog entries please visit [Github Releases page](https://github.com/WebberZone/popular-authors/releases)
 
-
 == Upgrade Notice ==
 
-= 1.2.1 =
-Fixes severa bugs. Check the release post on WebberZone.com
+= 1.3.0 =
+Fixes several bugs and introduces a new feature to display popular posts by author. Check the release post on WebberZone.com
