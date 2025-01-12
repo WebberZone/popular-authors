@@ -1,17 +1,12 @@
 import { __ } from '@wordpress/i18n';
-import {
-	TextControl,
-	TextareaControl,
-	ToggleControl,
-	PanelRow,
-} from '@wordpress/components';
+import { TextControl, ToggleControl, PanelRow } from '@wordpress/components';
 import {
 	createAttributeToggle,
 	createAttributeChange,
 } from '../utils/attributes';
 
 const DisplaySettings = ({ attributes, setAttributes }) => {
-	const { number, offset, showOptionCount, other_attributes } = attributes;
+	const { number, offset, showOptionCount } = attributes;
 
 	return (
 		<>
@@ -54,20 +49,6 @@ const DisplaySettings = ({ attributes, setAttributes }) => {
 						setAttributes,
 						attributes,
 						'showOptionCount'
-					)}
-				/>
-			</PanelRow>
-			<PanelRow>
-				<TextareaControl
-					label={__('Other attributes', 'popular-authors')}
-					value={other_attributes}
-					onChange={createAttributeChange(
-						setAttributes,
-						'other_attributes'
-					)}
-					help={__(
-						'Enter other attributes in a URL-style string-query.',
-						'popular-authors'
 					)}
 				/>
 			</PanelRow>
