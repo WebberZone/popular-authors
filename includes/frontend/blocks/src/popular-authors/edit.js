@@ -9,6 +9,7 @@ import { PanelBody, Disabled } from '@wordpress/components';
 import DisplaySettings from './components/DisplaySettings';
 import TimeSettings from './components/TimeSettings';
 import AuthorSettings from './components/AuthorSettings';
+import AdvancedSettings from './components/AdvancedSettings';
 
 export default function Edit({ attributes, setAttributes }) {
 	const blockProps = useBlockProps();
@@ -34,7 +35,10 @@ export default function Edit({ attributes, setAttributes }) {
 					/>
 				</PanelBody>
 			</InspectorControls>
-
+			<AdvancedSettings
+				attributes={attributes}
+				setAttributes={setAttributes}
+			/>
 			<div {...blockProps}>
 				<Disabled>
 					<ServerSideRender
