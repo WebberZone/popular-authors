@@ -101,6 +101,7 @@ Add a Gutenberg block by searching for `popular authors` or `author`. Check [thi
 
 * Modifications:
 	* Rewritten Popular Authors block for apiVersion 3 and better modular code.
+	* Passing the `styles` parameter to the block will enqueue the style.
 
 * Bug fixes:
 	* Cache setting clashed with Top 10.
