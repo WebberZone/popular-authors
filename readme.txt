@@ -92,6 +92,8 @@ Add a Gutenberg block by searching for `popular authors` or `author`. Check [thi
 
 = 1.3.0 =
 
+Release post: [https://webberzone.com/announcements/popular-authors-1-3-0](https://webberzone.com/announcements/popular-authors-1-3-0)
+
 * Features:
 	* Introducing a new feature to display popular posts by author, available as a Gutenberg block, shortcode, and template tag. This allows you to fetch and showcase popular posts for a specific author.
 		* Use the `wzpa_display_top_posts_by_author` template tag to display the popular posts associated with a selected author easily.
