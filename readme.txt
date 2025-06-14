@@ -5,7 +5,7 @@ Donate link: https://ajaydsouza.com/donate/
 Stable tag: 1.3.0
 Requires at least: 6.3
 Requires PHP: 7.4
-Tested up to: 6.7
+Tested up to: 6.8
 License: GPLv2 or later
 
 Discover and appreciate your blog’s most popular authors, a simple and powerful addon for Top 10 - Popular Posts for WordPress.
@@ -87,6 +87,10 @@ Use `wzpa_list_popular_authors()` to display the popular authors anywhere on you
 = Gutenberg blocks =
 
 Add a Gutenberg block by searching for `popular authors` or `author`. Check [this knowledge base article for block parameters](https://webberzone.com/support/knowledgebase/popular-authors-blocks/).
+
+= How can I report security bugs? =
+
+You can report security bugs through the Patchstack Vulnerability Disclosure Program. The Patchstack team help validate, triage and handle any security vulnerabilities. [Report a security vulnerability.](https://patchstack.com/database/wordpress/plugin/popular-authors/vdp)
 
 == Changelog ==
 
