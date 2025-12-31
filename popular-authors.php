@@ -8,7 +8,7 @@
  * @author    Ajay D'Souza
  * @license   GPL-2.0+
  * @link      https://webberzone.com
- * @copyright 2020-2025 WebberZone
+ * @copyright 2020-2026 WebberZone
  *
  * @wordpress-plugin
  * Plugin Name: Popular Authors
