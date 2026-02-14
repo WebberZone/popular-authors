@@ -1,7 +1,7 @@
 === Popular Authors ===
 Tags: popular, popular authors, author, top authors, views, top 10
 Contributors: webberzone, Ajay
-Donate link: https://ajaydsouza.com/donate/
+Donate link: https://wzn.io/donate-wz
 Stable tag: 1.3.0
 Requires at least: 6.3
 Requires PHP: 7.4
