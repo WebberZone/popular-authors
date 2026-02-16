@@ -33,7 +33,7 @@ class Display {
 	 *
 	 * @since 1.2.0
 	 *
-	 * @global wpdb $wpdb WordPress database abstraction object.
+	 * @global \wpdb $wpdb WordPress database abstraction object.
 	 *
 	 * @param array $args List of arguments. See self::list_popular_authors_args() for full list.
 	 * @return void|string Void if 'echo' argument is true, list of authors if 'echo' is false.
@@ -62,7 +62,7 @@ class Display {
 
 		// Check if the cache is enabled and if the output exists. If so, return the output.
 		if ( $args['cache'] ) {
-			$cache_name = \WebberZone\Top_Ten\Frontend\Display::cache_get_key( $args );
+			$cache_name = self::cache_get_key( $args );
 
 			$output = get_transient( $cache_name );
 
@@ -83,8 +83,9 @@ class Display {
 		$authors = self::get_popular_author_ids( $args );
 
 		// Set the post counts for each author.
-		$post_counts       = array();
-		$post_counts_query = $wpdb->get_results( "SELECT DISTINCT post_author, COUNT(ID) AS count FROM $wpdb->posts WHERE " . get_private_posts_cap_sql( 'post' ) . ' GROUP BY post_author' ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared,WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching
+		$post_counts = array();
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.NotPrepared
+		$post_counts_query = $wpdb->get_results( "SELECT DISTINCT post_author, COUNT(ID) AS count FROM $wpdb->posts WHERE " . get_private_posts_cap_sql( 'post' ) . ' GROUP BY post_author' );
 
 		foreach ( (array) $post_counts_query as $row ) {
 			$post_counts[ $row->post_author ] = $row->count;
@@ -234,7 +235,7 @@ class Display {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @global wpdb $wpdb WordPress database abstraction object.
+	 * @global \wpdb $wpdb WordPress database abstraction object.
 	 *
 	 * @param string|array $args {
 	 *     Optional. Array or string of default arguments.
@@ -313,7 +314,9 @@ class Display {
 		$join .= " {$join_type} JOIN {$posts_table} ON {$posts_table}.post_author={$users_table}.ID AND {$posts_table}.post_status = 'publish' ";
 		$join .= " {$join_type} JOIN {$pop_posts_table} ON {$pop_posts_table}.postnumber={$posts_table}.ID AND {$pop_posts_table}.blog_id={$blog_id} ";
 
-		// Create the WHERE clause.
+		// Initialize prepare values array.
+		$prepare_values = array();
+
 		// Parse and sanitize 'include'.
 		if ( ! empty( $args['include'] ) ) {
 			$include = wp_parse_id_list( $args['include'] );
@@ -323,22 +326,28 @@ class Display {
 
 		// Parse include or exclude arguments. Include is always prioritised.
 		if ( ! empty( $include ) ) {
-			$ids    = implode( ',', $include );
-			$where .= " AND $wpdb->users.ID IN ($ids)";
+			$placeholders   = array_fill( 0, count( $include ), '%d' );
+			$where         .= " AND $wpdb->users.ID IN (" . implode( ',', $placeholders ) . ')';
+			$prepare_values = array_merge( $prepare_values, $include );
 		} elseif ( ! empty( $args['exclude'] ) ) {
-			$ids    = implode( ',', wp_parse_id_list( $args['exclude'] ) );
-			$where .= " AND $wpdb->users.ID NOT IN ($ids)";
+			$exclude        = wp_parse_id_list( $args['exclude'] );
+			$placeholders   = array_fill( 0, count( $exclude ), '%d' );
+			$where         .= " AND $wpdb->users.ID NOT IN (" . implode( ',', $placeholders ) . ')';
+			$prepare_values = array_merge( $prepare_values, $exclude );
 		}
 
 		if ( $args['daily'] ) {
 			$from_date = \WebberZone\Top_Ten\Util\Helpers::get_from_date( null, (int) $args['daily_range'], (int) $args['hour_range'] );
 
-			$where .= $wpdb->prepare( " AND {$pop_posts_table}.dp_date >= %s ", $from_date ); // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+			$where           .= " AND {$pop_posts_table}.dp_date >= %s ";
+			$prepare_values[] = $from_date;
 		}
 
 		if ( $args['post_type'] ) {
-			$post_type = wp_parse_list( $args['post_type'] );
-			$where    .= " AND {$posts_table}.post_type IN ('" . implode( "', '", esc_sql( $post_type ) ) . "')";
+			$post_type      = wp_parse_list( $args['post_type'] );
+			$placeholders   = array_fill( 0, count( $post_type ), '%s' );
+			$where         .= " AND {$posts_table}.post_type IN (" . implode( ',', $placeholders ) . ')';
+			$prepare_values = array_merge( $prepare_values, $post_type );
 		}
 
 		// Create the base GROUP BY clause.
@@ -353,9 +362,13 @@ class Display {
 			$number = isset( $args['exclude_admin'] ) && $args['exclude_admin'] ? $args['number'] + 1 : $args['number'];
 
 			if ( $offset ) {
-				$limits = $wpdb->prepare( 'LIMIT %d, %d', $offset, $number );
+				$limits           = 'LIMIT %d, %d';
+				$prepare_values[] = $offset;
+				$prepare_values[] = $number;
 			} else {
-				$limits = $wpdb->prepare( 'LIMIT %d, %d', $number * ( $args['paged'] - 1 ), $number );
+				$limits           = 'LIMIT %d, %d';
+				$prepare_values[] = $number * ( $args['paged'] - 1 );
+				$prepare_values[] = $number;
 			}
 		}
 
@@ -422,8 +435,22 @@ class Display {
 		 */
 		$limits = apply_filters_ref_array( 'wzpa_query_limits', array( $limits, $args ) );
 
+		/**
+		 * Filters the prepare values for the query.
+		 *
+		 * @since 1.4.0
+		 *
+		 * @param array $prepare_values The prepare values array.
+		 * @param array $args           Arguments array.
+		 */
+		$prepare_values = apply_filters( 'wzpa_query_prepare_values', $prepare_values, $args );
+
 		// Create the mySQL statement.
 		$sql = "SELECT $fields FROM {$wpdb->users} $join WHERE 1=1 $where $groupby $orderby $limits";
+
+		if ( ! empty( $prepare_values ) ) {
+			$sql = $wpdb->prepare( $sql, $prepare_values ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+		}
 
 		$results = $wpdb->get_results( $sql ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.NotPrepared
 
@@ -582,5 +609,17 @@ class Display {
 		 * @param array       $avatar_args Arguments passed to get_avatar(), after processing.
 		 */
 		return apply_filters( 'wzpa_get_avatar', $avatar, $author, $avatar_args );
+	}
+
+	/**
+	 * Generate cache key for the given arguments.
+	 *
+	 * @since 1.2.0
+	 *
+	 * @param array $args Arguments array.
+	 * @return string Cache key.
+	 */
+	public static function cache_get_key( $args ) {
+		return 'wzpa_' . md5( wp_json_encode( $args ) );
 	}
 }
