@@ -7,6 +7,8 @@
 
 namespace WebberZone\Popular_Authors\Frontend;
 
+use WebberZone\Popular_Authors\Util\Hook_Registry;
+
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
@@ -24,7 +26,7 @@ class Styles_Handler {
 	 * @since 1.2.0
 	 */
 	public function __construct() {
-		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'register_styles' ) );
+		Hook_Registry::add_action( 'wp_enqueue_scripts', array( __CLASS__, 'register_styles' ) );
 	}
 
 	/**

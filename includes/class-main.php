@@ -7,9 +7,7 @@
 
 namespace WebberZone\Popular_Authors;
 
-if ( ! defined( 'WPINC' ) ) {
-	exit;
-}
+use WebberZone\Popular_Authors\Util\Hook_Registry;
 
 /**
  * Main plugin class.
@@ -108,17 +106,7 @@ final class Main {
 	 * @since 1.2.0
 	 */
 	public function hooks() {
-		add_action( 'init', array( $this, 'initiate_plugin' ) );
-		add_action( 'widgets_init', array( $this, 'register_widgets' ) );
-	}
-
-	/**
-	 * Initialise the plugin translations and media.
-	 *
-	 * @since 1.2.0
-	 */
-	public function initiate_plugin() {
-		load_plugin_textdomain( 'popular-authors', false, dirname( plugin_basename( POP_AUTHOR_PLUGIN_FILE ) ) . '/languages/' );
+		Hook_Registry::add_action( 'widgets_init', array( $this, 'register_widgets' ) );
 	}
 
 	/**
