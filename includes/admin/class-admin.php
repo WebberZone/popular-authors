@@ -26,7 +26,7 @@ class Admin {
 	 * @since 1.1.0
 	 */
 	public function __construct() {
-		Hook_Registry::add_filter( 'admin_notices', array( $this, 'admin_notices' ) );
+		Hook_Registry::add_action( 'admin_notices', array( $this, 'admin_notices' ) );
 		Hook_Registry::add_filter( 'tptn_settings_sections', array( $this, 'add_settings_section' ) );
 		Hook_Registry::add_filter( 'tptn_registered_settings', array( $this, 'settings_popular_authors' ) );
 	}
