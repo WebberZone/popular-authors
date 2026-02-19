@@ -7,6 +7,8 @@
 
 namespace WebberZone\Popular_Authors\Admin;
 
+use WebberZone\Popular_Authors\Util\Hook_Registry;
+
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
@@ -24,9 +26,9 @@ class Admin {
 	 * @since 1.1.0
 	 */
 	public function __construct() {
-		add_filter( 'admin_notices', array( $this, 'admin_notices' ) );
-		add_filter( 'tptn_settings_sections', array( $this, 'add_settings_section' ) );
-		add_filter( 'tptn_registered_settings', array( $this, 'settings_popular_authors' ) );
+		Hook_Registry::add_filter( 'admin_notices', array( $this, 'admin_notices' ) );
+		Hook_Registry::add_filter( 'tptn_settings_sections', array( $this, 'add_settings_section' ) );
+		Hook_Registry::add_filter( 'tptn_registered_settings', array( $this, 'settings_popular_authors' ) );
 	}
 
 	/**

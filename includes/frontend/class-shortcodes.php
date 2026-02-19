@@ -7,6 +7,8 @@
 
 namespace WebberZone\Popular_Authors\Frontend;
 
+use WebberZone\Popular_Authors\Util\Hook_Registry;
+
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
@@ -24,8 +26,13 @@ class Shortcodes {
 	 * @since 1.2.0
 	 */
 	public function __construct() {
-		add_shortcode( 'wzpa_popular_authors', array( __CLASS__, 'wzpa_popular_authors' ) );
-		add_shortcode( 'wzpa_author_top_posts', array( __CLASS__, 'wzpa_author_top_posts' ) );
+		Hook_Registry::add_action(
+			'init',
+			function () {
+				add_shortcode( 'wzpa_popular_authors', array( __CLASS__, 'wzpa_popular_authors' ) );
+				add_shortcode( 'wzpa_author_top_posts', array( __CLASS__, 'wzpa_author_top_posts' ) );
+			}
+		);
 	}
 
 	/**

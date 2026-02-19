@@ -9,6 +9,7 @@ namespace WebberZone\Popular_Authors\Frontend\Blocks;
 
 use WebberZone\Popular_Authors\Frontend\Display;
 use WebberZone\Popular_Authors\Frontend\Styles_Handler;
+use WebberZone\Popular_Authors\Util\Hook_Registry;
 
 if ( ! defined( 'WPINC' ) ) {
 	die;
@@ -25,8 +26,7 @@ class Blocks {
 	 * Register widget with WordPress.
 	 */
 	public function __construct() {
-		add_action( 'init', array( $this, 'register_blocks' ) );
-		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_block_editor_assets' ) );
+		Hook_Registry::add_action( 'init', array( $this, 'register_blocks' ) );
 	}
 
 	/**
@@ -176,13 +176,5 @@ class Blocks {
 			$arguments,
 			false
 		);
-	}
-
-	/**
-	 * Enqueue scripts and styles for the block editor.
-	 *
-	 * @since 1.2.0
-	 */
-	public static function enqueue_block_editor_assets() {
 	}
 }
