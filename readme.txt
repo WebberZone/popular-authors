@@ -98,6 +98,7 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 * Features:
 	* New option to display post count in the Popular Authors block.
+	* Added a dashboard widget to display popular authors on the WordPress dashboard.
 
 = 1.3.0 =
 
