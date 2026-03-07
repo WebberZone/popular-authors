@@ -44,16 +44,17 @@ class Authors_Widget extends \WP_Widget {
 	 * @param array $instance Previously saved values from database.
 	 */
 	public function form( $instance ) {
-		$title         = isset( $instance['title'] ) ? $instance['title'] : '';
-		$number        = isset( $instance['number'] ) ? $instance['number'] : '';
-		$offset        = isset( $instance['offset'] ) ? $instance['offset'] : '';
-		$daily         = isset( $instance['daily'] ) ? $instance['daily'] : 'overall';
-		$daily_range   = isset( $instance['daily_range'] ) ? $instance['daily_range'] : '';
-		$hour_range    = isset( $instance['hour_range'] ) ? $instance['hour_range'] : '';
-		$optioncount   = isset( $instance['optioncount'] ) ? $instance['optioncount'] : '';
-		$exclude_admin = isset( $instance['exclude_admin'] ) ? $instance['exclude_admin'] : '';
-		$show_fullname = isset( $instance['show_fullname'] ) ? $instance['show_fullname'] : '';
-		$show_avatar   = isset( $instance['show_avatar'] ) ? $instance['show_avatar'] : '';
+		$title          = isset( $instance['title'] ) ? $instance['title'] : '';
+		$number         = isset( $instance['number'] ) ? $instance['number'] : '';
+		$offset         = isset( $instance['offset'] ) ? $instance['offset'] : '';
+		$daily          = isset( $instance['daily'] ) ? $instance['daily'] : 'overall';
+		$daily_range    = isset( $instance['daily_range'] ) ? $instance['daily_range'] : '';
+		$hour_range     = isset( $instance['hour_range'] ) ? $instance['hour_range'] : '';
+		$optioncount    = isset( $instance['optioncount'] ) ? $instance['optioncount'] : '';
+		$show_postcount = isset( $instance['show_postcount'] ) ? $instance['show_postcount'] : '';
+		$exclude_admin  = isset( $instance['exclude_admin'] ) ? $instance['exclude_admin'] : '';
+		$show_fullname  = isset( $instance['show_fullname'] ) ? $instance['show_fullname'] : '';
+		$show_avatar    = isset( $instance['show_avatar'] ) ? $instance['show_avatar'] : '';
 
 		?>
 		<p>
@@ -74,6 +75,11 @@ class Authors_Widget extends \WP_Widget {
 		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id( 'optioncount' ) ); ?>">
 				<input id="<?php echo esc_attr( $this->get_field_id( 'optioncount' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'optioncount' ) ); ?>" type="checkbox" <?php checked( true, $optioncount, true ); ?> /> <?php esc_html_e( 'Show count', 'popular-authors' ); ?>
+			</label>
+		</p>
+		<p>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'show_postcount' ) ); ?>">
+				<input id="<?php echo esc_attr( $this->get_field_id( 'show_postcount' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'show_postcount' ) ); ?>" type="checkbox" <?php checked( true, $show_postcount, true ); ?> /> <?php esc_html_e( 'Show post count', 'popular-authors' ); ?>
 			</label>
 		</p>
 		<p>
@@ -133,17 +139,18 @@ class Authors_Widget extends \WP_Widget {
 	 * @return array Updated safe values to be saved.
 	 */
 	public function update( $new_instance, $old_instance ) {
-		$instance                  = $old_instance;
-		$instance['title']         = wp_strip_all_tags( $new_instance['title'] );
-		$instance['number']        = $new_instance['number'];
-		$instance['offset']        = $new_instance['offset'];
-		$instance['daily']         = $new_instance['daily'];
-		$instance['daily_range']   = wp_strip_all_tags( $new_instance['daily_range'] );
-		$instance['hour_range']    = wp_strip_all_tags( $new_instance['hour_range'] );
-		$instance['optioncount']   = isset( $new_instance['optioncount'] ) ? (bool) $new_instance['optioncount'] : false;
-		$instance['exclude_admin'] = isset( $new_instance['exclude_admin'] ) ? (bool) $new_instance['exclude_admin'] : false;
-		$instance['show_fullname'] = isset( $new_instance['show_fullname'] ) ? (bool) $new_instance['show_fullname'] : false;
-		$instance['show_avatar']   = isset( $new_instance['show_avatar'] ) ? (bool) $new_instance['show_avatar'] : false;
+		$instance                   = $old_instance;
+		$instance['title']          = wp_strip_all_tags( $new_instance['title'] );
+		$instance['number']         = $new_instance['number'];
+		$instance['offset']         = $new_instance['offset'];
+		$instance['daily']          = $new_instance['daily'];
+		$instance['daily_range']    = wp_strip_all_tags( $new_instance['daily_range'] );
+		$instance['hour_range']     = wp_strip_all_tags( $new_instance['hour_range'] );
+		$instance['optioncount']    = isset( $new_instance['optioncount'] ) ? (bool) $new_instance['optioncount'] : false;
+		$instance['show_postcount'] = isset( $new_instance['show_postcount'] ) ? (bool) $new_instance['show_postcount'] : false;
+		$instance['exclude_admin']  = isset( $new_instance['exclude_admin'] ) ? (bool) $new_instance['exclude_admin'] : false;
+		$instance['show_fullname']  = isset( $new_instance['show_fullname'] ) ? (bool) $new_instance['show_fullname'] : false;
+		$instance['show_avatar']    = isset( $new_instance['show_avatar'] ) ? (bool) $new_instance['show_avatar'] : false;
 
 		/**
 		 * Filters Update widget options array.
@@ -167,33 +174,35 @@ class Authors_Widget extends \WP_Widget {
 	 */
 	public function widget( $args, $instance ) {
 
-		$title         = apply_filters( 'widget_title', empty( $instance['title'] ) ? __( 'Popular Authors', 'popular-authors' ) : $instance['title'] );
-		$number        = isset( $instance['number'] ) ? $instance['number'] : '';
-		$offset        = isset( $instance['offset'] ) ? $instance['offset'] : 0;
-		$daily         = ( isset( $instance['daily'] ) && ( 'daily' === $instance['daily'] ) ) ? true : false;
-		$daily_range   = empty( $instance['daily_range'] ) ? null : $instance['daily_range'];
-		$hour_range    = empty( $instance['hour_range'] ) ? null : $instance['hour_range'];
-		$optioncount   = isset( $instance['optioncount'] ) ? esc_attr( $instance['optioncount'] ) : '';
-		$exclude_admin = isset( $instance['exclude_admin'] ) ? esc_attr( $instance['exclude_admin'] ) : '';
-		$show_fullname = isset( $instance['show_fullname'] ) ? esc_attr( $instance['show_fullname'] ) : '';
-		$show_avatar   = isset( $instance['show_avatar'] ) ? esc_attr( $instance['show_avatar'] ) : '';
+		$title          = apply_filters( 'widget_title', empty( $instance['title'] ) ? __( 'Popular Authors', 'popular-authors' ) : $instance['title'] );
+		$number         = isset( $instance['number'] ) ? $instance['number'] : '';
+		$offset         = isset( $instance['offset'] ) ? $instance['offset'] : 0;
+		$daily          = ( isset( $instance['daily'] ) && ( 'daily' === $instance['daily'] ) ) ? true : false;
+		$daily_range    = empty( $instance['daily_range'] ) ? null : $instance['daily_range'];
+		$hour_range     = empty( $instance['hour_range'] ) ? null : $instance['hour_range'];
+		$optioncount    = isset( $instance['optioncount'] ) ? esc_attr( $instance['optioncount'] ) : '';
+		$show_postcount = isset( $instance['show_postcount'] ) ? esc_attr( $instance['show_postcount'] ) : '';
+		$exclude_admin  = isset( $instance['exclude_admin'] ) ? esc_attr( $instance['exclude_admin'] ) : '';
+		$show_fullname  = isset( $instance['show_fullname'] ) ? esc_attr( $instance['show_fullname'] ) : '';
+		$show_avatar    = isset( $instance['show_avatar'] ) ? esc_attr( $instance['show_avatar'] ) : '';
 
 		/** This filter is documented in wp-includes/widgets/class-wp-widget-pages.php */
 		$title = apply_filters( 'widget_title', $title, $instance, $this->id_base );
 
 		$arguments = array(
-			'is_widget'     => 1,
-			'instance_id'   => $args['widget_id'],
-			'number'        => $number,
-			'offset'        => $offset,
-			'daily'         => $daily,
-			'daily_range'   => $daily_range,
-			'hour_range'    => $hour_range,
-			'optioncount'   => $optioncount,
-			'exclude_admin' => $exclude_admin,
-			'show_fullname' => $show_fullname,
-			'show_avatar'   => $show_avatar,
-			'echo'          => false,
+			'is_widget'      => 1,
+			'instance_id'    => $args['widget_id'],
+			'number'         => $number,
+			'offset'         => $offset,
+			'daily'          => $daily,
+			'daily_range'    => $daily_range,
+			'hour_range'     => $hour_range,
+			'optioncount'    => $optioncount,
+			'show_postcount' => $show_postcount,
+			'exclude_admin'  => $exclude_admin,
+			'show_fullname'  => $show_fullname,
+			'show_avatar'    => $show_avatar,
+			'echo'           => false,
 		);
 
 		/**

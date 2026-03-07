@@ -6,7 +6,7 @@ import {
 } from '../utils/attributes';
 
 const DisplaySettings = ({ attributes, setAttributes }) => {
-	const { number, offset, showOptionCount } = attributes;
+	const { number, offset, showOptionCount, showPostCount } = attributes;
 
 	return (
 		<>
@@ -49,6 +49,22 @@ const DisplaySettings = ({ attributes, setAttributes }) => {
 						setAttributes,
 						attributes,
 						'showOptionCount'
+					)}
+				/>
+			</PanelRow>
+			<PanelRow>
+				<ToggleControl
+					label={__('Show post count', 'popular-authors')}
+					help={
+						showPostCount
+							? __('Post count displayed', 'popular-authors')
+							: __('No post count displayed', 'popular-authors')
+					}
+					checked={showPostCount}
+					onChange={createAttributeToggle(
+						setAttributes,
+						attributes,
+						'showPostCount'
 					)}
 				/>
 			</PanelRow>

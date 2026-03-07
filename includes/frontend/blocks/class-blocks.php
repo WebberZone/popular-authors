@@ -82,12 +82,13 @@ class Blocks {
 	public static function render_block_popular_authors( $attributes ) {
 
 		// Map block attributes to PHP attributes.
-		$attributes['extra_class']   = isset( $attributes['className'] ) ? $attributes['className'] : '';
-		$attributes['optioncount']   = $attributes['showOptionCount'];
-		$attributes['show_fullname'] = $attributes['showFullName'];
-		$attributes['show_avatar']   = $attributes['showAvatar'];
-		$attributes['exclude_admin'] = $attributes['excludeAdmin'];
-		$attributes['hide_empty']    = $attributes['hideEmptyAuthors'];
+		$attributes['extra_class']    = isset( $attributes['className'] ) ? $attributes['className'] : '';
+		$attributes['optioncount']    = $attributes['showOptionCount'];
+		$attributes['show_postcount'] = isset( $attributes['showPostCount'] ) ? $attributes['showPostCount'] : false;
+		$attributes['show_fullname']  = $attributes['showFullName'];
+		$attributes['show_avatar']    = $attributes['showAvatar'];
+		$attributes['exclude_admin']  = $attributes['excludeAdmin'];
+		$attributes['hide_empty']     = $attributes['hideEmptyAuthors'];
 
 		$arguments = array_merge(
 			$attributes,
