@@ -21,6 +21,15 @@ if ( ! defined( 'WPINC' ) ) {
 class Admin {
 
 	/**
+	 * Dashboard Widget.
+	 *
+	 * @since 1.4.0
+	 *
+	 * @var object Dashboard_Widget.
+	 */
+	public $dashboard_widget;
+
+	/**
 	 * Constructor class.
 	 *
 	 * @since 1.1.0
@@ -29,6 +38,8 @@ class Admin {
 		Hook_Registry::add_action( 'admin_notices', array( $this, 'admin_notices' ) );
 		Hook_Registry::add_filter( 'tptn_settings_sections', array( $this, 'add_settings_section' ) );
 		Hook_Registry::add_filter( 'tptn_registered_settings', array( $this, 'settings_popular_authors' ) );
+
+		$this->dashboard_widget = new Dashboard_Widget();
 	}
 
 	/**
