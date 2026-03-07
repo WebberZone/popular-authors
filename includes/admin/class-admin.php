@@ -131,6 +131,13 @@ class Admin {
 					'type'    => 'checkbox',
 					'options' => false,
 				),
+				'wzpa_show_postcount'      => array(
+					'id'      => 'wzpa_show_postcount',
+					'name'    => esc_html__( 'Show post count', 'popular-authors' ),
+					'desc'    => esc_html__( "Show the number of posts in parenthesis next to the author's name", 'popular-authors' ),
+					'type'    => 'checkbox',
+					'options' => false,
+				),
 				'wzpa_exclude_admin'       => array(
 					'id'      => 'wzpa_exclude_admin',
 					'name'    => esc_html__( "Exclude 'admin' account", 'popular-authors' ),

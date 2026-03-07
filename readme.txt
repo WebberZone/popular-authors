@@ -2,7 +2,7 @@
 Tags: popular, popular authors, author, top authors, views, top 10
 Contributors: webberzone, Ajay
 Donate link: https://wzn.io/donate-wz
-Stable tag: 1.3.0
+Stable tag: 1.4.0
 Requires at least: 6.3
 Requires PHP: 7.4
 Tested up to: 6.8
@@ -94,6 +94,11 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 == Changelog ==
 
+= 1.4.0 =
+
+* Features:
+	* New option to display post count in the Popular Authors block.
+
 = 1.3.0 =
 
 Release post: [https://webberzone.com/announcements/popular-authors-1-3-0](https://webberzone.com/announcements/popular-authors-1-3-0)
@@ -116,5 +121,5 @@ For previous changelog entries please visit [Github Releases page](https://githu
 
 == Upgrade Notice ==
 
-= 1.3.0 =
-Fixes several bugs and introduces a new feature to display popular posts by author. Check the release post on WebberZone.com
+= 1.4.0 =
+New features and bug fixes. Check the release post on WebberZone.com

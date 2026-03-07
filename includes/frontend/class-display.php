@@ -188,11 +188,21 @@ class Display {
 					$name
 				);
 
-				if ( $args['optioncount'] ) {
-					$link .= sprintf(
-						' <span class="wzpa_optioncount">(%1$s)</span>',
-						number_format_i18n( $views )
-					);
+				if ( $args['optioncount'] || $args['show_postcount'] ) {
+					$count_parts = array();
+					if ( $args['optioncount'] ) {
+						$count_parts[] = sprintf(
+							'<span class="wzpa_optioncount">%1$s</span>',
+							number_format_i18n( $views )
+						);
+					}
+					if ( $args['show_postcount'] ) {
+						$count_parts[] = sprintf(
+							'<span class="wzpa_postcount">%1$s</span>',
+							number_format_i18n( $no_of_posts )
+						);
+					}
+					$link .= ' (' . implode( ' / ', $count_parts ) . ')';
 				}
 				$link .= '</span>';
 
@@ -504,6 +514,7 @@ class Display {
 			'hour_range'       => null,
 			'offset'           => '',
 			'optioncount'      => true,
+			'show_postcount'   => false,
 			'exclude_admin'    => false,
 			'post_type'        => 'post',
 			'show_fullname'    => false,
