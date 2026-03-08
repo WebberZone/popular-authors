@@ -36,11 +36,6 @@ const AuthorSettings = ({ attributes, setAttributes }) => {
 			<PanelRow>
 				<ToggleControl
 					label={__('Show Avatar', 'popular-authors')}
-					help={
-						showAvatar
-							? __('Avatar displayed', 'popular-authors')
-							: __('No avatar displayed', 'popular-authors')
-					}
 					checked={showAvatar}
 					onChange={createAttributeToggle(
 						setAttributes,
@@ -52,17 +47,6 @@ const AuthorSettings = ({ attributes, setAttributes }) => {
 			<PanelRow>
 				<ToggleControl
 					label={__('Exclude admin', 'popular-authors')}
-					help={
-						excludeAdmin
-							? __(
-									"'admin' account is excluded",
-									'popular-authors'
-								)
-							: __(
-									"'admin' account is included",
-									'popular-authors'
-								)
-					}
 					checked={excludeAdmin}
 					onChange={createAttributeToggle(
 						setAttributes,
@@ -74,17 +58,6 @@ const AuthorSettings = ({ attributes, setAttributes }) => {
 			<PanelRow>
 				<ToggleControl
 					label={__('Hide authors with no posts', 'popular-authors')}
-					help={
-						hideEmptyAuthors
-							? __(
-									'Authors with no posts are excluded',
-									'popular-authors'
-								)
-							: __(
-									'Authors with no posts are included',
-									'popular-authors'
-								)
-					}
 					checked={hideEmptyAuthors}
 					onChange={createAttributeToggle(
 						setAttributes,

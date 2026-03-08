@@ -6,11 +6,7 @@
 	"title": "Popular Authors",
 	"category": "design",
 	"icon": "admin-users",
-	"keywords": [
-		"popular authors",
-		"author",
-		"top 10"
-	],
+	"keywords": ["popular authors", "author", "top 10"],
 	"description": "Show the list of popular authors",
 	"supports": {
 		"html": false

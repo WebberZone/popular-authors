@@ -38,12 +38,7 @@ const DisplaySettings = ({ attributes, setAttributes }) => {
 			</PanelRow>
 			<PanelRow>
 				<ToggleControl
-					label={__('Show count', 'popular-authors')}
-					help={
-						showOptionCount
-							? __('Count displayed', 'popular-authors')
-							: __('No count displayed', 'popular-authors')
-					}
+					label={__('Show views', 'popular-authors')}
 					checked={showOptionCount}
 					onChange={createAttributeToggle(
 						setAttributes,
@@ -54,12 +49,7 @@ const DisplaySettings = ({ attributes, setAttributes }) => {
 			</PanelRow>
 			<PanelRow>
 				<ToggleControl
-					label={__('Show post count', 'popular-authors')}
-					help={
-						showPostCount
-							? __('Post count displayed', 'popular-authors')
-							: __('No post count displayed', 'popular-authors')
-					}
+					label={__('Show number of posts', 'popular-authors')}
 					checked={showPostCount}
 					onChange={createAttributeToggle(
 						setAttributes,
