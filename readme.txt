@@ -96,6 +96,8 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 = 1.4.0 =
 
+Release post: [https://webberzone.com/announcements/popular-authors-1-4-0](https://webberzone.com/announcements/popular-authors-1-4-0)
+
 * Features:
 	* New option to display post count in the Popular Authors block.
 	* Added a dashboard widget to display popular authors on the WordPress dashboard.
