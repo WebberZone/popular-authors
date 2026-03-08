@@ -3,9 +3,9 @@ Tags: popular, popular authors, author, top authors, views, top 10
 Contributors: webberzone, Ajay
 Donate link: https://wzn.io/donate-wz
 Stable tag: 1.4.0
-Requires at least: 6.3
+Requires at least: 6.6
 Requires PHP: 7.4
-Tested up to: 6.8
+Tested up to: 6.9
 License: GPLv2 or later
 
 Discover and appreciate your blog’s most popular authors, a simple and powerful addon for Top 10 - Popular Posts for WordPress.
