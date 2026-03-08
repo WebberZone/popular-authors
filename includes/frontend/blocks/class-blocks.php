@@ -27,6 +27,34 @@ class Blocks {
 	 */
 	public function __construct() {
 		Hook_Registry::add_action( 'init', array( $this, 'register_blocks' ) );
+		Hook_Registry::add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_editor_assets' ) );
+	}
+
+	/**
+	 * Enqueue block editor assets.
+	 *
+	 * @since 1.4.0
+	 */
+	public function enqueue_editor_assets() {
+		$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
+
+		$style_array = Styles_Handler::get_style();
+
+		if ( ! empty( $style_array['name'] ) ) {
+			$style     = $style_array['name'];
+			$extra_css = $style_array['extra_css'];
+
+			wp_enqueue_style(
+				"wzpa-editor-style-{$style}",
+				plugins_url( "includes/css/{$style}{$suffix}.css", POP_AUTHOR_PLUGIN_FILE ),
+				array(),
+				POP_AUTHOR_VERSION
+			);
+
+			if ( ! empty( $extra_css ) ) {
+				wp_add_inline_style( "wzpa-editor-style-{$style}", $extra_css );
+			}
+		}
 	}
 
 	/**
@@ -82,13 +110,13 @@ class Blocks {
 	public static function render_block_popular_authors( $attributes ) {
 
 		// Map block attributes to PHP attributes.
-		$attributes['extra_class']    = isset( $attributes['className'] ) ? $attributes['className'] : '';
-		$attributes['optioncount']    = $attributes['showOptionCount'];
-		$attributes['show_postcount'] = isset( $attributes['showPostCount'] ) ? $attributes['showPostCount'] : false;
-		$attributes['show_fullname']  = $attributes['showFullName'];
-		$attributes['show_avatar']    = $attributes['showAvatar'];
-		$attributes['exclude_admin']  = $attributes['excludeAdmin'];
-		$attributes['hide_empty']     = $attributes['hideEmptyAuthors'];
+		$attributes['extra_class']    = $attributes['className'] ?? '';
+		$attributes['optioncount']    = $attributes['showOptionCount'] ?? false;
+		$attributes['show_postcount'] = $attributes['showPostCount'] ?? false;
+		$attributes['show_fullname']  = $attributes['showFullName'] ?? false;
+		$attributes['show_avatar']    = $attributes['showAvatar'] ?? false;
+		$attributes['exclude_admin']  = $attributes['excludeAdmin'] ?? false;
+		$attributes['hide_empty']     = $attributes['hideEmptyAuthors'] ?? true;
 
 		$arguments = array_merge(
 			$attributes,
@@ -150,15 +178,15 @@ class Blocks {
 		}
 
 		$arguments = array(
-			'extra_class'     => isset( $attributes['extra_class'] ) ? $attributes['extra_class'] : '',
-			'posts_per_page'  => $attributes['postsPerPage'],
-			'post_type'       => $attributes['postType'],
-			'orderby'         => $attributes['orderby'],
-			'order'           => $attributes['order'],
-			'daily'           => $attributes['daily'],
-			'daily_range'     => $attributes['dailyRange'],
-			'hour_range'      => $attributes['hourRange'],
-			'disp_list_count' => $attributes['showOptionCount'],
+			'extra_class'     => $attributes['extra_class'] ?? '',
+			'posts_per_page'  => $attributes['postsPerPage'] ?? 5,
+			'post_type'       => $attributes['postType'] ?? 'post',
+			'orderby'         => $attributes['orderby'] ?? 'comment_count',
+			'order'           => $attributes['order'] ?? 'DESC',
+			'daily'           => $attributes['daily'] ?? false,
+			'daily_range'     => $attributes['dailyRange'] ?? 7,
+			'hour_range'      => $attributes['hourRange'] ?? 24,
+			'disp_list_count' => $attributes['showOptionCount'] ?? false,
 		);
 
 		/**
@@ -173,7 +201,7 @@ class Blocks {
 
 		return \wzpa_display_top_posts_by_author(
 			$attributes['author'],
-			isset( $attributes['field'] ) ? $attributes['field'] : 'id',
+			$attributes['field'] ?? 'id',
 			$arguments,
 			false
 		);
