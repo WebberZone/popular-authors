@@ -5,7 +5,7 @@ Donate link: https://wzn.io/donate-wz
 Stable tag: 1.4.0
 Requires at least: 6.6
 Requires PHP: 7.4
-Tested up to: 6.9
+Tested up to: 7.0
 License: GPLv2 or later
 
 Discover and appreciate your blog’s most popular authors, a simple and powerful addon for Top 10 - Popular Posts for WordPress.
