@@ -4,6 +4,7 @@ slug: popular-authors-blocks
 title: "Blocks in Popular Authors"
 products: [popular-authors]
 sections: [02-pa-advanced]
+tags: [block,popular,popular-authors]
 status: publish
 order: 0
 ---
