@@ -4,6 +4,7 @@ slug: popular-authors-shortcode
 title: "Popular Authors Shortcodes"
 products: [popular-authors]
 sections: [02-pa-advanced]
+tags: [popular-authors,shortcode]
 status: publish
 order: 0
 ---
