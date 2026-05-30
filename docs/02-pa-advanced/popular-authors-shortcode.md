@@ -1,5 +1,4 @@
 ---
-id: 224
 slug: popular-authors-shortcode
 title: "Popular Authors Shortcodes"
 products: [popular-authors]
