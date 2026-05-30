@@ -1,5 +1,4 @@
 ---
-id: 8803
 slug: popular-authors-blocks
 title: "Blocks in Popular Authors"
 products: [popular-authors]
@@ -15,7 +14,7 @@ Popular Authors includes two blocks allowing you to display the most popular aut
 
 The Popular Authors block is a Gutenberg block that can replace the widget or [shortcode](https://webberzone.com/support/knowledgebase/popular-authors-shortcode/) for displaying popular authors. This block can be used in your posts, pages, or any other custom post type. You can also use it within the Site Editor if you are using a block theme.
 
-The block lets you preview the popular authors directly in the block editor. You can customise various aspects of the block using the sidebar as follows:
+The block lets you preview the popular authors directly in the block editor. You can customize various aspects of the block using the sidebar as follows:
 
 <figure class="wp-block-table">
 <table>

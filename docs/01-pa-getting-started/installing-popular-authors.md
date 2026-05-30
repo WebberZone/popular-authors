@@ -1,5 +1,4 @@
 ---
-id: 218
 slug: installing-popular-authors
 title: "Installing Popular Authors"
 products: [popular-authors]
