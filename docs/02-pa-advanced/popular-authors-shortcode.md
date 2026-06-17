@@ -8,145 +8,60 @@ status: publish
 order: 0
 ---
 
-Popular Authors includes two shortcodes that allow you to display the list of top authors and the top posts by author. If you’re unfamiliar with shortcodes, please read <a href="https://codex.wordpress.org/Shortcode" target="_blank" rel="noreferrer noopener">this article in the WordPress Codex</a>.
+[Popular Authors](https://webberzone.com/plugins/popular-authors/) registers two shortcodes that let you embed the most-popular authors list and a list of top posts for a given author anywhere in your content. Visit counts are drawn from [Top 10](https://webberzone.com/plugins/top-10/).
 
-## \[\[wzpa_popular_authors\]\]
+If you are unfamiliar with shortcodes, read the [Shortcode entry in the WordPress Codex](https://codex.wordpress.org/Shortcode).
 
-Use this shortcode to display the popular authors based on their number of visits tracked by <a href="https://webberzone.com/plugins/top-10/" data-type="page" data-id="8237">Top 10</a>. This shortcode takes multiple different attributes, which are all optional, as follows:
+## \[wzpa_popular_authors\]
 
-<figure class="wp-block-table">
-<table>
-<thead>
-<tr>
-<th class="has-text-align-left" data-align="left">Parameter</th>
-<th class="has-text-align-center" data-align="center">Type</th>
-<th class="has-text-align-left" data-align="left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="has-text-align-left" data-align="left">number</td>
-<td class="has-text-align-center" data-align="center">Integer</td>
-<td class="has-text-align-left" data-align="left">Maximum authors to return or display. Default: empty (all authors).</td>
-</tr>
-<tr>
-<td class="has-text-align-left" data-align="left">daily</td>
-<td class="has-text-align-center" data-align="center">Boolean</td>
-<td class="has-text-align-left" data-align="left">Whether to show daily or overall counts. Default: false.</td>
-</tr>
-<tr>
-<td class="has-text-align-left" data-align="left">daily_range</td>
-<td class="has-text-align-center" data-align="center">Integer / Null</td>
-<td class="has-text-align-left" data-align="left">The daily range for the custom period. Default: null.</td>
-</tr>
-<tr>
-<td class="has-text-align-left" data-align="left">hour_range</td>
-<td class="has-text-align-center" data-align="center">Integer / Null</td>
-<td class="has-text-align-left" data-align="left">The hour range for the custom period. Default: null.</td>
-</tr>
-<tr>
-<td class="has-text-align-left" data-align="left">offset</td>
-<td class="has-text-align-center" data-align="center">Integer</td>
-<td class="has-text-align-left" data-align="left">The number of authors to offset in retrieved results. Can be used in conjunction with pagination. Default: 0.</td>
-</tr>
-<tr>
-<td class="has-text-align-left" data-align="left">optioncount</td>
-<td class="has-text-align-center" data-align="center">Boolean</td>
-<td class="has-text-align-left" data-align="left">Show the count in parenthesis next to the author’s name. Default: true.</td>
-</tr>
-<tr>
-<td class="has-text-align-left" data-align="left">exclude_admin</td>
-<td class="has-text-align-center" data-align="center">Boolean</td>
-<td class="has-text-align-left" data-align="left">Whether to exclude the ‘admin’ account, if it exists. Default: false.</td>
-</tr>
-<tr>
-<td class="has-text-align-left" data-align="left">show_fullname</td>
-<td class="has-text-align-center" data-align="center">Boolean</td>
-<td class="has-text-align-left" data-align="left">Whether to show the author’s full name. Default: false.</td>
-</tr>
-<tr>
-<td class="has-text-align-left" data-align="left">show_avatar</td>
-<td class="has-text-align-center" data-align="center">Boolean</td>
-<td class="has-text-align-left" data-align="left">Whether to show the author’s avatar/thumbnail. Default: false.</td>
-</tr>
-<tr>
-<td class="has-text-align-left" data-align="left">hide_empty</td>
-<td class="has-text-align-center" data-align="center">Boolean</td>
-<td class="has-text-align-left" data-align="left">Whether to hide any authors with no posts. Default: true.</td>
-</tr>
-<tr>
-<td class="has-text-align-left" data-align="left">cache</td>
-<td class="has-text-align-center" data-align="center">Boolean</td>
-<td class="has-text-align-left" data-align="left">Whether to turn ON caching of the HTML output. Default: false.</td>
-</tr>
-<tr>
-<td class="has-text-align-left" data-align="left">include</td>
-<td class="has-text-align-center" data-align="center">Array / String</td>
-<td class="has-text-align-left" data-align="left">Array or comma/space-separated list of author IDs to include. Only authors belonging to the list will be displayed. Default: empty.</td>
-</tr>
-<tr>
-<td class="has-text-align-left" data-align="left">exclude</td>
-<td class="has-text-align-center" data-align="center">Array / String</td>
-<td class="has-text-align-left" data-align="left">Array or comma/space-separated list of author IDs to exclude. Default: empty.</td>
-</tr>
-</tbody>
-</table>
-</figure>
+Use this shortcode to display the popular authors based on the number of visits tracked by [Top 10](https://webberzone.com/plugins/top-10/).
 
-## \[\[wzpa_author_top_posts\]\]
+```text
+[wzpa_popular_authors number="5" show_avatar="1"]
+```
 
-Use this shortcode to display the most popular posts for an author. This shortcode takes multiple different attributes, which are all optional, as follows:
+All attributes are optional. Attributes that are not set fall back to the defaults configured under **Top 10 → Settings → Popular Authors**.
 
-<figure class="wp-block-table">
-<table>
-<thead>
-<tr>
-<th class="has-text-align-left" data-align="left">Parameter</th>
-<th class="has-text-align-center" data-align="center">Type</th>
-<th class="has-text-align-left" data-align="left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="has-text-align-left" data-align="left">author</td>
-<td class="has-text-align-center" data-align="center">Integer</td>
-<td class="has-text-align-left" data-align="left">Author ID to retrieve posts for. Default: 0 (all authors).</td>
-</tr>
-<tr>
-<td class="has-text-align-left" data-align="left">field</td>
-<td class="has-text-align-center" data-align="center">String</td>
-<td class="has-text-align-left" data-align="left">Field to filter authors by. Options: <code>id</code>, <code>slug</code>. Default: <code>id</code>.</td>
-</tr>
-<tr>
-<td class="has-text-align-left" data-align="left">posts_per_page</td>
-<td class="has-text-align-center" data-align="center">Integer</td>
-<td class="has-text-align-left" data-align="left">Number of posts to display per page. Default: 10.</td>
-</tr>
-<tr>
-<td class="has-text-align-left" data-align="left">post_type</td>
-<td class="has-text-align-center" data-align="center">String</td>
-<td class="has-text-align-left" data-align="left">Post type to retrieve. Default: <code>post</code>.</td>
-</tr>
-<tr>
-<td class="has-text-align-left" data-align="left">orderby</td>
-<td class="has-text-align-center" data-align="center">String</td>
-<td class="has-text-align-left" data-align="left">Field to sort posts by. Default: <code>visits</code>.</td>
-</tr>
-<tr>
-<td class="has-text-align-left" data-align="left">order</td>
-<td class="has-text-align-center" data-align="center">String</td>
-<td class="has-text-align-left" data-align="left">Sorting order. Options: <code>ASC</code>, <code>DESC</code>. Default: <code>DESC</code>.</td>
-</tr>
-<tr>
-<td class="has-text-align-left" data-align="left">daily</td>
-<td class="has-text-align-center" data-align="center">Boolean</td>
-<td class="has-text-align-left" data-align="left">Whether to retrieve daily counts or overall counts. Default: false.</td>
-</tr>
-<tr>
-<td class="has-text-align-left" data-align="left">disp_list_count</td>
-<td class="has-text-align-center" data-align="center">Boolean</td>
-<td class="has-text-align-left" data-align="left">Whether to display the count in a list format. Default: true.</td>
-</tr>
-</tbody>
-</table>
-</figure>
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `number` | Integer | Maximum authors to return. Default empty (uses the `wzpa_number` setting, which defaults to `-1` / all authors). |
+| `daily` | Boolean | Display daily or overall counts. Default `false`. |
+| `daily_range` | Integer | Number of days in the custom period. Default `null`. |
+| `hour_range` | Integer | Number of hours in the custom period. Default `null`. |
+| `offset` | Integer | Number of authors to skip from the top. Use with pagination. Default `0`. |
+| `optioncount` | Boolean | Show the visit count next to the author's name. Default `true`. |
+| `show_postcount` | Boolean | Show the post count next to the author's name. Default `false`. |
+| `exclude_admin` | Boolean | Exclude the `admin` user. Default `false`. |
+| `show_fullname` | Boolean | Show the author's first and last name instead of their display name. Default `false`. |
+| `show_avatar` | Boolean | Display the author's avatar. Default `false`. |
+| `hide_empty` | Boolean | Hide authors with no published posts. Default `true`. |
+| `cache` | Boolean | Cache the HTML output using Top 10's cache settings. Default `true`. |
+| `include` | Array / String | Comma- or space-separated list of author IDs to include. Overrides `exclude`. Default empty. |
+| `exclude` | Array / String | Comma- or space-separated list of author IDs to exclude. Default empty. |
+| `post_type` | String | Comma-separated list of post types to include. Default `post`. |
+| `styles` | String | Style key: `no_style`, `card`, or `left_thumbs`. Default uses the `wzpa_styles` setting. |
+| `before_list` | String | HTML before the list. Default `<ul>`. |
+| `after_list` | String | HTML after the list. Default `</ul>`. |
+| `before_list_item` | String | HTML before each list item. Default `<li>`. |
+| `after_list_item` | String | HTML after each list item. Default `</li>`. |
+
+## \[wzpa_author_top_posts\]
+
+Use this shortcode to display the most popular posts for a specific author. The shortcode calls `wzpa_display_top_posts_by_author()` under the hood.
+
+```text
+[wzpa_author_top_posts author="42" posts_per_page="5"]
+```
+
+The `author` attribute is required. All other attributes are optional.
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `author` | Integer / String | Author value. With `field="id"`, an integer user ID. With `field="slug"`, the user nicename. Default `0` (returns nothing). |
+| `field` | String | Field to look up the author by. Accepts `id`, `slug`, `email`, or `login`. Default `id`. |
+| `posts_per_page` | Integer | Number of posts to display. Default `10`. |
+| `post_type` | String | Post type to retrieve. Default `post`. |
+| `orderby` | String | Field to sort by. Default `visits`. |
+| `order` | String | Sorting direction. Accepts `ASC` or `DESC`. Default `DESC`. |
+| `daily` | Boolean | Retrieve daily counts instead of overall counts. Default `false`. |
+| `disp_list_count` | Boolean | Display the count in parentheses. Default `true`. |
