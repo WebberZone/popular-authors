@@ -2,7 +2,7 @@
 Tags: popular, popular authors, author, top authors, views, top 10
 Contributors: webberzone, Ajay
 Donate link: https://wzn.io/donate-wz
-Stable tag: 1.4.0
+Stable tag: 1.5.0
 Requires at least: 6.6
 Requires PHP: 7.4
 Tested up to: 7.0
@@ -11,6 +11,10 @@ License: GPLv2 or later
 Discover and appreciate your blog’s most popular authors, a simple and powerful addon for Top 10 - Popular Posts for WordPress.
 
 == Description ==
+
+**This plugin has been retired and is no longer under active development.**
+
+Existing installs will keep working, but there will be no further updates or support, including security updates. This feature is now built into [Top 10 Pro](https://webberzone.com/plugins/top-10/pro/).
 
 [Popular Authors WordPress plugin](https://webberzone.com/downloads/popular-authors/) is the ultimate addon for [Top 10](https://webberzone.com/plugins/top-10/), the best plugin to showcase your most popular posts on WordPress. With Popular Authors, you can also highlight the top authors on your blog by page views and give them the recognition they deserve.
 
@@ -94,6 +98,12 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 == Changelog ==
 
+= 1.5.0 =
+
+* This is the final release of Popular Authors. The plugin will continue to work but will no longer receive updates or support, including security updates.
+* This feature is now built into Top 10 Pro: https://webberzone.com/plugins/top-10/pro/
+* Modified: Compatibility bump for the latest versions of WordPress and PHP.
+
 = 1.4.0 =
 
 Release post: [https://webberzone.com/announcements/popular-authors-1-4-0](https://webberzone.com/announcements/popular-authors-1-4-0)
@@ -123,6 +133,9 @@ Release post: [https://webberzone.com/announcements/popular-authors-1-3-0](https
 For previous changelog entries please visit [Github Releases page](https://github.com/WebberZone/popular-authors/releases)
 
 == Upgrade Notice ==
+
+= 1.5.0 =
+Final release. The plugin will continue to work but will no longer receive updates or support, including security updates. This feature is now built into Top 10 Pro. See changelog for details.
 
 = 1.4.0 =
 New features and bug fixes. Check the release post on WebberZone.com

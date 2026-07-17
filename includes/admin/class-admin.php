@@ -35,11 +35,43 @@ class Admin {
 	 * @since 1.1.0
 	 */
 	public function __construct() {
+		Hook_Registry::add_action( 'admin_init', array( $this, 'register_deprecation_notice' ) );
 		Hook_Registry::add_action( 'admin_notices', array( $this, 'admin_notices' ) );
 		Hook_Registry::add_filter( 'tptn_settings_sections', array( $this, 'add_settings_section' ) );
 		Hook_Registry::add_filter( 'tptn_registered_settings', array( $this, 'settings_popular_authors' ) );
 
 		$this->dashboard_widget = new Dashboard_Widget();
+	}
+
+	/**
+	 * Register the deprecation (final release) notice.
+	 *
+	 * @since 1.5.0
+	 */
+	public function register_deprecation_notice() {
+		if ( ! function_exists( '\WebberZone\Top_Ten\wz_top_ten' ) ) {
+			return;
+		}
+
+		$admin_notices_api = \WebberZone\Top_Ten\wz_top_ten()->admin->admin_notices_api ?? null;
+		if ( ! $admin_notices_api ) {
+			return;
+		}
+
+		$admin_notices_api->register_notice(
+			array(
+				'id'          => 'wzpa_deprecation',
+				'type'        => 'warning',
+				'message'     => sprintf(
+					/* translators: 1: Plugin name, 2: Top 10 Pro link, 3: Learn more link. */
+					esc_html__( '%1$s has reached its final release and will no longer receive updates, including security updates. Your site is unaffected, but this feature is now built into %2$s. %3$s', 'popular-authors' ),
+					'<strong>Popular Authors</strong>',
+					'<a href="https://webberzone.com/plugins/top-10/pro/" target="_blank" rel="noopener">' . esc_html__( 'Top 10 Pro', 'popular-authors' ) . '</a>',
+					'<a href="https://webberzone.com/plugins/popular-authors/" target="_blank" rel="noopener">' . esc_html__( 'Learn more', 'popular-authors' ) . '</a>'
+				),
+				'dismissible' => true,
+			)
+		);
 	}
 
 	/**
