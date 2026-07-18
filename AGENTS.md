@@ -2,6 +2,8 @@
 
 This file provides guidance to Codex (Codex.ai/code) when working with code in this repository.
 
+> **DEPRECATED:** This plugin is no longer maintained. v1.5.0 was the final release — the feature is now built into Top 10 Pro. Treat any work here as maintenance-only unless the user says otherwise.
+
 ## Plugin Overview
 
 Popular Authors (v1.5.0) is an addon for the Top 10 plugin that displays a ranked list of the site's most-popular authors, derived from Top 10's visit-count data. It requires Top 10 to be active (`Requires Plugins: top-10`). Namespace: `WebberZone\Popular_Authors`. Constants: `POP_AUTHOR_VERSION`, `POP_AUTHOR_PLUGIN_DIR`, `POP_AUTHOR_PLUGIN_URL`, `POP_AUTHOR_PLUGIN_FILE`. Settings are stored inside Top 10's own `tptn_settings` option (no separate option key). Requires WordPress 6.6+, PHP 7.4+. No Freemius. v1.5.0 is the final release; the feature is now built into Top 10 Pro.
