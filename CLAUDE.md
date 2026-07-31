@@ -2,6 +2,13 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Response Rules
+
+- Return only the changed function or section, not the full file
+- No explanation unless asked
+- No suggestions outside the scope of what was asked
+- Skip preamble and trailing summaries
+
 > **DEPRECATED:** This plugin is no longer maintained. v1.5.0 was the final release — the feature is now built into Top 10 Pro. Treat any work here as maintenance-only unless the user says otherwise.
 
 ## Plugin Overview
