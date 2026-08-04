@@ -22,7 +22,7 @@ The selected style is loaded automatically on the front end through `wp_enqueue_
 
 ## CSS classes
 
-The output wrapper `<div>` carries a predictable class hook that you can target from your own stylesheet. The full class list is filtered through the `wzpa_authors_class` filter.
+The output wrapper `<div>` carries a predictable class hook that you can target from your own stylesheet. The full class list is filtered through the [`wzpa_authors_class`](https://webberzone.dev/popular-authors/hooks/wzpa_authors_class/) filter.
 
 | Class | When it is applied |
 | --- | --- |
@@ -74,3 +74,7 @@ For example, to swap to an ordered list with custom item classes:
 ## Dashboard widget styles
 
 The WordPress dashboard widget added in 1.4.0 ships its own stylesheet under the handle `wzpa-dashboard-widget`. If you have `SCRIPT_DEBUG` enabled, the unminified `dashboard-widget.css` is loaded; otherwise the minified `dashboard-widget.min.css` is loaded. Target the wrapper with `.wzpa-dashboard-widget`.
+
+## See also
+
+- [`wzpa_authors_class`](https://webberzone.dev/popular-authors/hooks/wzpa_authors_class/)

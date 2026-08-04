@@ -27,7 +27,7 @@ Popular Authors pulls its data from two of Top 10's database tables:
 - `wp_top_ten` — overall visit totals per post.
 - `wp_top_ten_daily` — daily totals used when the **Custom period** toggle is enabled.
 
-The plugin joins those tables against `wp_users` and `wp_posts` to compute a per-author sum, then renders the ranked list. The SQL is exposed through the `wzpa_query_fields`, `wzpa_query_join`, `wzpa_query_where`, `wzpa_query_groupby`, `wzpa_query_orderby`, `wzpa_query_limits`, and `wzpa_query_prepare_values` filters for advanced customization.
+The plugin joins those tables against `wp_users` and `wp_posts` to compute a per-author sum, then renders the ranked list. The SQL is exposed through the `wzpa_query_fields`, `wzpa_query_join`, `wzpa_query_where`, `wzpa_query_groupby`, `wzpa_query_orderby`, `wzpa_query_limits`, and [`wzpa_query_prepare_values`](https://webberzone.dev/popular-authors/hooks/wzpa_query_prepare_values/) filters for advanced customization.
 
 ### Settings storage
 
@@ -35,7 +35,7 @@ Popular Authors has no separate `wp_options` row of its own. Every setting is st
 
 ### Cache reuse
 
-Output caching reuses Top 10's `tptn_cache_time` filter, so turning caching on for Popular Authors piggybacks on the same lifetime you have configured for Top 10. See [Popular Authors Settings](https://webberzone.com/support/knowledgebase/popular-authors-settings/#cache-output) for the toggle.
+Output caching reuses Top 10's [`tptn_cache_time`](https://webberzone.dev/popular-authors/hooks/tptn_cache_time/) filter, so turning caching on for Popular Authors piggybacks on the same lifetime you have configured for Top 10. See [Popular Authors Settings](https://webberzone.com/support/knowledgebase/popular-authors-settings/#cache-output) for the toggle.
 
 ### Helper functions
 
@@ -55,3 +55,8 @@ When [Top 10 Pro](https://webberzone.com/plugins/top-10-pro/) is active, an extr
 ## Uninstalling Top 10
 
 Deactivating Top 10 also disables the front-end output of Popular Authors. If you uninstall Top 10 while Popular Authors is still installed, Popular Authors' admin notice will keep reminding you to reinstall it until you also deactivate or remove Popular Authors.
+
+## See also
+
+- [`wzpa_query_prepare_values`](https://webberzone.dev/popular-authors/hooks/wzpa_query_prepare_values/)
+- [`tptn_cache_time`](https://webberzone.dev/popular-authors/hooks/tptn_cache_time/)
