@@ -18,7 +18,7 @@ Every setting is prefixed with `wzpa_` in the database and is read through `tptn
 
 ### Cache output
 
-Turn this ON to cache the HTML output of the popular authors list. The cache key is generated from the display arguments and the cache lifetime is shared with Top 10's `tptn_cache_time` filter.
+Turn this ON to cache the HTML output of the popular authors list. The cache key is generated from the display arguments and the cache lifetime is shared with Top 10's [`tptn_cache_time`](https://webberzone.dev/popular-authors/hooks/tptn_cache_time/) filter.
 
 **Default:** Enabled
 
@@ -117,3 +117,7 @@ Choose a built-in visual style. See [Popular Authors Styles](https://webberzone.
 | Left Thumbs | Display the author in a grid with the avatar to the left of the text. |
 
 **Default:** `no_style`
+
+## See also
+
+- [`tptn_cache_time`](https://webberzone.dev/popular-authors/hooks/tptn_cache_time/)

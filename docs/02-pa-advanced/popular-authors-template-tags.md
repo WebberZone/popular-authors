@@ -91,7 +91,7 @@ $defaults = wzpa_list_popular_authors_args();
 
 ## Display arguments
 
-These arguments are accepted by `wzpa_list_popular_authors()` and `wzpa_list_popular_authors_args()`. The same key set is exposed by the [shortcode](https://webberzone.com/support/knowledgebase/popular-authors-shortcode/) and the [block](https://webberzone.com/support/knowledgebase/popular-authors-blocks/).
+These arguments are accepted by [`wzpa_list_popular_authors()`](https://webberzone.dev/popular-authors/hooks/wzpa_list_popular_authors/) and `wzpa_list_popular_authors_args()`. The same key set is exposed by the [shortcode](https://webberzone.com/support/knowledgebase/popular-authors-shortcode/) and the [block](https://webberzone.com/support/knowledgebase/popular-authors-blocks/).
 
 | Key | Type | Description |
 | --- | --- | --- |
@@ -119,7 +119,7 @@ These arguments are accepted by `wzpa_list_popular_authors()` and `wzpa_list_pop
 
 ## Query arguments
 
-These arguments are accepted by `wzpa_get_popular_author_ids()` and map directly to the database query that aggregates visits from Top 10's tables.
+These arguments are accepted by [`wzpa_get_popular_author_ids()`](https://webberzone.dev/popular-authors/hooks/wzpa_get_popular_author_ids/) and map directly to the database query that aggregates visits from Top 10's tables.
 
 | Key | Type | Description |
 | --- | --- | --- |
@@ -132,3 +132,8 @@ These arguments are accepted by `wzpa_get_popular_author_ids()` and map directly
 | `paged` | Integer | Page of results to return. Default `1`. |
 | `include` | Array / String | Author IDs to include. Default empty array. |
 | `exclude` | Array / String | Author IDs to exclude. Default empty array. |
+
+## See also
+
+- [`wzpa_list_popular_authors`](https://webberzone.dev/popular-authors/hooks/wzpa_list_popular_authors/)
+- [`wzpa_get_popular_author_ids`](https://webberzone.dev/popular-authors/hooks/wzpa_get_popular_author_ids/)
