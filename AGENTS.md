@@ -38,11 +38,12 @@ composer zip            # Create distribution zip
 ### JavaScript/CSS / Blocks
 
 ```bash
-npm run build           # Build blocks (src → includes/frontend/blocks/build/)
-npm start               # Watch blocks
-npm run lint:js         # ESLint on block source
-npm run lint:css        # Stylelint on block source
+pnpm run build           # Build blocks (src → includes/frontend/blocks/build/)
+pnpm start               # Watch blocks
+pnpm run lint:js         # ESLint on block source
+pnpm run lint:css        # Stylelint on block source
 node build-assets.js    # Minify CSS/JS assets (non-block)
+ncu -u && pnpm install   # Update dependencies to latest and reinstall
 ```
 
 Block source: `includes/frontend/blocks/src/` (two blocks: `popular-authors/`, `popular-posts/`).
