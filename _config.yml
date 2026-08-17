@@ -1,0 +1,52 @@
+title: Popular Authors
+description: Popular Authors is now retired — the feature lives on in Top 10 Pro. Documentation for existing installs.
+url: https://webberzone.github.io
+baseurl: /popular-authors
+
+plugin_name: Popular Authors
+plugin_slug: popular-authors
+
+permalink: pretty
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+defaults:
+  - scope:
+      path: "docs"
+    values:
+      layout: doc
+
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: default
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - node_modules
+  - build
+  - phpunit
+  - phpcompat-tools
+  - includes
+  - languages
+  - wporg-assets
+  - readme.txt
+  - changelog.txt
+  - build-zip.sh
+  - build-assets.js
+  - composer.json
+  - composer.lock
+  - package.json
+  - phpcs.xml.dist
+  - phpstan-baseline.neon
+  - phpstan.neon.dist
+  - phpunit.xml.dist
+  - "*.php"
+  - README.md
+  - AGENTS.md
+  - CLAUDE.md
