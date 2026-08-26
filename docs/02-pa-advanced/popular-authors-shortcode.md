@@ -12,7 +12,7 @@ order: 0
 
 If you are unfamiliar with shortcodes, read the [Shortcode entry in the WordPress Codex](https://codex.wordpress.org/Shortcode).
 
-## \[wzpa_popular_authors\]
+## [[wzpa_popular_authors]]
 
 Use this shortcode to display the popular authors based on the number of visits tracked by [Top 10](https://webberzone.com/plugins/top-10/).
 
@@ -45,7 +45,7 @@ All attributes are optional. Attributes that are not set fall back to the defaul
 | `before_list_item` | String | HTML before each list item. Default `<li>`. |
 | `after_list_item` | String | HTML after each list item. Default `</li>`. |
 
-## \[wzpa_author_top_posts\]
+## [[wzpa_author_top_posts]]
 
 Use this shortcode to display the most popular posts for a specific author. The shortcode calls `wzpa_display_top_posts_by_author()` under the hood.
 
