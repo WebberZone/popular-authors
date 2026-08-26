@@ -40,7 +40,7 @@ The free plugin always counts posts from the `post` post type. With [Top 10 Pro]
 
 ## Can I display top posts for a specific author?
 
-Yes. Use the **Popular Posts by Author** block or the `[wzpa_author_top_posts]` shortcode, or call `wzpa_display_top_posts_by_author()` from a theme template. See [Popular Authors Shortcodes](https://webberzone.com/support/knowledgebase/popular-authors-shortcode/) and [Popular Authors Template Tags](https://webberzone.com/support/knowledgebase/popular-authors-template-tags/).
+Yes. Use the **Popular Posts by Author** block or the `[[wzpa_author_top_posts]]` shortcode, or call `wzpa_display_top_posts_by_author()` from a theme template. See [Popular Authors Shortcodes](https://webberzone.com/support/knowledgebase/popular-authors-shortcode/) and [Popular Authors Template Tags](https://webberzone.com/support/knowledgebase/popular-authors-template-tags/).
 
 ## Why does the widget preview look different from the front end?
 

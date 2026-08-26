@@ -17,7 +17,7 @@ If you are unfamiliar with shortcodes, read the [Shortcode entry in the WordPres
 Use this shortcode to display the popular authors based on the number of visits tracked by [Top 10](https://webberzone.com/plugins/top-10/).
 
 ```text
-[wzpa_popular_authors number="5" show_avatar="1"]
+[[wzpa_popular_authors number="5" show_avatar="1"]]
 ```
 
 All attributes are optional. Attributes that are not set fall back to the defaults configured under **Top 10 → Settings → Popular Authors**.
@@ -50,7 +50,7 @@ All attributes are optional. Attributes that are not set fall back to the defaul
 Use this shortcode to display the most popular posts for a specific author. The shortcode calls `wzpa_display_top_posts_by_author()` under the hood.
 
 ```text
-[wzpa_author_top_posts author="42" posts_per_page="5"]
+[[wzpa_author_top_posts author="42" posts_per_page="5"]]
 ```
 
 The `author` attribute is required. All other attributes are optional.

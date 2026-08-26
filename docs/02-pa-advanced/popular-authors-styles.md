@@ -68,7 +68,7 @@ after_list_item  </li>
 For example, to swap to an ordered list with custom item classes:
 
 ```text
-[wzpa_popular_authors before_list='<ol class="top-authors">' after_list='</ol>' before_list_item='<li class="top-authors__item">' after_list_item='</li>']
+[[wzpa_popular_authors before_list='<ol class="top-authors">' after_list='</ol>' before_list_item='<li class="top-authors__item">' after_list_item='</li>']]
 ```
 
 ## Dashboard widget styles
