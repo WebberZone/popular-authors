@@ -11,6 +11,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 > **DEPRECATED:** This plugin is no longer maintained. v1.5.0 was the final release — the feature is now built into Top 10 Pro. Treat any work here as maintenance-only unless the user says otherwise.
 
+## Release Notes
+
+- In `readme.txt`, prefix any Pro-only changelog bullet with `[Pro]`
+
 ## Links
 
 - GitHub: <https://github.com/WebberZone/popular-authors>
