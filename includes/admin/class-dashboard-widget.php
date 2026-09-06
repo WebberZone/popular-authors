@@ -59,6 +59,13 @@ class Dashboard_Widget {
 			'echo'          => false,
 		);
 
+		/**
+		 * Filters the arguments used to render the Popular Authors dashboard widget.
+		 *
+		 * @since 1.4.0
+		 *
+		 * @param array $args Arguments passed to the popular authors list.
+		 */
 		$args = apply_filters( 'wzpa_dashboard_widget_args', $args );
 
 		$output = Display::list_popular_authors( $args );
