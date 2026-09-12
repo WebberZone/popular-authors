@@ -3,7 +3,7 @@ slug: popular-authors-template-tags
 title: "Popular Authors Template Tags"
 products: [popular-authors]
 sections: [02-pa-advanced]
-tags: [popular-authors,template-tag,developer]
+tags: [developer, popular-authors, template-tag]
 status: publish
 order: 0
 ---

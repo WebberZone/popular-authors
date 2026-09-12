@@ -3,7 +3,7 @@ slug: popular-authors-blocks
 title: "Blocks in Popular Authors"
 products: [popular-authors]
 sections: [02-pa-advanced]
-tags: [popular-authors,block]
+tags: [block, popular-authors]
 status: publish
 order: 0
 ---

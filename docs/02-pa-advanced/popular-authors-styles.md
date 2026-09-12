@@ -3,7 +3,7 @@ slug: popular-authors-styles
 title: "Popular Authors Styles"
 products: [popular-authors]
 sections: [02-pa-advanced]
-tags: [popular-authors,styles,css]
+tags: [css, popular-authors, styles]
 status: publish
 order: 0
 ---

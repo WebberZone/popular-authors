@@ -3,7 +3,7 @@ slug: popular-authors-and-top-10-integration
 title: "Popular Authors and Top 10 Integration"
 products: [popular-authors]
 sections: [01-pa-getting-started]
-tags: [popular-authors,top-10,integration]
+tags: [integration, popular-authors, top-10]
 status: publish
 order: 0
 ---

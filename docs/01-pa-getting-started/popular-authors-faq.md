@@ -3,7 +3,7 @@ slug: popular-authors-faq
 title: "Popular Authors Frequently Asked Questions"
 products: [popular-authors]
 sections: [01-pa-getting-started]
-tags: [popular-authors,faq]
+tags: [faq, popular-authors]
 status: publish
 order: 0
 ---

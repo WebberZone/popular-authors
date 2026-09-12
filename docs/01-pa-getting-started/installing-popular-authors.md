@@ -3,7 +3,7 @@ slug: installing-popular-authors
 title: "Installing Popular Authors"
 products: [popular-authors]
 sections: [01-pa-getting-started]
-tags: [popular-authors,installation]
+tags: [installation, popular-authors]
 status: publish
 order: 0
 ---
