@@ -1,8 +1,10 @@
 # Popular Authors
 
-__Requires:__ WordPress 6.6 and Top 10 v3.0.0
+__Requires:__ WordPress 6.6 and Top 10
 
-__Tested up to:__ 7.0
+__Tested up to:__ 7.1
+
+__Requires PHP:__ 7.4
 
 __License:__ [GPL-2.0+](http://www.gnu.org/licenses/gpl-2.0.html)
 
