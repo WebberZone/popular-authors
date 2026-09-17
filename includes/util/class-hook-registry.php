@@ -40,7 +40,7 @@ class Hook_Registry {
 		if ( ! in_array( $hook_type, array( 'action', 'filter' ), true ) ) {
 			return false;
 		}
-		if ( empty( trim( $hook_name ) ) ) {
+		if ( empty( trim( $hook_name, " \t\n\r\0\x0B" ) ) ) {
 			return false;
 		}
 		if ( $priority < 0 ) {
@@ -235,8 +235,8 @@ class Hook_Registry {
 
 		if ( is_array( $callback ) ) {
 			if ( is_object( $callback[0] ) ) {
-				$object_hash = spl_object_hash( $callback[0] );
-				return get_class( $callback[0] ) . '#' . $object_hash . '::' . $callback[1];
+				$object_id = spl_object_id( $callback[0] );
+				return get_class( $callback[0] ) . '#' . $object_id . '::' . $callback[1];
 			}
 			return $callback[0] . '::' . $callback[1];
 		}
