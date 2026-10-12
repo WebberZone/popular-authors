@@ -8,6 +8,8 @@ status: publish
 order: 0
 ---
 
+> **Popular Authors is retired.** Version 1.5.0 was the final release, and the feature is now built into [Top 10 Pro](https://webberzone.com/plugins/top-10/pro/). For the current documentation, see [Migrating from the Popular Authors Plugin](https://webberzone.com/support/knowledgebase/migrating-from-popular-authors/).
+
 [Popular Authors](https://webberzone.com/plugins/popular-authors/) is an addon for [Top 10](https://webberzone.com/plugins/top-10/) and cannot function without it. Popular Authors aggregates the visit counts that Top 10 tracks and ranks your site's authors by those counts. This article explains how the two plugins fit together.
 
 ## Requirements

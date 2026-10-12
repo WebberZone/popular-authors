@@ -8,6 +8,8 @@ status: publish
 order: 0
 ---
 
+> **Popular Authors is retired.** Version 1.5.0 was the final release, and the feature is now built into [Top 10 Pro](https://webberzone.com/plugins/top-10/pro/). For the current documentation, see [Popular Authors Blocks and Widgets](https://webberzone.com/support/knowledgebase/popular-authors-blocks/).
+
 [Popular Authors](https://webberzone.com/plugins/popular-authors/) registers two Gutenberg blocks that you can drop into any post, page, or template. Both blocks render server-side and use the visit data tracked by [Top 10](https://webberzone.com/plugins/top-10/).
 
 ## Popular Authors block

@@ -8,6 +8,8 @@ status: publish
 order: 0
 ---
 
+> **Popular Authors is retired.** Version 1.5.0 was the final release, and the feature is now built into [Top 10 Pro](https://webberzone.com/plugins/top-10/pro/). For the current documentation, see [Top 10 Settings – Popular Authors](https://webberzone.com/support/knowledgebase/popular-authors-settings/).
+
 [kbtoc]
 
 [Popular Authors](https://webberzone.com/plugins/popular-authors/) stores all of its configuration inside [Top 10](https://webberzone.com/plugins/top-10/)'s settings. There is no standalone settings page for Popular Authors. Open **Top 10 → Settings** and click the **Popular Authors** tab to access the settings below.

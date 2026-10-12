@@ -8,6 +8,8 @@ status: publish
 order: 0
 ---
 
+> **Popular Authors is retired.** Version 1.5.0 was the final release, and the feature is now built into [Top 10 Pro](https://webberzone.com/plugins/top-10/pro/). For the current documentation, see [Popular Authors Template Tags, Hooks, and CSS](https://webberzone.com/support/knowledgebase/popular-authors-template-tags/).
+
 [Popular Authors](https://webberzone.com/plugins/popular-authors/) ships with two built-in visual styles plus an opt-out option for theme-authored styles. Styles are configured globally under **Top 10 → Settings → Popular Authors** and can be overridden per widget, shortcode, or block.
 
 ## Available styles

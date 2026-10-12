@@ -8,6 +8,8 @@ status: publish
 order: 0
 ---
 
+> **Popular Authors is retired.** Version 1.5.0 was the final release, and the feature is now built into [Top 10 Pro](https://webberzone.com/plugins/top-10/pro/). For the current documentation, see [Migrating from the Popular Authors Plugin](https://webberzone.com/support/knowledgebase/migrating-from-popular-authors/).
+
 [Popular Authors](https://webberzone.com/plugins/popular-authors/) is a [Top 10](https://webberzone.com/plugins/top-10/) addon that ranks your site's authors by page views tracked by Top 10. Popular Authors is [hosted on WordPress.org](https://wordpress.org/plugins/popular-authors/) and requires Top 10 v3 or above to be installed and active.
 
 ## WordPress install (The easy way)

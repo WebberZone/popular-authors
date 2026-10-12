@@ -8,6 +8,8 @@ status: publish
 order: 0
 ---
 
+> **Popular Authors is retired.** Version 1.5.0 was the final release, and the feature is now built into [Top 10 Pro](https://webberzone.com/plugins/top-10/pro/). For the current documentation, see [Migrating from the Popular Authors Plugin](https://webberzone.com/support/knowledgebase/migrating-from-popular-authors/).
+
 Common questions about [Popular Authors](https://webberzone.com/plugins/popular-authors/), a [Top 10](https://webberzone.com/plugins/top-10/) addon.
 
 ## Why does the front end show "Please install and activate Top 10 plugin to display popular authors."?

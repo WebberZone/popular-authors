@@ -8,6 +8,8 @@ status: publish
 order: 0
 ---
 
+> **Popular Authors is retired.** Version 1.5.0 was the final release, and the feature is now built into [Top 10 Pro](https://webberzone.com/plugins/top-10/pro/). For the current documentation, see [Popular Authors Shortcodes](https://webberzone.com/support/knowledgebase/popular-authors-shortcode/).
+
 [Popular Authors](https://webberzone.com/plugins/popular-authors/) registers two shortcodes that let you embed the most-popular authors list and a list of top posts for a given author anywhere in your content. Visit counts are drawn from [Top 10](https://webberzone.com/plugins/top-10/).
 
 If you are unfamiliar with shortcodes, read the [Shortcode entry in the WordPress Codex](https://codex.wordpress.org/Shortcode).

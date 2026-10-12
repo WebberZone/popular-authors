@@ -8,6 +8,8 @@ status: publish
 order: 0
 ---
 
+> **Popular Authors is retired.** Version 1.5.0 was the final release, and the feature is now built into [Top 10 Pro](https://webberzone.com/plugins/top-10/pro/). For the current documentation, see [Popular Authors Template Tags, Hooks, and CSS](https://webberzone.com/support/knowledgebase/popular-authors-template-tags/).
+
 [Popular Authors](https://webberzone.com/plugins/popular-authors/) ships four PHP functions you can call from a theme, child theme, or plugin to display or fetch author data. All functions live in the global namespace and require [Top 10](https://webberzone.com/plugins/top-10/) to be active.
 
 ## wzpa_list_popular_authors()
