@@ -128,6 +128,11 @@ class Blocks {
 
 		if ( isset( $attributes['other_attributes'] ) ) {
 			$arguments = wp_parse_args( $attributes['other_attributes'], $arguments );
+
+			// Free text cannot switch output mode or read another site's posts table.
+			$arguments['is_block'] = 1;
+			$arguments['echo']     = 0;
+			unset( $arguments['blog_id'] );
 		}
 
 		/**
@@ -201,7 +206,7 @@ class Blocks {
 
 		return \wzpa_display_top_posts_by_author(
 			$attributes['author'],
-			$attributes['field'] ?? 'id',
+			in_array( $attributes['field'] ?? 'id', array( 'id', 'ID', 'slug' ), true ) ? $attributes['field'] : 'id',
 			$arguments,
 			false
 		);

@@ -85,7 +85,7 @@ class Display {
 		// Set the post counts for each author.
 		$post_counts = array();
 		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.NotPrepared
-		$post_counts_query = $wpdb->get_results( "SELECT DISTINCT post_author, COUNT(ID) AS count FROM $wpdb->posts WHERE " . get_private_posts_cap_sql( 'post' ) . ' GROUP BY post_author' );
+		$post_counts_query = $wpdb->get_results( "SELECT DISTINCT post_author, COUNT(ID) AS count FROM $wpdb->posts WHERE post_type = 'post' AND post_status = 'publish' GROUP BY post_author" );
 
 		foreach ( (array) $post_counts_query as $row ) {
 			$post_counts[ $row->post_author ] = $row->count;
@@ -321,7 +321,8 @@ class Display {
 		$join_type = isset( $args['hide_empty'] ) && $args['hide_empty'] ? 'INNER' : 'LEFT';
 
 		$join .= "INNER JOIN {$user_meta_table} ON {$users_table}.ID = {$user_meta_table}.user_id AND {$user_meta_table}.meta_key = '{$blog_prefix}capabilities' ";
-		$join .= " {$join_type} JOIN {$posts_table} ON {$posts_table}.post_author={$users_table}.ID AND {$posts_table}.post_status = 'publish' ";
+		// Only authors of published posts are listed, so users who never published stay private.
+		$join .= " INNER JOIN {$posts_table} ON {$posts_table}.post_author={$users_table}.ID AND {$posts_table}.post_status = 'publish' ";
 		$join .= " {$join_type} JOIN {$pop_posts_table} ON {$pop_posts_table}.postnumber={$posts_table}.ID AND {$pop_posts_table}.blog_id={$blog_id} ";
 
 		// Initialize prepare values array.
@@ -353,8 +354,13 @@ class Display {
 			$prepare_values[] = $from_date;
 		}
 
-		if ( $args['post_type'] ) {
-			$post_type      = wp_parse_list( $args['post_type'] );
+		// Restrict to public post types; an empty or invalid value falls back to all of them.
+		$public_types = array_values( get_post_types( array( 'public' => true ) ) );
+		$post_type    = array_values( array_intersect( wp_parse_list( (string) $args['post_type'] ), $public_types ) );
+		if ( empty( $post_type ) ) {
+			$post_type = $public_types;
+		}
+		if ( $post_type ) {
 			$placeholders   = array_fill( 0, count( $post_type ), '%s' );
 			$where         .= " AND {$posts_table}.post_type IN (" . implode( ',', $placeholders ) . ')';
 			$prepare_values = array_merge( $prepare_values, $post_type );

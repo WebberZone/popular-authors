@@ -97,7 +97,8 @@ class Shortcodes {
 			return '';
 		}
 		$author = $atts['author'];
-		$field  = $atts['field'];
+		// Content can look up authors by ID or slug only; email and login would reveal registered users.
+		$field = in_array( $atts['field'], array( 'id', 'ID', 'slug' ), true ) ? $atts['field'] : 'id';
 		unset( $atts['author'], $atts['field'] );
 
 		return \wzpa_display_top_posts_by_author(
