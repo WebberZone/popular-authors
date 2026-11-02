@@ -2,7 +2,7 @@
 Tags: popular, popular authors, author, top authors, views, top 10
 Contributors: webberzone, Ajay
 Donate link: https://wzn.io/donate-wz
-Stable tag: 1.5.0
+Stable tag: 1.5.1
 Requires at least: 6.6
 Requires PHP: 7.4
 Tested up to: 7.1
@@ -98,6 +98,14 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 == Changelog ==
 
+= 1.5.1 =
+
+Release date: 2 November 2026
+
+**Security**
+
+* Hardened popular authors lists to show only authors of published posts.
+
 = 1.5.0 =
 
 * This is the final release of Popular Authors. The plugin will continue to work but will no longer receive updates or support, including security updates.
@@ -134,8 +142,5 @@ For previous changelog entries please visit [Github Releases page](https://githu
 
 == Upgrade Notice ==
 
-= 1.5.0 =
-Final release. The plugin will continue to work but will no longer receive updates or support, including security updates. This feature is now built into Top 10 Pro. See changelog for details.
-
-= 1.4.0 =
-New features and bug fixes. Check the release post on WebberZone.com
+= 1.5.1 =
+Security release. Update recommended.
