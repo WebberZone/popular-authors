@@ -57,6 +57,9 @@ class Shortcodes {
 			'wzpa_popular_authors'
 		);
 
+		// Post content cannot read another site's posts table.
+		unset( $atts['blog_id'] );
+
 		return Display::list_popular_authors( $atts );
 	}
 
