@@ -637,6 +637,7 @@ class Display {
 	 * @return string Cache key.
 	 */
 	public static function cache_get_key( $args ) {
-		return 'wzpa_' . md5( wp_json_encode( $args ) );
+		// Versioned so lists cached before the access fixes are not served.
+		return 'wzpa_v2_' . md5( wp_json_encode( $args ) );
 	}
 }

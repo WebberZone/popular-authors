@@ -109,6 +109,10 @@ class Blocks {
 	 */
 	public static function render_block_popular_authors( $attributes ) {
 
+		// Core passes attributes not declared in block.json through unchanged, so keep only declared ones.
+		$block_type = \WP_Block_Type_Registry::get_instance()->get_registered( 'popular-authors/popular-authors' );
+		$attributes = array_intersect_key( (array) $attributes, ( $block_type && is_array( $block_type->attributes ) ) ? $block_type->attributes : array() );
+
 		// Map block attributes to PHP attributes.
 		$attributes['extra_class']    = $attributes['className'] ?? '';
 		$attributes['optioncount']    = $attributes['showOptionCount'] ?? false;
@@ -128,12 +132,12 @@ class Blocks {
 
 		if ( isset( $attributes['other_attributes'] ) ) {
 			$arguments = wp_parse_args( $attributes['other_attributes'], $arguments );
-
-			// Free text cannot switch output mode or read another site's posts table.
-			$arguments['is_block'] = 1;
-			$arguments['echo']     = 0;
-			unset( $arguments['blog_id'] );
 		}
+
+		// Block content cannot switch output mode or read another site's posts table.
+		$arguments['is_block'] = 1;
+		$arguments['echo']     = 0;
+		unset( $arguments['blog_id'] );
 
 		/**
 		 * Filters arguments passed to `wzpa_list_popular_authors` for the block.
