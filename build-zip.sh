@@ -48,6 +48,14 @@ ISSUE_TEMPLATE.md
 PULL_REQUEST_TEMPLATE.md
 CLAUDE.md
 AGENTS.md
+Gemfile*
+_config.yml
+/_includes/
+/_layouts/
+/_plugins/
+/assets/
+index.md
+favicon.ico
 EOF
 
 # Create zip
