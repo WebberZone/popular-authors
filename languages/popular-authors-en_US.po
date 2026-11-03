@@ -156,7 +156,7 @@ msgstr ""
 msgid "Display the popular authors in a grid with the image to the left of the text"
 msgstr ""
 
-#: includes/frontend/blocks/class-blocks.php:177
+#: includes/frontend/blocks/class-blocks.php:186
 msgid "Select an author from the sidebar panel."
 msgstr ""
 
@@ -459,11 +459,11 @@ msgstr ""
 msgid "Top Authors"
 msgstr ""
 
-#: includes/admin/class-dashboard-widget.php:67
+#: includes/admin/class-dashboard-widget.php:74
 msgid "No authors found."
 msgstr ""
 
-#: includes/admin/class-dashboard-widget.php:77
+#: includes/admin/class-dashboard-widget.php:84
 msgid "Configure Popular Authors Settings"
 msgstr ""
 
