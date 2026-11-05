@@ -8,7 +8,7 @@ status: publish
 order: 0
 ---
 
-> **Popular Authors is retired.** Version 1.5.0 was the final release, and the feature is now built into [Top 10 Pro](https://webberzone.com/plugins/top-10/pro/). For the current documentation, see [Popular Authors Blocks and Widgets](https://webberzone.com/support/knowledgebase/popular-authors-blocks/).
+> **Popular Authors is retired.** The feature is now built into [Top 10 Pro](https://webberzone.com/plugins/top-10/pro/). For the current documentation, see [Popular Authors Blocks and Widgets](https://webberzone.com/support/knowledgebase/popular-authors-blocks/).
 
 [Popular Authors](https://webberzone.com/plugins/popular-authors/) registers two Gutenberg blocks that you can drop into any post, page, or template. Both blocks render server-side and use the visit data tracked by [Top 10](https://webberzone.com/plugins/top-10/).
 
@@ -30,10 +30,12 @@ The block uses server-side rendering, so the editor preview reflects what visito
 | Show Full Name | Toggle | Display the author's full name (`First Name Last Name`) when set; otherwise the display name is used. |
 | Show Avatar | Toggle | Display the author's avatar. |
 | Exclude admin | Toggle | Exclude the `admin` account. Enable if you publish posts under a different username. |
-| Hide authors with no posts | Toggle | When ON, authors with no visited posts are excluded. |
+| Hide authors with no posts | Toggle | When ON, authors need matching visit records and at least one published standard post (`post`). |
 | Author IDs to include | Text | Comma-separated list of author IDs to include. This has priority over **Author IDs to exclude**. |
 | Author IDs to exclude | Text | Comma-separated list of author IDs to exclude. |
 | Other attributes | Textarea | Found under the **Advanced** panel. Pass extra attributes as a URL-style query string, for example `post_type=post,page&styles=card`. |
+
+Author lists include only authors with published posts in public post types. **Hide authors with no posts** also requires matching visit records and at least one published standard post (`post`). The block accepts only declared attributes. Its **Other attributes** field cannot switch the site with `blog_id` or change the output context.
 
 ## Popular Posts by Author block
 
@@ -42,7 +44,7 @@ Block name: `popular-authors/popular-posts`. Renders the most popular posts for 
 | Setting | Type | Description |
 | --- | --- | --- |
 | Author | Dropdown | Select the author whose most popular posts you want to display. Selecting an author always sets the lookup field to `id`. |
-| Number of posts | Range | Maximum number of popular posts to display. Range `1`–`100`. Default `10`. |
+| Number of posts | Range | Maximum number of popular posts to display. Range `1` to `100`. Default `10`. |
 | Post Types | Token field | One or more post types to include. |
 | Order By | Dropdown | Sort by `Visits`, `Date`, or `Title`. Default `Visits`. |
 | Order | Dropdown | `Descending` or `Ascending`. Default `Descending`. |
@@ -50,3 +52,5 @@ Block name: `popular-authors/popular-posts`. Renders the most popular posts for 
 | Number of days | Range | Days in the custom period. Default `1`. |
 | Number of hours | Range | Hours in the custom period. Maximum `24`. Default `0`. |
 | Display post count | Toggle | Display the number of visits after the post title. |
+
+The Popular Posts by Author block accepts author lookups by `id`, `ID`, or `slug`. Other lookup fields fall back to `id`.

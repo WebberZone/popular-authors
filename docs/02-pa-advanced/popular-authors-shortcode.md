@@ -8,7 +8,7 @@ status: publish
 order: 0
 ---
 
-> **Popular Authors is retired.** Version 1.5.0 was the final release, and the feature is now built into [Top 10 Pro](https://webberzone.com/plugins/top-10/pro/). For the current documentation, see [Popular Authors Shortcodes](https://webberzone.com/support/knowledgebase/popular-authors-shortcode/).
+> **Popular Authors is retired.** The feature is now built into [Top 10 Pro](https://webberzone.com/plugins/top-10/pro/). For the current documentation, see [Popular Authors Shortcodes](https://webberzone.com/support/knowledgebase/popular-authors-shortcode/).
 
 [Popular Authors](https://webberzone.com/plugins/popular-authors/) registers two shortcodes that let you embed the most-popular authors list and a list of top posts for a given author anywhere in your content. Visit counts are drawn from [Top 10](https://webberzone.com/plugins/top-10/).
 
@@ -36,16 +36,18 @@ All attributes are optional. Attributes that are not set fall back to the defaul
 | `exclude_admin` | Boolean | Exclude the `admin` user. Default `false`. |
 | `show_fullname` | Boolean | Show the author's first and last name instead of their display name. Default `false`. |
 | `show_avatar` | Boolean | Display the author's avatar. Default `false`. |
-| `hide_empty` | Boolean | Hide authors with no published posts. Default `true`. |
+| `hide_empty` | Boolean | Require matching visit records and at least one published standard post (`post`). Authors without published content in the selected public post types are always excluded, even when this is `false`. Default `true`. |
 | `cache` | Boolean | Cache the HTML output using Top 10's cache settings. Default `true`. |
 | `include` | Array / String | Comma- or space-separated list of author IDs to include. Overrides `exclude`. Default empty. |
 | `exclude` | Array / String | Comma- or space-separated list of author IDs to exclude. Default empty. |
-| `post_type` | String | Comma-separated list of post types to include. Default `post`. |
+| `post_type` | String | Comma-separated list of public post types to include. Empty or invalid values fall back to all public post types. Default `post`. |
 | `styles` | String | Style key: `no_style`, `card`, or `left_thumbs`. Default uses the `wzpa_styles` setting. |
 | `before_list` | String | HTML before the list. Default `<ul>`. |
 | `after_list` | String | HTML after the list. Default `</ul>`. |
 | `before_list_item` | String | HTML before each list item. Default `<li>`. |
 | `after_list_item` | String | HTML after each list item. Default `</li>`. |
+
+The shortcode ignores `blog_id` and uses the current site. Use the PHP query function for a deliberate site-specific query; see [Popular Authors Template Tags](popular-authors-template-tags.md).
 
 ## [[wzpa_author_top_posts]]
 
@@ -60,7 +62,7 @@ The `author` attribute is required. All other attributes are optional.
 | Parameter | Type | Description |
 | --- | --- | --- |
 | `author` | Integer / String | Author value. With `field="id"`, an integer user ID. With `field="slug"`, the user nicename. Default `0` (returns nothing). |
-| `field` | String | Field to look up the author by. Accepts `id`, `slug`, `email`, or `login`. Default `id`. |
+| `field` | String | Field to look up the author by. Accepts `id`, `ID`, or `slug`. Other values fall back to `id`; email and login lookups are not supported by the shortcode. Default `id`. |
 | `posts_per_page` | Integer | Number of posts to display. Default `10`. |
 | `post_type` | String | Post type to retrieve. Default `post`. |
 | `orderby` | String | Field to sort by. Default `visits`. |

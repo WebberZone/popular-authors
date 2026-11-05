@@ -8,7 +8,9 @@ status: publish
 order: 0
 ---
 
-> **Popular Authors is retired.** Version 1.5.0 was the final release, and the feature is now built into [Top 10 Pro](https://webberzone.com/plugins/top-10/pro/). For the current documentation, see [Migrating from the Popular Authors Plugin](https://webberzone.com/support/knowledgebase/migrating-from-popular-authors/).
+[kbtoc]
+
+> **Popular Authors is retired.** The feature is now built into [Top 10 Pro](https://webberzone.com/plugins/top-10/pro/). For the current documentation, see [Migrating from the Popular Authors Plugin](https://webberzone.com/support/knowledgebase/migrating-from-popular-authors/).
 
 Common questions about [Popular Authors](https://webberzone.com/plugins/popular-authors/), a [Top 10](https://webberzone.com/plugins/top-10/) addon.
 
@@ -38,7 +40,7 @@ Use the `include` attribute on the shortcode or block. The value is a comma-sepa
 
 ## Can I show only authors with posts in a specific post type?
 
-The free plugin always counts posts from the `post` post type. With [Top 10 Pro](https://webberzone.com/plugins/top-10-pro/) installed, the **Post types to include** field appears under **Top 10 → Settings → Popular Authors** and lets you pick additional post types. The same value can be overridden per call by passing `post_type="post,page"` to the shortcode or block.
+The free plugin always counts posts from the `post` post type. With [Top 10 Pro](https://webberzone.com/plugins/top-10/pro/) installed, the **Post types to include** field appears under **Top 10 → Settings → Popular Authors** and lets you pick additional post types. The same value can be overridden per call by passing `post_type="post,page"` to the shortcode or block.
 
 ## Can I display top posts for a specific author?
 

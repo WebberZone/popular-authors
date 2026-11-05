@@ -8,7 +8,9 @@ status: publish
 order: 0
 ---
 
-> **Popular Authors is retired.** Version 1.5.0 was the final release, and the feature is now built into [Top 10 Pro](https://webberzone.com/plugins/top-10/pro/). For the current documentation, see [Migrating from the Popular Authors Plugin](https://webberzone.com/support/knowledgebase/migrating-from-popular-authors/).
+[kbtoc]
+
+> **Popular Authors is retired.** The feature is now built into [Top 10 Pro](https://webberzone.com/plugins/top-10/pro/). For the current documentation, see [Migrating from the Popular Authors Plugin](https://webberzone.com/support/knowledgebase/migrating-from-popular-authors/).
 
 [Popular Authors](https://webberzone.com/plugins/popular-authors/) is an addon for [Top 10](https://webberzone.com/plugins/top-10/) and cannot function without it. Popular Authors aggregates the visit counts that Top 10 tracks and ranks your site's authors by those counts. This article explains how the two plugins fit together.
 
@@ -26,8 +28,8 @@ If Top 10 is missing or inactive, the admin area shows a warning on **Dashboard*
 
 Popular Authors pulls its data from two of Top 10's database tables:
 
-- `wp_top_ten` — overall visit totals per post.
-- `wp_top_ten_daily` — daily totals used when the **Custom period** toggle is enabled.
+- `wp_top_ten`: overall visit totals per post.
+- `wp_top_ten_daily`: daily totals used when the **Custom period** toggle is enabled.
 
 The plugin joins those tables against `wp_users` and `wp_posts` to compute a per-author sum, then renders the ranked list. The SQL is exposed through the `wzpa_query_fields`, `wzpa_query_join`, `wzpa_query_where`, `wzpa_query_groupby`, `wzpa_query_orderby`, `wzpa_query_limits`, and [`wzpa_query_prepare_values`](https://webberzone.dev/popular-authors/hooks/wzpa_query_prepare_values/) filters for advanced customization.
 
@@ -43,16 +45,16 @@ Output caching reuses Top 10's [`tptn_cache_time`](https://webberzone.dev/popula
 
 Popular Authors calls into Top 10's helper namespace for date arithmetic and query building:
 
-- `WebberZone\Top_Ten\Util\Helpers::get_from_date()` — used to build the `dp_date` cutoff for daily queries.
-- `tptn_pop_posts()` — used to render the top posts by author list.
-- `get_tptn_posts()` — used to fetch raw posts by author.
-- `tptn_get_settings()` and `tptn_get_default_option()` — used to read the per-setting defaults.
+- `WebberZone\Top_Ten\Util\Helpers::get_from_date()`: used to build the `dp_date` cutoff for daily queries.
+- `tptn_pop_posts()`: used to render the top posts by author list.
+- `get_tptn_posts()`: used to fetch raw posts by author.
+- `tptn_get_settings()` and `tptn_get_default_option()`: used to read the per-setting defaults.
 
 These functions are only guaranteed to exist when Top 10 v3 is active.
 
 ## Top 10 Pro features
 
-When [Top 10 Pro](https://webberzone.com/plugins/top-10-pro/) is active, an extra **Post types to include** field appears under **Top 10 → Settings → Popular Authors**. The free plugin always uses the `post` post type; Top 10 Pro lets you count custom post types toward an author's popularity. The same value can be overridden per shortcode or block via the `post_type` attribute.
+When [Top 10 Pro](https://webberzone.com/plugins/top-10/pro/) is active, an extra **Post types to include** field appears under **Top 10 → Settings → Popular Authors**. The free plugin always uses the `post` post type; Top 10 Pro lets you count custom post types toward an author's popularity. The same value can be overridden per shortcode or block via the `post_type` attribute.
 
 ## Uninstalling Top 10
 

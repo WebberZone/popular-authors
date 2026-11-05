@@ -8,7 +8,9 @@ status: publish
 order: 0
 ---
 
-> **Popular Authors is retired.** Version 1.5.0 was the final release, and the feature is now built into [Top 10 Pro](https://webberzone.com/plugins/top-10/pro/). For the current documentation, see [Popular Authors Template Tags, Hooks, and CSS](https://webberzone.com/support/knowledgebase/popular-authors-template-tags/).
+[kbtoc]
+
+> **Popular Authors is retired.** The feature is now built into [Top 10 Pro](https://webberzone.com/plugins/top-10/pro/). For the current documentation, see [Popular Authors Template Tags, Hooks, and CSS](https://webberzone.com/support/knowledgebase/popular-authors-template-tags/).
 
 [Popular Authors](https://webberzone.com/plugins/popular-authors/) ships four PHP functions you can call from a theme, child theme, or plugin to display or fetch author data. All functions live in the global namespace and require [Top 10](https://webberzone.com/plugins/top-10/) to be active.
 
@@ -26,9 +28,9 @@ Render or return the popular authors list.
 ) ); ?>
 ```
 
-**Parameters:** `$args` *(array, optional)* — accepts the full set of arguments listed under [Display arguments](#display-arguments) below. The default `echo` argument is `true`, which prints the output. Pass `'echo' => false` to receive the HTML as a string.
+**Parameters:** `$args` *(array, optional)*: accepts the full set of arguments listed under [Display arguments](#display-arguments) below. The default `echo` argument is `true`, which prints the output. Pass `'echo' => false` to receive the HTML as a string.
 
-**Returns:** `void|string` — void when `echo` is `true`, the HTML string when `echo` is `false`.
+**Returns:** `void|string`: void when `echo` is `true`, the HTML string when `echo` is `false`.
 
 ## wzpa_get_popular_author_ids()
 
@@ -47,9 +49,9 @@ foreach ( $authors as $author ) {
 ?>
 ```
 
-**Parameters:** `$args` *(array, optional)* — see [Query arguments](#query-arguments) below.
+**Parameters:** `$args` *(array, optional)*: see [Query arguments](#query-arguments) below.
 
-**Returns:** `object` — array of rows with `author_id` and `visits` properties.
+**Returns:** `object`: array of rows with `author_id` and `visits` properties.
 
 ## wzpa_display_top_posts_by_author()
 
@@ -70,12 +72,12 @@ echo wzpa_display_top_posts_by_author(
 
 **Parameters:**
 
-- `$author` *(int|string, required)* — value to look up the author by. With `$field = 'id'`, pass a numeric user ID.
-- `$field` *(string, optional)* — field to look up the author by. Accepts `id`, `slug`, `email`, or `login`. Default `id`.
-- `$args` *(array, optional)* — display arguments passed to `tptn_pop_posts()`.
-- `$echo_value` *(bool, optional)* — whether to print the output. Default `true`.
+- `$author` *(int|string, required)*: value to look up the author by. With `$field = 'id'`, pass a numeric user ID.
+- `$field` *(string, optional)*: field to look up the author by. Accepts `id`, `slug`, `email`, or `login`. Default `id`.
+- `$args` *(array, optional)*: display arguments passed to `tptn_pop_posts()`.
+- `$echo_value` *(bool, optional)*: whether to print the output. Default `true`.
 
-**Returns:** `string|void` — HTML string when `$echo_value` is `false`, void otherwise.
+**Returns:** `string|void`: HTML string when `$echo_value` is `false`, void otherwise.
 
 ## wzpa_list_popular_authors_args()
 
@@ -87,9 +89,9 @@ $defaults = wzpa_list_popular_authors_args();
 ?>
 ```
 
-**Parameters:** `$args` *(array, optional)* — overrides applied on top of the defaults.
+**Parameters:** `$args` *(array, optional)*: overrides applied on top of the defaults.
 
-**Returns:** `array` — full list of display arguments with undefined values filled in.
+**Returns:** `array`: full list of display arguments with undefined values filled in.
 
 ## Display arguments
 

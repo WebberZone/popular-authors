@@ -8,7 +8,7 @@ status: publish
 order: 0
 ---
 
-> **Popular Authors is retired.** Version 1.5.0 was the final release, and the feature is now built into [Top 10 Pro](https://webberzone.com/plugins/top-10/pro/). For the current documentation, see [Top 10 Settings – Popular Authors](https://webberzone.com/support/knowledgebase/popular-authors-settings/).
+> **Popular Authors is retired.** The feature is now built into [Top 10 Pro](https://webberzone.com/plugins/top-10/pro/). For the current documentation, see [Top 10 Settings: Popular Authors](https://webberzone.com/support/knowledgebase/popular-authors-settings/).
 
 [kbtoc]
 
@@ -44,7 +44,7 @@ Number of days in the default custom period.
 
 Number of hours in the default custom period.
 
-**Default:** `0` **Range:** 0–23
+**Default:** `0` **Range:** 0 to 23
 
 ### Show views
 
